@@ -14,7 +14,8 @@ SRCS	=  ft_atoi.c \
 			ft_memcmp.c \
 			ft_memmove.c \
 			ft_memset.c \
-			ft_strchr.c
+			ft_strchr.c	\
+			ft_strrchr.c	\
 
 FILE	= main.c
 

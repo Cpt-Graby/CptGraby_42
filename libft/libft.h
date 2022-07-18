@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:01:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/13 17:57:05 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/07/18 11:54:15 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int     ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
+char	*strrchr(const char *s, int c);
 
 #endif
