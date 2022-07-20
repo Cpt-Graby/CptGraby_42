@@ -22,10 +22,21 @@ char	*strnstr(const char *big, const char *little, size_t len)
 	cpb = (char *)big;
 	cpl = (char *)little;
 	i = 0;
+	if (cpl == 0)
+		return (big);
 	while (cpb[i] != '\0' && i < len)
 	{
 		j = 0;
 		if (cpb[i + j] == cpl[j])
-		
+		{
+			while (cpb[i + j] == cpl[j])
+				j++;
+			if (cpl[j] == '\0')
+				return (&cpb[i]);
+			else
+				i += j - 1;
+		}
+		i++;
 	}
+	return (big);
 }
