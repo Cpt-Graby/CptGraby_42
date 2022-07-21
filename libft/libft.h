@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:01:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/19 12:43:48 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/07/21 10:49:29 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
 char	*ft_strchr(const char *s, int c);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-char	*strrchr(const char *s, int c);
+char	*fr_strrchr(const char *s, int c);
 
 #endif
