@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 10:54:21 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/21 16:11:12 by agonelle         ###   ########.fr       */
+/*   Created: 2022/07/21 17:10:40 by agonelle          #+#    #+#             */
+/*   Updated: 2022/07/21 17:12:04 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
+	char	*s;
+	size_t	len_dst;
+	size_t	res;
+	size_t	len_src;
 	size_t	i;
-	char *cp;
-	char cc;
 
+	s = (char *)src;
+	len_dst = ft_strlen(dst);
+	len_src = ft_strlen(s);
+	res = 0;
 	i = 0;
-	cp = (char *)s;
-	cc = (char) c;
-	while (cp[i] != 0)
+	if (size > len_dst)
+		res = len_src + len_dst;
+	else
+		res = len_src + size;
+	while (s[i] && (len_dst + 1) < size)
+	{
+		dst[len_dst] = s[i];
+		len_dst++;
 		i++;
-	while (cp[i] != cc && i != 0)
-		i--;
-	if (cp[i] == cc)
-		return (&cp[i]);
-	return (NULL);
+	}
+	dst[len_dst] = '\0';
+	return (res);
 }
