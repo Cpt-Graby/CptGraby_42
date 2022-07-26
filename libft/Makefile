@@ -20,7 +20,7 @@ SRCS	=  ft_atoi.c \
 			ft_strlcat.c \
 			ft_strlcpy.c
 
-FILE	= main.c
+FILE	= t_atoi.c
 
 OBJS	= ${SRCS:.c=.o}
 
