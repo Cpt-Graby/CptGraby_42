@@ -47,7 +47,7 @@ int	t_atoi(char *src)
 	a = ft_atoi(src);
 	b = atoi(src);
 	if (a == b)
-		return (1);
-	else
 		return (0);
+	else
+		return (1);
 }
