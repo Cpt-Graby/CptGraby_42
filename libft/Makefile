@@ -19,7 +19,8 @@ SRCS	=  ft_atoi.c \
 	   ft_strrchr.c \
 	   ft_strncmp.c \
 	   ft_strlcat.c \
-	   ft_strlcpy.c
+	   ft_strlcpy.c \
+	   ft_calloc.c	
 
 FILE	= t_atoi.c
 
