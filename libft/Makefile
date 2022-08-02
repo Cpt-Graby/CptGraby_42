@@ -1,5 +1,6 @@
 SRCS	=  ft_atoi.c \
 	   ft_bzero.c \
+	   ft_calloc.c	\
 	   ft_isalnum.c \
 	   ft_isalpha.c \
 	   ft_isascii.c \
@@ -20,7 +21,7 @@ SRCS	=  ft_atoi.c \
 	   ft_strncmp.c \
 	   ft_strlcat.c \
 	   ft_strlcpy.c \
-	   ft_calloc.c	
+	   ft_strdup.c
 
 FILE	= t_atoi.c
 
