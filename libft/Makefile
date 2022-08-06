@@ -11,6 +11,7 @@ SRCS	=  ft_atoi.c \
 	   ft_strlen.c \
 	   ft_toupper.c \
 	   ft_tolower.c \
+	   ft_putchar_fd.c \
 	   ft_memccpy.c \
 	   ft_memchr.c \
 	   ft_memcpy.c \
