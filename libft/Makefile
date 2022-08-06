@@ -7,6 +7,7 @@ SRCS	=  ft_atoi.c \
 	   ft_isdigit.c \
 	   ft_isprint.c \
 	   ft_isspace.c \
+	   ft_incharset.c \
 	   ft_strlen.c \
 	   ft_toupper.c \
 	   ft_tolower.c \
@@ -21,7 +22,9 @@ SRCS	=  ft_atoi.c \
 	   ft_strncmp.c \
 	   ft_strlcat.c \
 	   ft_strlcpy.c \
-	   ft_strdup.c
+	   ft_strdup.c \
+	   ft_substr.c \
+	   ft_strtrim.c
 
 FILE	= t_atoi.c
 
