@@ -43,8 +43,6 @@ RM		= rm -f
 
 AR		= ar rc
 
-
-
 CFLAGS	= -Wall -Werror -Wextra
 
 .c.o:
