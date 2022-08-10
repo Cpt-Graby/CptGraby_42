@@ -1,27 +1,27 @@
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_itoa(int n)
 {
-	int	c;
-	size_t	count;
+	int	count;
+	int	sign;
 	char	*dest;
 
-	count = 0;
-	c = n;
-	while (c)
-	{
-		count++;
-		c /= 10;
-	}
+	count = ft_nbrlen(n);
+	if (n < 0)
+		sign = -1;
+	else
+		sign = 1;
 	dest = malloc(sizeof(*dest) * (count + 1));
 	if (dest == NULL)
 		return (NULL);
 	dest[count] = '\0';
 	while (count)
 	{
-		dest[count] = n%10;
+		dest[--count] = (n % 10) * sign + '0';
 		n /= 10;
-		count--;
 	}
+	if (sign == -1)
+		dest[count] = '-';
 	return (dest);
 }

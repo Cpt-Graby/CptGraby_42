@@ -1,5 +1,8 @@
-#include "../libft.h"
+#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
+void	t_itoa(int a);
 
 /* Testing the function itoa on a very basique way.
  * We are seeing if the str of ft_itoa is matching the one of itoa. */
@@ -21,14 +24,16 @@ int main (void)
 
 void	t_itoa(int a)
 {
-	char	*s;
+	char	s[20];
 	char	*s1;
 
-	printf("Testing a: %d" a);
-	s = itoa(a); 
+	printf("Testing a: %d \n", a);
+	sprintf(s, "%d", a);
 	s1 = ft_itoa(a);
+	printf("sprint == %s ", s);
+	printf("r:%s ", s1);
 	if (s == s1)
-		printf("OK /n");
+		printf("OK \n");
 	else
-		printf("KO /n");
+		printf("KO \n");
 }

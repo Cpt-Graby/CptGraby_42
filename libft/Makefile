@@ -22,6 +22,7 @@ SRCS	=  ft_atoi.c \
 	   ft_memcmp.c \
 	   ft_memmove.c \
 	   ft_memset.c \
+	   ft_nbrlen.c \
 	   ft_strchr.c	\
 	   ft_strrchr.c \
 	   ft_strncmp.c \
@@ -31,7 +32,7 @@ SRCS	=  ft_atoi.c \
 	   ft_substr.c \
 	   ft_strtrim.c
 
-FILE	= t_atoi.c
+FILE	= t_itoa.c
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -55,6 +56,8 @@ ${NAME}:	${OBJS}
 
 all:		${NAME}
 			${CC} ${CFLAGS} ${FILE} -L. -lft
+			./a.out | cat -e
+			rm a.out
 
 clean:		
 			${RM} ${OBJS}
