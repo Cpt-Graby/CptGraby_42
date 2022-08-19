@@ -4,12 +4,11 @@ size_t	ft_nbr_oc(const char *s, char c);
 
 char	**ft_split(const char *s, char c)
 {
-	char	*cp;
 	size_t	con;
 	char	**dest;
 
 	con = ft_nbr_word(const char *s, char c);
-	if ( *s = '\0' || con == 1)
+	if (*s = '\0' || con == 1)
 	{
 		dest = malloc(sizeof(*dest) * 1);
 		if (dest == NULL)
@@ -20,8 +19,8 @@ char	**ft_split(const char *s, char c)
 		dest[0][0] = '\0';
 		return (dest);
 	}
-	cp = s;
 	dest = malloc(sizeof(*dest) * (con + 1));
+	
 }
 
 size_t	ft_nbr_word(const char *s, char c)
