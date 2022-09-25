@@ -12,18 +12,18 @@
 
 #include "libft.h"
 
-char	*strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	char cpb;
-	char cpl;
+	char *cpb;
+	char *cpl;
 
 	cpb = (char *)big;
 	cpl = (char *)little;
 	i = 0;
 	if (cpl == 0)
-		return (big);
+		return ((char *)big);
 	while (cpb[i] != '\0' && i < len)
 	{
 		j = 0;
@@ -38,5 +38,5 @@ char	*strnstr(const char *big, const char *little, size_t len)
 		}
 		i++;
 	}
-	return (big);
+	return ((char *)big);
 }
