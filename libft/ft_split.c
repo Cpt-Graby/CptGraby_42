@@ -20,7 +20,7 @@ char	**ft_split(const char *s, char c)
 		return (dest);
 	}
 	dest = malloc(sizeof(*dest) * (con + 1));
-	
+	return (NULL);	
 }
 
 size_t	ft_nbr_word(const char *s, char c)
