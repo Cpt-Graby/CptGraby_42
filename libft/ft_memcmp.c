@@ -21,7 +21,10 @@ int ft_memcmp(const void *s1, const void *s2, size_t n)
 	cp1 = (unsigned char *)s1;
 	cp2 = (unsigned char *)s2;
 	i = 0;
-	while (i < (n - 1) && (cp1[i] == cp2[i]))
+	while (i < n && (cp1[i] == cp2[i]))
 		i++;
-	return (cp1 - cp2);
+	if (i == n)
+		return (0);
+	else
+		return (cp1[i] - cp2[i]);
 }
