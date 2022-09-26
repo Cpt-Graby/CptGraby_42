@@ -22,24 +22,16 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	cpb = (char *)big;
 	cpl = (char *)little;
 	i = 0;
-	if (cpl == 0)
-		return ((char *)big);
-	while (cpb[i] != '\0' && i < len)
+	if (*cpl == '\0' || cpl == NULL)
+		return (cpb);
+	while( cpb[i] != '\0' && i < len)
 	{
 		j = 0;
-		if (cpb[i + j] == cpl[j])
-		{
-			while (cpb[i + j] == cpl[j])
-				j++;
-			if (cpl[j] == '\0')
-				return (&cpb[i]);
-			else
-				i += j - 1;
-		}
+		while (cpl[j] == cpb[i + j] && i + j < len)
+			j++;
+		if (!cpl[j])
+			return (&cpb[i]);
 		i++;
 	}
-	if (i == len)
-		return (NULL);
-	else
-		return (&cpb[i]);
+	return (NULL);
 }
