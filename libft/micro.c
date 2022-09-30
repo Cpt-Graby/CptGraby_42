@@ -1,11 +1,11 @@
 #include <stdio.h>
-
+#include <string.h>
 
 int main()
 {
-	char s1[]= "abcdefg";
-	int i = 0;
+	char s1[]= "bbcaefg";
+	int c = 'a';
 
-while(s1[i++])
-	printf("%c", s1[i]);
+	printf("%d", strchr(s1,c) - s1 + 1);
+	return (0);
 }
