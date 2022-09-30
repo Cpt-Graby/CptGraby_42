@@ -1,7 +1,6 @@
 SRCS	=  ft_atoi.c \
 	   ft_bzero.c \
 	   ft_calloc.c	\
-	   ft_incharset.c \
 	   ft_isalnum.c \
 	   ft_isalpha.c \
 	   ft_isascii.c \
@@ -59,7 +58,6 @@ ${NAME}:	${OBJS}
 all:		${NAME}
 			${CC} ${CFLAGS} ${FILE} -L. -lft
 			./a.out | cat -e
-			rm a.out
 
 clean:		
 			${RM} ${OBJS}

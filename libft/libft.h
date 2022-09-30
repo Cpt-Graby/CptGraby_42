@@ -20,7 +20,6 @@
 int	ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
-int	ft_incharset(char const *s, char c);
 int	ft_isalnum(int c);
 int	ft_isalpha(int c);
 int	ft_isascii(int c);

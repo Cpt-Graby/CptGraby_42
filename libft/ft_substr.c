@@ -4,12 +4,16 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dest;
 	size_t	i;
+	size_t	len2;
 
 	i = 0;
-	dest = calloc(sizeof(*dest), len);
+	len2 = ft_strlen(((char *)s + start));
+	if (len < len2)
+		len2 = len;
+	dest = calloc(sizeof(*dest), len2 + 1);
 	if (dest == NULL)
 		return (NULL);
-	while (*(s + start +  i) && i < (len - 1))
+	while (*(s + start +  i) && i < (len))
 	{
 		*(dest + i) = *(s + start + i);
 		i++;
