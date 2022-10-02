@@ -1,22 +1,24 @@
 #include "libft.h"
+#include <stdio.h>
 
-static char	*ft_add_word(const char *s, int i_s, int i_e)
+static char	*ft_add_word(const char *s, int i_s, size_t i_e)
 {
 	char	*dest;
 	size_t	i;
 
 	i = 0;
 	dest = calloc(sizeof(*dest), i_e + 1); 
-	while(i_s <= i_e)
+	while(i < i_e)
 	{
-		dest[i++] = s[i_s];
+		dest[i] = s[i_s];
 		i_s++;
+		i++;
 	}
-	dest[i_s] = '\0';
+	dest[i] = '\0';
 	return (dest);
 }	
 
-static int	ft_count_char_occ(const char *s, char c)
+static int	ft_count_w(const char *s, char c)
 {
 	int	i;
 	size_t	count;
@@ -25,9 +27,14 @@ static int	ft_count_char_occ(const char *s, char c)
 	count = 0;
 	while(s[i])
 	{
-		if (s[i] == c)
+		if (s[i] != c)
+		{
 			count++;
-		i++;
+			while (s[i] != c && s[i])
+				i++;
+		}
+		else
+			i++;
 	}
 	return (count);
 }
@@ -40,19 +47,21 @@ char	**ft_split(const char *s, char c)
 	size_t	con;
 	char	**dest;
 
-	con = ft_count_char_occ(s, c);
-	if (s == NULL)
-		return (NULL);
-	dest = calloc(sizeof(*dest), con + 1);
-	if (dest == NULL)
+	con = ft_count_w(s, c);
+	if (s == NULL || !(dest = calloc(sizeof(*dest), con + 1)))
 		return (NULL);
 	i = 0;
 	index = 0;
-	while (i <= con)
+	while (i < con)
 	{
-		index2 = ft_strchr(s, c) - (s + index);
+		while (s[index] == c && s[index])
+			index++;
+		if (ft_strchr((s + index), c) == NULL)
+			index2 = ft_strlen(s) - index;
+		else
+			index2 = ft_strchr((s + index), c) - (s + index);
 		dest[i] = ft_add_word(s, index, index2); 
-		index = index2;
+		index = index + index2 + 1;
 		i++;
 	}
 	dest[i] = NULL;
