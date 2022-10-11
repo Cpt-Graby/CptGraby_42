@@ -15,21 +15,22 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dest;
-	size_t	i;
-	size_t	len2;
+	size_t	tmp_l;
 
-	i = 0;
-	len2 = ft_strlen((s + start));
-	if (len < len2)
-		len2 = len;
-	dest = calloc(sizeof(*dest), len2 + 1);
-	if (dest == NULL || start > ft_strlen(s))
+	if (s == NULL)
 		return (NULL);
-	while (*(s + start + i) && i < (len))
+	tmp_l = ft_strlen(s);
+	if (start > tmp_l)
+		len = 0;
+	else
 	{
-		*(dest + i) = *(s + start + i);
-		i++;
+		tmp_l = ft_strlen(s + start);
+		if (tmp_l < len)
+			len = tmp_l;
 	}
-	*(dest + i) = '\0';
+	dest = calloc(sizeof(*dest), len + 1);
+	if (dest == NULL)
+		return (NULL);
+	ft_strlcpy(dest, s + start, len + 1);
 	return (dest);
 }

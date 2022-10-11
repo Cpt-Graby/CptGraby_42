@@ -59,6 +59,8 @@ ${NAME}:	${OBJS}
 			
 
 all:		${NAME}
+			gcc ${CFLAGS} ${FILE} -L. -lft
+			./a.out
 
 clean:		
 			${RM} ${OBJS}
