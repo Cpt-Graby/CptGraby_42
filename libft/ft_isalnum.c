@@ -6,14 +6,14 @@
 /*   By: agonelle <marvin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:01:27 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/13 15:36:38 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:25:02 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isalnum(int c)
+int	ft_isalnum(int c)
 {
 	if (((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		       || (c>= 48 && c <= 57))
+		|| (c >= 48 && c <= 57))
 		return (1);
 	else
 		return (0);

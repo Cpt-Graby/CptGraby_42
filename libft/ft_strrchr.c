@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/19 10:54:21 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/21 16:11:12 by agonelle         ###   ########.fr       */
+/*   Created: 2022/10/10 12:37:30 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/10 13:37:33 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
-	char *cp;
-	char cc;
+	char	*cp;
+	char	cc;
 
 	i = 0;
 	cp = (char *)s;

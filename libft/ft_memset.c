@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/13 11:14:59 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/13 15:12:40 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 13:17:00 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	*ft_memset(void *s, int c, size_t n)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (i < n)
 	{

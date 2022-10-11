@@ -6,11 +6,11 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:02:07 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/12 15:02:34 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:23:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

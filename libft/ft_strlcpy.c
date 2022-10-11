@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 10:49:34 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/21 17:33:55 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:57:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return (i);
 }
-

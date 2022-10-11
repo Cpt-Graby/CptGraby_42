@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 13:04:01 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/10 17:46:26 by agonelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 static char	*ft_add_word(const char *s, int i_s, size_t i_e)
 {
@@ -7,8 +18,8 @@ static char	*ft_add_word(const char *s, int i_s, size_t i_e)
 	size_t	i;
 
 	i = 0;
-	dest = calloc(sizeof(*dest), i_e + 1); 
-	while(i < i_e)
+	dest = calloc(sizeof(*dest), i_e + 1);
+	while (i < i_e)
 	{
 		dest[i] = s[i_s];
 		i_s++;
@@ -20,12 +31,12 @@ static char	*ft_add_word(const char *s, int i_s, size_t i_e)
 
 static int	ft_count_w(const char *s, char c)
 {
-	int	i;
+	int		i;
 	size_t	count;
 
 	i = 0;
 	count = 0;
-	while(s[i])
+	while (s[i])
 	{
 		if (s[i] != c)
 		{
@@ -41,29 +52,29 @@ static int	ft_count_w(const char *s, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	size_t	i;
-	size_t	index;
+	size_t	i[2];
 	size_t	index2;
 	size_t	con;
 	char	**dest;
 
 	con = ft_count_w(s, c);
-	if (s == NULL || !(dest = calloc(sizeof(*dest), con + 1)))
+	dest = calloc(sizeof(*dest), con + 1);
+	if (s == NULL || !(dest))
 		return (NULL);
-	i = 0;
-	index = 0;
-	while (i < con)
+	i[0] = 0;
+	i[1] = 0;
+	while (i[0] < con)
 	{
-		while (s[index] == c && s[index])
-			index++;
-		if (ft_strchr((s + index), c) == NULL)
-			index2 = ft_strlen(s) - index;
+		while (s[i[1]] == c && s[i[1]])
+			i[1]++;
+		if (ft_strchr((s + i[1]), c) == NULL)
+			index2 = ft_strlen(s) - i[1];
 		else
-			index2 = ft_strchr((s + index), c) - (s + index);
-		dest[i] = ft_add_word(s, index, index2); 
-		index = index + index2 + 1;
-		i++;
+			index2 = ft_strchr((s + i[1]), c) - (s + i[1]);
+		dest[i[0]] = ft_add_word(s, i[1], index2);
+		i[1] = i[1] + index2 + 1;
+		i[0]++;
 	}
-	dest[i] = NULL;
+	dest[i[0]] = NULL;
 	return (dest);
 }

@@ -59,8 +59,6 @@ ${NAME}:	${OBJS}
 			
 
 all:		${NAME}
-			${CC} ${CFLAGS} ${FILE} -L. -lft
-			./a.out | cat -e
 
 clean:		
 			${RM} ${OBJS}

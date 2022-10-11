@@ -6,14 +6,14 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/12 15:02:03 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/12 15:02:30 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 14:23:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	else
-		return (0);	
+		return (0);
 }

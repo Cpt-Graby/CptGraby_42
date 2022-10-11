@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 14:19:50 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/10 14:19:58 by agonelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_itoa(int n)
 {
-	int	count;
-	int	sign;
+	int		count;
+	int		sign;
 	char	*dest;
 
 	count = ft_nbrlen(n);

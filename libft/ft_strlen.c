@@ -5,19 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/12 15:01:49 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/13 12:02:51 by agonelle         ###   ########.fr       */
+/*   Created: 2022/10/10 12:48:37 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/10 12:56:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
-    size_t i;
+	size_t	i;
 
-    i = 0;
-    while (s[i] != '\0')
-        i++;
-    return (i);
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

@@ -6,13 +6,13 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:10:40 by agonelle          #+#    #+#             */
-/*   Updated: 2022/07/21 17:33:27 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/10 12:57:36 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	char	*s;
 	size_t	len_dst;

@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/10 11:40:41 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/10 11:41:36 by agonelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-	char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*dest;
 	size_t	i;
@@ -13,7 +25,7 @@
 	dest = calloc(sizeof(*dest), len2 + 1);
 	if (dest == NULL || start > ft_strlen(s))
 		return (NULL);
-	while (*(s + start +  i) && i < (len))
+	while (*(s + start + i) && i < (len))
 	{
 		*(dest + i) = *(s + start + i);
 		i++;
