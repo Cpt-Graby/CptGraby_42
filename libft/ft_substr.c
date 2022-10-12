@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:40:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/10 11:41:36 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:33:34 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	size_t	i;
 	char	*dest;
 	size_t	tmp_l;
 
+	i = 0;
 	if (s == NULL)
 		return (NULL);
 	tmp_l = ft_strlen(s);
 	if (start > tmp_l)
 		len = 0;
-	else
-	{
-		tmp_l = ft_strlen(s + start);
-		if (tmp_l < len)
-			len = tmp_l;
-	}
-	dest = calloc(sizeof(*dest), len + 1);
-	if (dest == NULL)
+	else if (len >= tmp_l)
+		len = tmp_l - start;
+	dest = ft_calloc(sizeof(*dest), len + 1);
+	if (!dest)
 		return (NULL);
-	ft_strlcpy(dest, s + start, len + 1);
+	while (i < len)
+	{
+		dest[i] = s[start + i];
+		i++;
+	}
 	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:14:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/10 13:14:57 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:39:19 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_putnbr_fd(int n, int fd)
 	else if (n < 0)
 	{
 		ft_putchar_fd('-', fd);
-		ft_putnbr_fd((-n) / 10, fd);
-		ft_putnbr_fd((-n) % 10, fd);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
 	}
 	else if (n > 9)
 	{

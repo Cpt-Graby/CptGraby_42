@@ -6,47 +6,47 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:42:11 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/10 12:36:06 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:08:40 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_end_trimer(char const *s1, char const *set)
+static int	ft_inset(char c, char const *set)
 {
-	int	index;
+	int	i;
 
-	index = ft_strlen(s1);
-	while (ft_strchr(set, s1[index]) && index > 0)
-		index--;
-	return (index);
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	int		i2;
-	size_t	c;
+	size_t	ind_s;
+	size_t	ind_e;
 	char	*dest;
 
-	if (s1 == NULL || set == NULL)
-		return (NULL);
-	c = ft_count_occ(s1, set);
-	dest = calloc(sizeof(*dest), ft_strlen(s1) - c + 1);
-	if (dest == NULL)
+	if (!set)
+		return (ft_strdup(s1));
+	i = 0;
+	while (ft_inset(s1[i], set) && s1[i])
+		i++;
+	ind_s = i;
+	i = ft_strlen(s1) - 1;
+	while (i > ind_s && ft_inset(s1[i], set))
+		i--;
+	ind_e = i;
+	dest = ft_calloc(sizeof(*dest), ((ind_e - ind_s + 1) + 1));
+	if (!dest)
 		return (NULL);
 	i = 0;
-	while (ft_strchr(set, s1[i]) && s1[i])
-		i++;
-	c = ft_end_trimer(s1, set);
-	if (c == 0)
-		return (dest);
-	i2 = 0;
-	while (i <= c)
-	{
-		dest[i2++] = s1[i];
-		i++;
-	}
-	dest[i2] = '\0';
+	ft_strlcpy(dest, s1 + ind_s, ((ind_e - ind_s + 1) + 1));
 	return (dest);
 }

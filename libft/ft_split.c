@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:04:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/10 17:46:26 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/12 18:10:59 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ static char	*ft_add_word(const char *s, int i_s, size_t i_e)
 	size_t	i;
 
 	i = 0;
-	dest = calloc(sizeof(*dest), i_e + 1);
+	dest = ft_calloc(sizeof(*dest), i_e + 1);
+	if (!dest)
+		return (NULL);
 	while (i < i_e)
 	{
 		dest[i] = s[i_s];
@@ -58,8 +60,8 @@ char	**ft_split(const char *s, char c)
 	char	**dest;
 
 	con = ft_count_w(s, c);
-	dest = calloc(sizeof(*dest), con + 1);
-	if (s == NULL || !(dest))
+	dest = ft_calloc(sizeof(*dest), con + 1);
+	if (!(dest) || s == NULL)
 		return (NULL);
 	i[0] = 0;
 	i[1] = 0;
