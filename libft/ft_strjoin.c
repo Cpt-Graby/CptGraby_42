@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 12:57:53 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/12 10:02:48 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/13 09:54:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	l1 = ft_strlen(s1);
 	l2 = ft_strlen(s2);
-	dest = malloc(sizeof(*dest) * (l1 + l2 + 1));
+	dest = ft_calloc(sizeof(*dest), (l1 + l2 + 1));
 	if (!dest)
 		return (NULL);
 	while (i < l1)

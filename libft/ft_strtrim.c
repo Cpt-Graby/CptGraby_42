@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:42:11 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/12 18:08:40 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/13 10:10:39 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	ind_e;
 	char	*dest;
 
-	if (!set)
+	if (!s1)
+		return (NULL);
+	else if (!set)
 		return (ft_strdup(s1));
+	if (ft_strncmp(s1, set, ft_strlen(s1)) == 0)
+		return (ft_strdup(""));
 	i = 0;
 	while (ft_inset(s1[i], set) && s1[i])
 		i++;

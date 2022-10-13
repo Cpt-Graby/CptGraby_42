@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 14:19:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/10 14:19:58 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/13 09:54:18 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_itoa(int n)
 		sign = -1;
 	else
 		sign = 1;
-	dest = malloc(sizeof(*dest) * (count + 1));
+	dest = ft_calloc(sizeof(*dest), (count + 1));
 	if (dest == NULL)
 		return (NULL);
 	dest[count] = '\0';
