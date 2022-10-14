@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 13:04:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/12 18:10:59 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/14 09:58:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,16 @@ static int	ft_count_w(const char *s, char c)
 
 char	**ft_split(const char *s, char c)
 {
-	size_t	i[2];
+	size_t	i[3];
 	size_t	index2;
-	size_t	con;
 	char	**dest;
 
-	con = ft_count_w(s, c);
-	dest = ft_calloc(sizeof(*dest), con + 1);
+	ft_bzero(i, sizeof(size_t) * 3);
+	i[2] = ft_count_w(s, c);
+	dest = ft_calloc(sizeof(*dest), i[2] + 1);
 	if (!(dest) || s == NULL)
 		return (NULL);
-	i[0] = 0;
-	i[1] = 0;
-	while (i[0] < con)
+	while (i[0] < i[2])
 	{
 		while (s[i[1]] == c && s[i[1]])
 			i[1]++;
@@ -74,6 +72,8 @@ char	**ft_split(const char *s, char c)
 		else
 			index2 = ft_strchr((s + i[1]), c) - (s + i[1]);
 		dest[i[0]] = ft_add_word(s, i[1], index2);
+		if (!dest[i[0]])
+			return (NULL);
 		i[1] = i[1] + index2 + 1;
 		i[0]++;
 	}
