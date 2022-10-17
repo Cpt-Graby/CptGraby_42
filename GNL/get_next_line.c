@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:09:13 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/17 20:08:37 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/17 20:15:28 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(int argc, char **argv)
 	printf("Tu es sorti\n");
 	tmp = get_next_line(i);
 	printf("%s\n", tmp);
-	printf("Tu es sorti\n");
+	pRintf("Tu es sorti\n");
 	printf(":)\n");
 	i = close(i);
 	return (0);
