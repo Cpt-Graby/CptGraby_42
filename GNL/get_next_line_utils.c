@@ -50,3 +50,7 @@ int	get_strlen(char *s)
 		i++;
 	return (i);
 }
+
+char	*get_swap(int fd, char *rest, t_nextl *n)
+{
+}

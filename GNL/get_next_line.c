@@ -16,13 +16,18 @@ char	*get_next_line(int fd)
 {
 	static char	*rest;
 	t_nextl		*n;
+	char		*sol;
 
 	next = malloc(sizeof(*next) * 1);
+	if (!next)
+		return (NULL);
 	n->count = read(fd, n->buff, BUFFER_SIZE);
 	n->buff[n->count] = '\0';
 	if (n->count == -1 || n->count == 0)
 		return (rest);
 	n->c_in_bf = get_next_c(n->buff, '\n');
+	sol = get_swap(fd, rest, n);
+	/*
 	if (n->c_in_bf)
 		n->solution = get_ndup(n->buff, c_in_bf);
 	while (!n->c_in_bf)
@@ -34,5 +39,6 @@ char	*get_next_line(int fd)
 	}
 	rest = get_ndup((n->buff + n->c_in_bf), BUFFER_SIZE - n->c_in_bf + 1);
 	free(n->buff);
+	*/
 	return (rest);
 }
