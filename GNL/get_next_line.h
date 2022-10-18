@@ -16,10 +16,17 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*get_next_line(int fd);
-int		get_next_c(char *s, int start, char c);
-char	*get_join(char *s1, char *s2, int start, int end);
-void	get_bzero(void *s, size_t n);
-int		get_strlen(char	*s);
+typedef struct s_next_line
+{
+	char	*sol;
+	char	*buff;
+	int		fd;
+	int		count;
+	int		c_in_bf;
+}t_nextl;
 
+char	*get_next_line(int fd);
+char	*get_ndup(char *s, size_t n);
+int		get_next_c(char *s, int start, char c);
+int		get_strlen(char	*s);
 #endif
