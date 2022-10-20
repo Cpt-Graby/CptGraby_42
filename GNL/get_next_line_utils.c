@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:07:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/19 17:23:33 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/20 09:42:51 by qjungo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*get_ndup(char *s, size_t n)
 	size_t	i;
 	char	*cp;
 
-	len = get_strlen(s);
+	if (!s)
+		return (NULL);
+	len = get_len(s);
 	if (len > n)
 		len = n;
 	i = 0;
@@ -42,8 +44,8 @@ char	*get_join(char *s1, char *s2)
 	size_t	i;
 
 	i = 0;
-	l1 = get_strlen(s1);
-	l2 = get_strlen(s2);
+	l1 = get_len(s1);
+	l2 = get_len(s2);
 	dest = malloc(sizeof(*dest) * (l1 + l2 + 1));
 	if (!dest)
 		return (NULL);
@@ -75,7 +77,7 @@ int	get_next_c(char *s, char c)
 		return (0);
 }	
 
-int	get_strlen(char *s)
+int	get_len(char *s)
 {
 	size_t	i;
 	
