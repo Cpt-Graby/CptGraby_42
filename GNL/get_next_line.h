@@ -18,8 +18,9 @@
 
 char	*get_next_line(int fd);
 char	*update_buff(int fd, char *rest);
+char	*update_nextl(char *buff);
+char	*get_res_line(char *buff);
 char	*get_transf(char *s1, char *rest);
-char	*get_line(char	*buff);
 char	*get_join(char *s1, char *s2);
 char	*get_ndup(char *s, size_t n);
 int		get_next_c(char *s, char c);

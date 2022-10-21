@@ -80,7 +80,7 @@ int	get_next_c(char *s, char c)
 int	get_len(char *s)
 {
 	size_t	i;
-	
+
 	if (!s)
 		return (0);
 	i = 0;
