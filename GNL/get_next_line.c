@@ -25,6 +25,8 @@ char	*get_next_line(int fd)
 	if (!rest)
 		return (NULL);
 	line = get_res_line(rest);
+	if (!line)
+		return(NULL);
 	rest = update_nextl(rest);
 	return (line);
 }
@@ -36,23 +38,23 @@ char	*update_buff(int fd, char *rest)
 	char	*sol;
 
 	count = 1;
-	flag = 1;
+	flag = get_next_c(rest, '\n');
 	sol = ft_calloc(sizeof(*sol), BUFFER_SIZE + 1);
 	if (!rest)
 		rest = ft_calloc(sizeof(*rest), 1);
 	if (!sol || !rest)
 		return (NULL);
-	if (get_next_c(rest, '\n'))
-		flag = 0;
 	while (count > 0 && flag)
 	{
 		count = read(fd, sol, BUFFER_SIZE);
 		if (count == -1)
+		{
+			free(sol);
 			return (NULL);
+		}
 		sol[count] = '\0';
 		rest = get_transf(sol, rest);
-		if (get_next_c(rest, '\n'))
-			flag = 0;
+		flag = get_next_c(rest, '\n');
 	}
 	free(sol);
 	return (rest);
@@ -77,7 +79,7 @@ char	*get_res_line(char *buff)
 	ind = get_next_c(buff, '\n');
 	if (ind == 0)
 		ind = get_len(buff);
-	str = get_ndup(buff, ind + 1);
+	str = get_ndup(buff, ind + 2);
 	return (str);
 }
 
@@ -89,7 +91,7 @@ char	*update_nextl(char *buff)
 	ind = get_next_c(buff, '\n');
 	if (ind == 0)
 		ind = get_len(buff);
-	else if (ind == get_len(buff))
+	else if (ind == get_len(buff) - 1)
 	{
 		free(buff);
 		return (NULL);
@@ -98,13 +100,14 @@ char	*update_nextl(char *buff)
 	free(buff);
 	return (tmp);
 }
-
+/*
 int main(void)
 {
 	int fd;
 	char *p;
 
-	fd = open("/Users/agonelle/Documents/GNL/test", O_RDONLY);
+//	fd = open("/home/xxx/Desktop/CptGraby_42/GNL/test", O_RDONLY);
+//	fd = open("/Users/xxx/Documents/GNL/test", O_RDONLY);
 	p = get_next_line(fd);
 	printf("Le resultat est:%s\n", p);
 	p = get_next_line(fd);
@@ -113,3 +116,4 @@ int main(void)
 	return (0);
 	close(fd);
 }
+*/
