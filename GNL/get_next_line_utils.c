@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 17:07:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/20 09:42:51 by qjungo           ###   ########.fr       */
+/*   Created: 2022/10/25 15:04:45 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/25 16:31:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_ndup(char *s, size_t n)
 	if (len > n)
 		len = n;
 	i = 0;
-	cp = malloc(sizeof(*cp) * (len + 1));
+	cp = ft_calloc(sizeof(*cp), (len + 1));
 	if (!cp)
 		return (NULL);
 	while (i < len)
@@ -46,7 +46,7 @@ char	*get_join(char *s1, char *s2)
 	i = 0;
 	l1 = get_len(s1);
 	l2 = get_len(s2);
-	dest = malloc(sizeof(*dest) * (l1 + l2 + 1));
+	dest = ft_calloc(sizeof(*dest), (l1 + l2 + 1));
 	if (!dest)
 		return (NULL);
 	while (i < l1)
@@ -87,4 +87,23 @@ int	get_len(char *s)
 	while (s[i] != '\0')
 		i++;
 	return (i);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	void	*res;
+	size_t	n;
+	size_t	i;
+
+	n = size * nmemb;
+	res = malloc(n);
+	if (!res)
+		return (NULL);
+	i = 0;
+	while (i < n)
+	{
+		*(unsigned char *)(res + i) = '\0';
+		i++;
+	}
+	return (res);
 }

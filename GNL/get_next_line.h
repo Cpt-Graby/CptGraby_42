@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 16:58:06 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/20 16:51:57 by qjungo           ###   ########.fr       */
+/*   Created: 2022/10/25 14:09:40 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/25 16:24:40 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ char	*get_join(char *s1, char *s2);
 char	*get_ndup(char *s, size_t n);
 int		get_next_c(char *s, char c);
 int		get_len(char *s);
+void	*ft_calloc(size_t nmemb, size_t size);
 
-#endif
+#endif /* GET_NEXT_LINE_H */

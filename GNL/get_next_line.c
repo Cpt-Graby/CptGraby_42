@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 17:09:13 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/20 16:52:00 by qjungo           ###   ########.fr       */
+/*   Created: 2022/10/25 14:07:34 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/25 17:30:24 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-//|| read(fd, 0, 0) < 0)
+
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	static char	*rest;
 	char		*line;
 
-	if (fd <= 1 || BUFFER_SIZE <= 0)
+	if (fd <= 1 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	rest = update_buff(fd, rest);
 	if (!rest)
@@ -37,12 +37,12 @@ char	*update_buff(int fd, char *rest)
 
 	count = 1;
 	flag = 1;
-	sol = malloc(sizeof(*sol) * BUFFER_SIZE + 1);
+	sol = ft_calloc(sizeof(*sol), BUFFER_SIZE + 1);
 	if (!rest)
-		rest = malloc(sizeof(*rest) * 1);
+		rest = ft_calloc(sizeof(*rest), 1);
 	if (!sol || !rest)
 		return (NULL);
-	else if (get_next_c(rest, '\n'))
+	if (get_next_c(rest, '\n'))
 		flag = 0;
 	while (count > 0 && flag)
 	{
@@ -52,7 +52,7 @@ char	*update_buff(int fd, char *rest)
 		sol[count] = '\0';
 		rest = get_transf(sol, rest);
 		if (get_next_c(rest, '\n'))
-				flag = 0;
+			flag = 0;
 	}
 	free(sol);
 	return (rest);
@@ -62,7 +62,7 @@ char	*get_transf(char *s1, char *rest)
 {
 	char	*tmp;
 
-	tmp = get_join(s1, rest);
+	tmp = get_join(rest, s1);
 	free(rest);
 	return (tmp);
 }
@@ -72,7 +72,11 @@ char	*get_res_line(char *buff)
 	char	*str;
 	int		ind;
 
+	if (buff[0] == '\0')
+		return (NULL);
 	ind = get_next_c(buff, '\n');
+	if (ind == 0)
+		ind = get_len(buff);
 	str = get_ndup(buff, ind + 1);
 	return (str);
 }
@@ -83,22 +87,29 @@ char	*update_nextl(char *buff)
 	int		ind;
 
 	ind = get_next_c(buff, '\n');
-	tmp = get_ndup((buff + ind + 2), get_len((buff + ind + 2)));
+	if (ind == 0)
+		ind = get_len(buff);
+	else if (ind == get_len(buff))
+	{
+		free(buff);
+		return (NULL);
+	}
+	tmp = get_ndup((buff + ind), get_len((buff + ind)) + 1);
 	free(buff);
 	return (tmp);
 }
-/*
+
 int main(void)
 {
 	int fd;
 	char *p;
 
-	fd = open("/home/kino/Desktop/CptGraby_42/GNL", O_RDONLY);
+	fd = open("/Users/agonelle/Documents/GNL/test", O_RDONLY);
 	p = get_next_line(fd);
-	printf("%s", p);
+	printf("Le resultat est:%s\n", p);
 	p = get_next_line(fd);
+	printf("Le resultat est:%s\n", p);
 	close(fd);
 	return (0);
 	close(fd);
 }
-*/
