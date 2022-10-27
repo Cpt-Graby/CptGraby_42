@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libprintf.h"
+# include "ft_printf.h"
 
 // cspdiuxX%
 int ft_printf(char *format, ...)
@@ -19,6 +19,7 @@ int ft_printf(char *format, ...)
 	char	*result;
 	size_t	ind;
 	size_t	last_ind;
+	size_t	len;
 	int		err;
 	
 	va_start(ap, format);
@@ -27,18 +28,18 @@ int ft_printf(char *format, ...)
 	len = ft_strlen(format);
 	err = 0;
 	result = ft_calloc(sizeof(*result), 1);
-	if (!resultat)
+	if (!result)
 		err = 1;
-	while (i <= len && !err)
+	while (ind <= len && !err)
 	{
-		if (format[i] == '%' || format[i] == '\0')
+		if (format[ind] == '%' || format[ind] == '\0')
 		{
-			result = add_2_res(format, last_ind, i, result);
+			result = add_2_res(format, last_ind, ind, result);
 			if (!result)
 				err = 1;
 			last_ind = ++ind + 1;
 		}
-		i++;
+		ind++;
 	}
 	if (!err)
 		ft_putstr_fd(result, 1);
@@ -50,11 +51,13 @@ char	*add_2_res(char *str, int start, int end, char *res_ac)
 {
 	char	*tmp;
 	char	*tmp_res;
-	size_t	len;	
+	//size_t	len;	
+	size_t	i;
 
-	len = end - start; // attention peut etre un 1 necessaire
+	i = 0;
+	//len = end - start; // attention peut etre un 1 necessaire
 	if (!str[i])
-		tmp = add_final();
+		tmp = add_final(str, start, end);
 		/*
 	else if (str[i + 1] == 'c')
 		add_char();
@@ -65,6 +68,8 @@ char	*add_2_res(char *str, int start, int end, char *res_ac)
 	else if (str[i + 1] == 'd')
 		add_decimal();
 		*/
+	if (!tmp)
+		return(NULL);
 	tmp_res = ft_transfert(res_ac, tmp);
 	free(tmp);
 	free(res_ac);
@@ -74,7 +79,6 @@ char	*add_2_res(char *str, int start, int end, char *res_ac)
 char	*add_final(char *str, int start, int end)
 {
 	size_t	len;
-	size_t	i;
 	char	*res;
 
 	len = end - start;

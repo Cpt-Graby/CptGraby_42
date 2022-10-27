@@ -2,13 +2,13 @@ SRCS	= ft_printf.c
 
 NAME	= libftprintf.a
 
-TMP		= libft_tmp.a
+TMP	= tmp.a
 
-CC		= gcc
+CC	= gcc
 
-RM		= rm -f
+RM	= rm -f
 
-AR		= ar rc
+AR	= ar rc
 
 CFLAGS	= -Wall -Werror -Wextra
 
@@ -17,24 +17,23 @@ OBJS	= ${SRCS:.c=.o}
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-libft:
-	make -C bonus ./libft
-	cp ./libft/libft.a ${NAME}
-
-${NAME}:	${OBJS} libft
+${NAME}: ${OBJS} 
+	echo ${TMP}
+	${MAKE} bonus -C ./libft 
+	cp ./libft/libft.a ${TMP}
 	${AR} ${NAME} ${OBJS} ${TMP}
 	ranlib ${NAME}
 
-all: ${NAME}
+all: 	${NAME}
 
 clean:		
-	rm ${TMP}
-	make -C fclean ./libft
+	${RM} ${TMP}
+	make fclean -C ./libft
 	${RM} ${OBJS}
 
 fclean:		clean
 	${RM} ${NAME}
 
-re:			fclean all
+re:		fclean all
 
 .PHONY:		all clean fclean re
