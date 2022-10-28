@@ -6,62 +6,60 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:16:45 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/28 10:18:28 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/28 16:22:53 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "ft_printf.h"
-# include <stdio.h>
+#include "ft_printf.h"
 
-
-// cspdiuxX%
-int ft_printf(char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	va_list	*pap;
 	char	*result;
-	size_t	ind;
-	size_t	last_ind;
-	size_t	len;
-	int		err;
-	
+	int		ind[4];
+
+	ft_bzero(ind, sizeof(*ind) * 4);
 	va_start(ap, format);
-	ind = 0;
-	last_ind = 0;
-	len = ft_strlen(format);
-	err = 0;
+	pap = &ap;
+	ind[2] = ft_strlen(format);
 	result = ft_calloc(sizeof(*result), 1);
 	if (!result)
-		err = 1;
-	while (ind <= len && !err)
+		ind[3] = 1;
+	while (ind[0] <= ind[2] && !ind[3])
 	{
-		if (format[ind] == '%' || format[ind] == '\0')
+		if (format[ind[0]] == '%' || format[ind[0]] == '\0')
 		{
-			result = add_2_res(format, last_ind, ind, result);
-			if (!result)
-				err = 1;
-			last_ind = ++ind + 1;
+			result = add_2_res(format, ind[1], result, &ap);
+			ind[1] = ++ind[0] + 1;
 		}
-		ind++;
+		ind[0]++;
 	}
-	if (!err)
+	if (!ind[3])
 		ft_putstr_fd(result, 1);
 	free(result);
 	return (0);
 }
 
-char	*add_2_res(char *str, int start, int end, char *res_ac) 
+char	*add_2_res(const char *str, int start, char *res_ac, va_list *ap)
 {
 	char	*tmp;
 	char	*tmp_res;
-	//size_t	len;	
-	size_t	i;
+	int		end;
 
-	i = 0;
-	//len = end - start; // attention peut etre un 1 necessaire
-	if (str[end] == '\0')
-		tmp = add_final(str, start, end);
-	else if (str[i + 1] == 'c')
-		tmp = add_char(str, start, end);
+	end = ft_n_ind(str, start, '%');
+	if (str[end] == '\0' || end == 0)
+		tmp = add_final(str, start, ft_strlen(str));
+	else if (str[end + 1] == 'c')
+		tmp = add_char(str, start, end, ap);
+	else
+		tmp = add_final(str, start, end + 1);
+	if (!tmp)
+		return (NULL);
+	tmp_res = ft_transfert(res_ac, tmp);
+	free(tmp);
+	return (tmp_res);
+}
 		/*
 	else if (str[i + 1] == 's')
 		add_string();
@@ -70,12 +68,3 @@ char	*add_2_res(char *str, int start, int end, char *res_ac)
 	else if (str[i + 1] == 'd')
 		add_decimal();
 		*/
-	else
-		tmp = NULL;
-	if (!tmp)
-		return(NULL);
-	tmp_res = ft_transfert(res_ac, tmp);
-	free(tmp);
-	return (tmp_res);
-}
-

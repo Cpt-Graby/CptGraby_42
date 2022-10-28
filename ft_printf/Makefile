@@ -1,5 +1,7 @@
 SRCS	= ft_printf.c \
-		  ft_transfert.c
+		  ft_transfert.c \
+		  ft_add.c \
+		  ft_n_ind.c
 
 NAME	= libftprintf.a
 
@@ -7,7 +9,7 @@ CC	= gcc
 
 RM	= rm -f
 
-AR	= ar rc
+AR	= ar rcs
 
 CFLAGS	= -Wall -Werror -Wextra
 
@@ -20,12 +22,10 @@ ${NAME}: ${OBJS}
 	${MAKE} bonus -C ./libft 
 	cp ./libft/libft.a ${NAME}
 	${AR} ${NAME} ${OBJS} 
-	ranlib ${NAME}
 
 all: 	${NAME}
 
 clean:		
-	${RM} ${TMP}
 	make fclean -C ./libft
 	${RM} ${OBJS}
 
