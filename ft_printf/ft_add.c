@@ -9,3 +9,11 @@ char	*add_final(char *str, int start, int end)
 	res = ft_substr(str, start, len);
 	return (res);	
 }
+
+char	*add_char(char *str, int start, int end)
+{
+	size_t	len;
+	char	*res;
+
+	res = add_final(str, start, end);
+	
