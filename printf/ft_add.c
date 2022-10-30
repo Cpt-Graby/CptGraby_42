@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap__bonus.c                                 :+:      :+:    :+:   */
+/*   ft_add.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 17:09:51 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/28 15:10:14 by agonelle         ###   ########.fr       */
+/*   Created: 2022/10/30 17:24:22 by agonelle          #+#    #+#             */
+/*   Updated: 2022/10/30 17:33:35 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+size_t	ft_add_char(const char *str, int start, va_list *ap)
 {
-	return (0);
+	char	c;
+	
+	c = va_arg(ap, int);
+	ft_putchar_fd(c, 1);
+	return (1);
 }

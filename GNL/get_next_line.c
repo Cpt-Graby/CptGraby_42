@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:07:34 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/26 14:02:59 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:39:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,4 @@ char	*update_nextl(char *buff)
 	}
 	free(buff);
 	return (tmp);
-	free(buff);
 }

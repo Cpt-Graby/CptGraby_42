@@ -6,70 +6,50 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:16:45 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/30 16:10:03 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:32:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	strlen_liber(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	free(str);
-	return (i);
-}
-
 int	ft_printf(const char *format, ...)
 {
+	size_t	i;
+	size_t	count;
 	va_list	ap;
 	va_list	*pap;
-	char	*result;
-	int		ind[5];
 
-	ft_bzero(ind, sizeof(*ind) * 4);
+	i = 0;
+	count = 0;
 	va_start(ap, format);
 	pap = &ap;
-	ind[2] = ft_strlen(format);
-	result = ft_calloc(sizeof(*result), 1);
-	if (!result)
-		ind[3] = 1;
-	while (ind[0] <= ind[2] && !ind[3])
+	while (format[i])
 	{
-		if (format[ind[0]] == '%' || format[ind[0]] == '\0')
+		if (format[i] == '%')
 		{
-			result = add_2_res(format, ind[1], result, &ap);
-			ind[1] = ++ind[0] + 1;
+			i++;
+			count += add_2_res(format, i, pap);
 		}
-		ind[0]++;
+		else
+			ft_putchar_fd(format[i], 1);
+		i++;
+		count++;
 	}
-	if (!ind[3])
-		ft_putstr_fd(result, 1);
-	ind[4] = strlen_liber(result);
-	return (ind[4]);
+	return (count);
 }
 
-char	*add_2_res(const char *str, int start, char *res_ac, va_list *ap)
+size_t	add_2_res(const char *str, int start, va_list *ap)
 {
-	char	*tmp;
-	char	*tmp_res;
-	int		end;
+	size_t	add_count;
 
-	end = ft_n_ind(str, start, '%');
-	if (str[end] == '\0' || end == 0)
-		tmp = add_final(str, start, ft_strlen(str));
-	else if (str[end + 1] == 'c')
-		tmp = add_char(str, start, end, ap);
+	add_count = 1;
+	if (str[start] == '%')
+		ft_putchar_fd(str[start], 1);
+	else if (str[start] == 'c')
+		add_count = ft_add_char(str, start, ap);
 	else
-		tmp = add_final(str, start, end + 1);
-	if (!tmp)
-		return (NULL);
-	tmp_res = ft_transfert(res_ac, tmp);
-	free(tmp);
-	return (tmp_res);
+		ft_putchar_fd(str[start], 1);
+	return (add_count);
 }
 		/*
 	else if (str[i + 1] == 's')
