@@ -17,18 +17,16 @@ int	ft_printf(const char *format, ...)
 	size_t	i;
 	size_t	count;
 	va_list	ap;
-	va_list	*pap;
 
 	i = 0;
 	count = 0;
 	va_start(ap, format);
-	pap = &ap;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			count += add_2_res(format, i, pap);
+			count += add_2_res(format, i, ap);
 		}
 		else
 			ft_putchar_fd(format[i], 1);
@@ -38,7 +36,7 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-size_t	add_2_res(const char *str, int start, va_list *ap)
+size_t	add_2_res(const char *str, int start, va_list ap)
 {
 	size_t	add_count;
 
@@ -47,15 +45,15 @@ size_t	add_2_res(const char *str, int start, va_list *ap)
 		ft_putchar_fd(str[start], 1);
 	else if (str[start] == 'c')
 		add_count = ft_add_char(ap);
+	else if (str[start + 1] == 's')
+		add_count = ft_add_str(ap);
 	else
 		ft_putchar_fd(str[start], 1);
 	return (add_count);
 }
 		/*
-	else if (str[i + 1] == 's')
-		add_string();
-	else if (str[i + 1] == 'p')
+	else if (str[start + 1] == 'p')
 		add_void();
-	else if (str[i + 1] == 'd')
+	else if (str[start + 1] == 'd')
 		add_decimal();
 		*/
