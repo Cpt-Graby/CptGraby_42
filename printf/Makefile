@@ -17,7 +17,7 @@ OBJS	= ${SRCS:.c=.o}
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS} 
-	${MAKE} bonus -C ./libft 
+	make bonus -C ./libft 
 	cp ./libft/libft.a ${NAME}
 	${AR} ${NAME} ${OBJS} 
 

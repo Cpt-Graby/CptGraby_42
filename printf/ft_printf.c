@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:16:45 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/30 17:32:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/10/30 17:58:33 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ size_t	add_2_res(const char *str, int start, va_list *ap)
 	if (str[start] == '%')
 		ft_putchar_fd(str[start], 1);
 	else if (str[start] == 'c')
-		add_count = ft_add_char(str, start, ap);
+		add_count = ft_add_char(ap);
 	else
 		ft_putchar_fd(str[start], 1);
 	return (add_count);
