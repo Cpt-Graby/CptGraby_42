@@ -22,18 +22,25 @@ int	main(int argc, char **argv)
 	if (printf("Coool test! La suite est la-\n") == value) 
 		printf("Valide\n");
 	printf(" ============== Test %%c ============ \n");
-	value = ft_printf("Coool test%c La suite est la%c-\n", '!', '.');
-	printf("%d", value);
 	value = printf("Coool test%c La suite est la%c-\n", '!', '.');
-	printf("%d", value);
 	if (printf("Coool test%c La suite est la%c-\n", '!', '.') == value)
 		printf("Valider\n");
 	printf("\n");
+	printf(" =========== Test 2 %%c ========== \n");
 	value =	ft_printf(" %c ", '0');
 	if (printf(" %c ", '0') == value)
 		printf("Valider\n");
 	printf("\n");
+	printf(" =========== Test 3 %%d ========== \n");
+	value =	ft_printf("%d", -42 );
+	if (printf("%d", -42) == value)
+		printf("Valider\n");
 	printf("\n");
-	printf(" %c ", '0');
+	printf(" =========== Test 4 %%p ========== \n");
+	void *p;
+	value =	ft_printf("%d", p);
+	if (printf("%p", p) == value)
+		printf("Valider\n");
+	printf("\n");
 	return (0);
 }

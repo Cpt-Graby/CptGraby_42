@@ -44,15 +44,13 @@ size_t	add_2_res(const char *str, int start, va_list ap)
 		add_count = ft_putchar_1(str[start]);
 	else if (str[start] == 'c')
 		add_count = ft_add_char(ap);
-	else if (str[start + 1] == 's')
+	else if (str[start] == 's')
 		add_count = ft_add_str(ap);
+	else if (str[start] == 'd' || str[start] == 'i')
+		add_count = ft_add_num(ap);
+	else if (str[start] == 'p')
+		add_count = ft_add_pnt(ap);
 	else
 		ft_putchar_fd(str[start], 1);
 	return (add_count);
 }
-	/*
-	else if (str[start + 1] == 'p')
-		add_void();
-	else if (str[start + 1] == 'd')
-		add_decimal();
-	*/
