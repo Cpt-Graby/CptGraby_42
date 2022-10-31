@@ -20,6 +20,7 @@
 
 int		ft_printf(const char *format, ...);
 size_t	add_2_res(const char *str, int start, va_list ap);
+size_t	ft_putchar_1(char str);
 size_t	ft_add_char(va_list ap);
 size_t	ft_add_str(va_list ap);
 

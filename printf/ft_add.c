@@ -12,13 +12,19 @@
 
 #include "ft_printf.h"
 
+size_t	ft_putchar_1(char str)
+{
+	ft_putchar_fd(str, 1);
+	return (1);
+}
+
 size_t	ft_add_char(va_list ap)
 {
 	char	c;
 
 	c = va_arg(ap, int);
 	ft_putchar_fd(c, 1);
-	return (0);
+	return (1);
 }
 
 size_t	ft_add_str(va_list ap)
@@ -27,5 +33,5 @@ size_t	ft_add_str(va_list ap)
 
 	str = va_arg(ap, char *);
 	ft_putstr_fd(str, 1);
-	return ((ft_strlen(str) - 1));
+	return ((ft_strlen(str)));
 }

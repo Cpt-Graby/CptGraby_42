@@ -29,9 +29,8 @@ int	ft_printf(const char *format, ...)
 			count += add_2_res(format, i, ap);
 		}
 		else
-			ft_putchar_fd(format[i], 1);
+			count += ft_putchar_1(format[i]);
 		i++;
-		count++;
 	}
 	return (count);
 }
@@ -40,9 +39,9 @@ size_t	add_2_res(const char *str, int start, va_list ap)
 {
 	size_t	add_count;
 
-	add_count = 1;
+	add_count = 0;
 	if (str[start] == '%')
-		ft_putchar_fd(str[start], 1);
+		add_count = ft_putchar_1(str[start]);
 	else if (str[start] == 'c')
 		add_count = ft_add_char(ap);
 	else if (str[start + 1] == 's')
@@ -51,9 +50,9 @@ size_t	add_2_res(const char *str, int start, va_list ap)
 		ft_putchar_fd(str[start], 1);
 	return (add_count);
 }
-		/*
+	/*
 	else if (str[start + 1] == 'p')
 		add_void();
 	else if (str[start + 1] == 'd')
 		add_decimal();
-		*/
+	*/
