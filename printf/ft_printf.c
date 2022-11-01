@@ -35,6 +35,19 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
+size_t	ft_add_hex(va_list ap, char c)
+{
+	size_t	nbr;
+	size_t	count;
+
+	nbr = va_arg(ap, int);
+	if (c == 'x')
+		count = ft_print_hex(nbr, "0123456789abcdef"); 
+	else if (c == 'X')
+		count = ft_print_hex(nbr, "0123456789ABCDEF"); 
+	return (count);
+}
+
 size_t	add_2_res(const char *str, int start, va_list ap)
 {
 	size_t	add_count;
@@ -49,7 +62,9 @@ size_t	add_2_res(const char *str, int start, va_list ap)
 	else if (str[start] == 'd' || str[start] == 'i')
 		add_count = ft_add_num(ap);
 	else if (str[start] == 'p')
-		add_count = ft_add_pnt(ap);
+		add_count = ft_add_pont(ap);
+	else if (str[start] == 'x' || str[start] == 'X')
+		add_count = ft_add_hex(ap, str[start]);
 	else
 		ft_putchar_fd(str[start], 1);
 	return (add_count);

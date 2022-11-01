@@ -1,5 +1,8 @@
 SRCS	= ft_printf.c \
-		  ft_add.c 
+	  ft_add.c \
+	  ft_print_h.c \
+	  ft_print_pnt.c
+
 
 NAME	= libftprintf.a
 
@@ -33,7 +36,7 @@ fclean:		clean
 re:		fclean all
 
 test: all
-	${CC} ${CFLAGS} print_test.c ft_printf.h  -L. -lftprintf
+	${CC} ${CFLAGS} print_test.c  -L. -lftprintf
 	./a.out
 	rm a.out
 

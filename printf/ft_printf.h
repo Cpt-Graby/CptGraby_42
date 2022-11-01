@@ -23,7 +23,14 @@ size_t	add_2_res(const char *str, int start, va_list ap);
 size_t	ft_putchar_1(char str);
 size_t	ft_add_char(va_list ap);
 size_t	ft_add_str(va_list ap);
-size_t	ft_add_pnt(va_list ap);
 size_t	ft_add_num(va_list ap);
+size_t	ft_add_pont(va_list ap);
+size_t	ft_add_hex(va_list ap, char c);
+size_t	ft_nbr_len_base(size_t nbr, char *base);
+void	ft_put_base(size_t nbr, char *base);
+size_t	ft_print_hex(size_t nbr,char *base);
+size_t	ft_nbr_len_base(size_t nbr, char *base);
+void	ft_put_base(size_t nbr, char *base);
+size_t	ft_print_hex(size_t nbr,char *base);
 
 #endif
