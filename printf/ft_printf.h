@@ -32,5 +32,6 @@ size_t	ft_print_hex(size_t nbr,char *base);
 size_t	ft_nbr_len_base(size_t nbr, char *base);
 void	ft_put_base(size_t nbr, char *base);
 size_t	ft_print_hex(size_t nbr,char *base);
+size_t	ft_add_Unum(va_list ap);
 
 #endif

@@ -47,3 +47,13 @@ size_t	ft_add_num(va_list ap)
 	return (len);
 }		
 
+size_t	ft_add_Unum(va_list ap)
+{
+	int		n;
+	size_t	len;
+
+	n = va_arg(ap, unsigned int);
+	len = (size_t)ft_nbrlen(n);
+	ft_putnbr_fd(n, 1);
+	return (len);
+}		
