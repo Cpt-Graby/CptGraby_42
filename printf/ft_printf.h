@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:06:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/30 17:57:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/02 07:51:42 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ size_t	ft_add_pont(va_list ap);
 size_t	ft_add_hex(va_list ap, char c);
 size_t	ft_nbr_len_base(size_t nbr, char *base);
 void	ft_put_base(size_t nbr, char *base);
-size_t	ft_print_hex(size_t nbr,char *base);
+size_t	ft_print_hex(size_t nbr, char *base);
 size_t	ft_nbr_len_base(size_t nbr, char *base);
 void	ft_put_base(size_t nbr, char *base);
-size_t	ft_print_hex(size_t nbr,char *base);
-size_t	ft_add_Unum(va_list ap);
+size_t	ft_print_hex(size_t nbr, char *base);
+size_t	ft_add_unum(va_list ap);
 
 #endif

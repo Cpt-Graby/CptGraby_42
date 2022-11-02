@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
+/*   ft_unnbrlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:16:26 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/02 09:37:08 by agonelle         ###   ########.fr       */
+/*   Created: 2022/11/02 09:35:54 by agonelle          #+#    #+#             */
+/*   Updated: 2022/11/02 09:36:19 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_nbrlen(int n)
+int	ft_unnbrlen(unsigned int n)
 {
 	int	c;
 
 	c = 0;
-	if (n <= 0)
-		c++;
 	while (n)
 	{
 		n /= 10;

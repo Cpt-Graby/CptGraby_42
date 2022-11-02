@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
+/*   ft_putunnbr_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:16:26 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/02 09:37:08 by agonelle         ###   ########.fr       */
+/*   Created: 2022/11/02 09:12:27 by agonelle          #+#    #+#             */
+/*   Updated: 2022/11/02 09:16:22 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_nbrlen(int n)
+void	ft_putunnbr_fd(unsigned int n, int fd)
 {
-	int	c;
-
-	c = 0;
-	if (n <= 0)
-		c++;
-	while (n)
+	if (n < 0)
 	{
-		n /= 10;
-		c++;
+		ft_putchar_fd('-', fd);
+		n *= -1;
+		ft_putnbr_fd(n, fd);
 	}
-	return (c);
-}
+	else if (n > 9)
+	{
+		ft_putnbr_fd((n) / 10, fd);
+		ft_putnbr_fd((n) % 10, fd);
+	}
+	else
+		ft_putchar_fd((n + '0'), fd);
+}	

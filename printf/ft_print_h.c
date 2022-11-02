@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_h.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/02 07:43:55 by agonelle          #+#    #+#             */
+/*   Updated: 2022/11/02 08:57:43 by agonelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 size_t	ft_nbr_len_base(size_t nbr, char *base)
@@ -29,10 +41,9 @@ void	ft_put_base(size_t nbr, char *base)
 		ft_putchar_fd(base[nbr], 1);
 }
 
-
-size_t	ft_print_hex(size_t nbr,char *base)
+size_t	ft_print_hex(size_t nbr, char *base)
 {
-	size_t len;
+	size_t	len;
 
 	if (nbr == 0)
 	{
@@ -44,3 +55,16 @@ size_t	ft_print_hex(size_t nbr,char *base)
 	return (len);
 }
 
+size_t	ft_add_hex(va_list ap, char c)
+{
+	size_t	nbr;
+	size_t	count;
+
+	count = 0;
+	nbr = va_arg(ap, unsigned int);
+	if (c == 'x')
+		count = ft_print_hex(nbr, "0123456789abcdef");
+	else if (c == 'X')
+		count = ft_print_hex(nbr, "0123456789ABCDEF");
+	return (count);
+}

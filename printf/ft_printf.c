@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 13:16:45 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/30 17:58:33 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/02 08:38:57 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,6 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
-size_t	ft_add_hex(va_list ap, char c)
-{
-	size_t	nbr;
-	size_t	count;
-
-	nbr = va_arg(ap, int);
-	if (c == 'x')
-		count = ft_print_hex(nbr, "0123456789abcdef"); 
-	else if (c == 'X')
-		count = ft_print_hex(nbr, "0123456789ABCDEF"); 
-	return (count);
-}
-
 size_t	add_2_res(const char *str, int start, va_list ap)
 {
 	size_t	add_count;
@@ -61,8 +48,8 @@ size_t	add_2_res(const char *str, int start, va_list ap)
 		add_count = ft_add_str(ap);
 	else if (str[start] == 'd' || str[start] == 'i')
 		add_count = ft_add_num(ap);
-	else if (str[start] == 'u') 
-		add_count = ft_add_Unum(ap);
+	else if (str[start] == 'u')
+		add_count = ft_add_unum(ap);
 	else if (str[start] == 'x' || str[start] == 'X')
 		add_count = ft_add_hex(ap, str[start]);
 	else if (str[start] == 'p')
