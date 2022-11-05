@@ -1,8 +1,7 @@
 SRCS	= ft_printf.c \
-	  ft_add.c \
-	  ft_print_h.c \
-	  ft_print_pnt.c
-
+		  ft_add.c \
+		  ft_print_h.c \
+		  ft_print_pnt.c
 
 NAME	= libftprintf.a
 
