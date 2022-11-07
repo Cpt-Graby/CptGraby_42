@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 16:08:00 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/07 11:29:48 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/07 11:43:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*get_next_line(int fd)
 	static char	*rest[4097];
 	char		*line;
 
+	if (fd < 0)
+		return (NULL);
 	rest[fd] = update_buff(fd, rest[fd]);
 	if (!rest[fd])
 	{
