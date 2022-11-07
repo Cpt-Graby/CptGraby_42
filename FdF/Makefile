@@ -1,9 +1,6 @@
-SRCS	= ft_printf.c \
-		  ft_add.c \
-		  ft_print_h.c \
-		  ft_print_pnt.c
+SRCS	= srcs/main.c
 
-NAME	= libftprintf.a
+NAME	= libfFdF.a
 
 CC	= gcc
 
@@ -18,11 +15,14 @@ OBJS	= ${SRCS:.c=.o}
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
-${NAME}: ${OBJS} 
+${PRINT}: ${OBJS}
 	make bonus -C ./libft 
-	cp ./libft/libft.a ${NAME}
+	cp ./printf/libftprintf.a 
+	make fclean -C ./printf
 	${AR} ${NAME} ${OBJS} 
 
+${NAME}: ${OBJS} 
+	{
 all: 	${NAME}
 
 clean:		
