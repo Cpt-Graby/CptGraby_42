@@ -6,16 +6,16 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 14:09:40 by agonelle          #+#    #+#             */
-/*   Updated: 2022/10/30 15:39:49 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/07 11:30:38 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 200
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 200
+# endif
 
 # include <stdlib.h>
 # include <unistd.h>
