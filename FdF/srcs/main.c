@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 14:12:21 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:34:54 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	val_in_r(int v, int min, int max)
 	else
 		return (0);
 }
+
 
 
 int	check_extension(char *path)
@@ -57,6 +58,7 @@ int	check_extension(char *path)
 		return (1);
 	}
 }
+
 int	fdf_main(char *path)
 {
 	t_vars		vars;

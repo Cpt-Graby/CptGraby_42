@@ -6,10 +6,11 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 14:12:18 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:24:22 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fdf.h"
 
 int	vec2_in_scr(t_vec2 p, int max_h, int max_l)
 {

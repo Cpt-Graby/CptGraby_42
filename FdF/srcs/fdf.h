@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 14:07:39 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:29:56 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,8 @@ int	close_win(int keycode, t_vars *vars);
 int	print_key(int keycode, t_vars *vars);
 int	vec2_in_scr(t_vec2 p, int max_h, int max_l);
 void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data);
+//main.c
+int	val_in_r(int v, int min, int max);
+void	pixel_2img(t_img_dt *data, int x, int y, int color);
 
 #endif
