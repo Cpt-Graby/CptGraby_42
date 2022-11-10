@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 17:46:01 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 21:48:55 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,17 @@ void def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
 	p4->x = 100;
 	p4->y = 100;
 }
+void def_9_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
+{
+	p1->x += 10;
+	p1->y += 10;
+	p2->x += 100;
+	p2->y += 10;
+	p3->x += 10;
+	p3->y += 100;
+	p4->x += 100;
+	p4->y += 100;
+}
 
 void draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
 {
@@ -90,10 +101,8 @@ int	fdf_main(char *path)
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lth,
 			&img.endian);
 	draw_line(p1, p2, &img);
-	draw_line(p1, p3, &img);
-//	draw_line(p4, p3, &img);
-//`	draw_line(p4, p2, &img);
-//	draw_cub(p1, p2, p3, p4, &img);
+	draw_cub(p1, p2, p3, p4, &img);
+	def_9_point(&p1,&p2,&p3,&p4);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_hook(vars.win, 17, 0, close_win, &vars);
 	mlx_key_hook(vars.win, print_key, &vars);
@@ -101,7 +110,7 @@ int	fdf_main(char *path)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
 	int	err;
 
@@ -118,4 +127,6 @@ int	main(int argc, char **argv)
 		perror("main.c - main:");
 	}
 	return (err);
-	}
+}
+
+//	draw_line(p4, p2, &img);

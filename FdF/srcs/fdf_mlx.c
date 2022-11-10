@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 18:32:27 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 21:45:28 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,60 @@ void	vect2_transf(t_vec2 *p1, t_vec2 *p2)
 	p2->x = p1->x;
 	p2->y = p1->y;
 }
-	
+
 void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data)
 {
-	int		e;
-	t_vec2	ps;
-	t_vec2	pe;
+	int		i;
+	t_vec2	e;
+	t_vec2	del;
 	t_vec2	d;
+	t_vec2	inc;
 
-	if (!vec2_in_scr(p1, WIN_H, WIN_W) && !vec2_in_scr(p2, WIN_H, WIN_W))
-		ft_putstr_fd("Erreur coordonnee", 1);
+	ft_printf("Hello \n");
+	e.x = abs(p2.x - p1.x);
+	e.y = abs(p2.y - p1.y);
+	d.x = 2 * e.x;
+	d.y = 2 * e.y;
+	del.x = e.x;
+	del.y = e.y;
+	inc.x = 1;
+	inc.y = 1;
+	i = 0;
 	if (p1.x > p2.x)
+		inc.x = -1;
+	if (p1.y > p2.y)
+		inc.y = -1;
+	if (del.x > del.y)
 	{
-		vect2_transf(&p1, &ps);
-		vect2_transf(&p2, &pe);
+		while (i <= del.x)
+		{
+			pixel_2img(data, p1.x, p1.y, 0x00FF0000);
+			i++;
+			p1.x += inc.x;
+			e.x -= d.y;
+			if (e.x < 0)
+			{
+				p1.y += inc.y;
+				e.x += d.x;
+			}
+		}
 	}
 	else
 	{
-		vect2_transf(&p2, &ps);
-		vect2_transf(&p1, &pe);
-	}
-
-	e = pe.x - ps.x;
-	d.x = e * 2;
-	d.y = (pe.y - ps.y) * 2;
-	while (ps.x <= pe.x)
-	{
-		pixel_2img(data, ps.x, ps.y, color);
-		ps.x++;
-		e = e - d.y;
-		if(e <= 0) 
+		while (i <= del.y)
 		{
-			ps.y++;
-      e ← e + dx ;  // ajuste l’erreur commise dans cette nouvelle rangée
-    fin si ;
-  fin faire ;
-  // Le pixel final (x2, y2) n’est pas tracé.
-fin procédure ;
+			pixel_2img(data, p1.x, p1.y, 0x00FF0000);
+			i++;
+			p1.y += inc.y;
+			e.y -= d.x;
+			if (e.y < 0)
+			{
+				p1.x += inc.x;
+				e.y += d.y;
+			}
+		}
 	}
 }
+
+	/*if (!vec2_in_scr(p1, WIN_H, WIN_W) && !vec2_in_scr(p2, WIN_H, WIN_W))
+		ft_putstr_fd("Erreur coordonnee", 1); */
