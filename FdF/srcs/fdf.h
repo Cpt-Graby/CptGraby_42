@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/09 17:03:13 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/10 13:13:34 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # define WIN_W 600
 # define WIN_H 300
+
+# include <math.h>
+# include "../42lib/libft.h"
+# include "../mlx.h"
 
 typedef struct s_vars_w{
 	void	*mlx;
@@ -33,5 +37,9 @@ typedef struct s_vec2 {
 	int		x;
 	int		y;
 }	t_vec2;
+
+//Keyevent
+int	close_win(int keycode, t_vars *vars);
+int	print_key(int keycode, t_vars *vars);
 
 #endif

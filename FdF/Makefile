@@ -3,7 +3,8 @@ CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
 LIBFT =		-L./42lib -lft
-SRCS =		srcs/main.c 
+SRCS =		srcs/main.c \
+		srcs/fdf_key_event.c
 
 OBJS =		$(SRCS:.c=.o)
 
