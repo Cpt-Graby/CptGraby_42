@@ -21,6 +21,7 @@ SRCS_MAIN	= ft_atoi.c \
 		  ft_isprint.c \
 		  ft_isspace.c \
 		  ft_itoa.c \
+		  ft_free_tab.c \
 		  ft_strlen.c \
 		  ft_toupper.c \
 		  ft_tolower.c \
@@ -68,10 +69,13 @@ SRCS_PRINT	= ft_add.c \
 			  ft_print_pnt.c \
 			  ft_printf.c
 
+SRCS_MATH	= ft_val_in_r.c \
+
 SRCS_NAME	= ${addprefix ft_main/, ${SRCS_MAIN}} \
 		  ${addprefix ft_lst/, ${SRCS_LST}} \
 		  ${addprefix ft_read/, ${SRCS_READ}} \
-		  ${addprefix ft_print/, ${SRCS_PRINT}} 
+		  ${addprefix ft_print/, ${SRCS_PRINT}} \
+		  ${addprefix ft_math/, ${SRCS_MATH}} 
 
 OBJS_NAME 	= ${SRCS_NAME:.c=.o}
 

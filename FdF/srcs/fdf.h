@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 14:29:56 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/10 15:06:39 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,6 @@ typedef struct s_img_dt {
 	int		line_lth;
 	int		endian;
 }	t_img_dt;
-
-typedef struct s_vec2 {
-	int		x;
-	int		y;
-}	t_vec2;
 
 //Keyevent
 int	close_win(int keycode, t_vars *vars);
