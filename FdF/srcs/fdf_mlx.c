@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 21:45:28 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/11 12:55:16 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,8 @@ int	vec2_in_scr(t_vec2 p, int max_h, int max_l)
 	else
 		return (0);
 }
-
-void	vect2_transf(t_vec2 *p1, t_vec2 *p2)
-{
-	p2->x = p1->x;
-	p2->y = p1->y;
-}
+	/*if (!vec2_in_scr(p1, WIN_H, WIN_W) && !vec2_in_scr(p2, WIN_H, WIN_W))
+		ft_putstr_fd("Erreur coordonnee", 1); */
 
 void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data)
 {
@@ -35,7 +31,6 @@ void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data)
 	t_vec2	d;
 	t_vec2	inc;
 
-	ft_printf("Hello \n");
 	e.x = abs(p2.x - p1.x);
 	e.y = abs(p2.y - p1.y);
 	d.x = 2 * e.x;
@@ -81,5 +76,3 @@ void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data)
 	}
 }
 
-	/*if (!vec2_in_scr(p1, WIN_H, WIN_W) && !vec2_in_scr(p2, WIN_H, WIN_W))
-		ft_putstr_fd("Erreur coordonnee", 1); */

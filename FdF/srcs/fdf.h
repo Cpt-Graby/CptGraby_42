@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 21:39:15 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/11 12:44:11 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_img_dt {
 }	t_img_dt;
 
 //Keyevent
+//int	update_image()
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);
 int		vec2_in_scr(t_vec2 p, int max_h, int max_l);

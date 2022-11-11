@@ -6,11 +6,16 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:28:12 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/10 21:39:48 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/11 12:52:05 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h" 
+
+int	update_image(t_vars)
+{
+	return (0);
+}
 
 int	close_win(int keycode, t_vars *vars)
 {
@@ -30,3 +35,4 @@ int	print_key(int keycode, t_vars *vars)
 		close_win(keycode, vars);
 	return (0);
 }
+
