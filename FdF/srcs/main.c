@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/11 13:21:42 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/12 00:34:32 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,11 @@ void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p)
 {
 	int	midx;
 	int	midy;
-	ft_printf("Debut de transformation");
 
-	ft_printf("p1:%d\n", p1->x);
-	ft_printf("p1:%d\n", p1->y);
 	midx= WIN_W / 2;
 	midy= WIN_H / 2;
-
 	p1p->x = p1->x + midx;
 	p1p->y = p1->y + midy;
-
-	ft_printf("p1p:%d\n", p1p->x);
-	ft_printf("p1p:%d\n", p1p->y);
 }
 
 void draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
@@ -99,6 +92,13 @@ void draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
 	draw_line(p4p, p2p, img);
 }
 
+int	**map_parser(char **path)
+{
+	char	*str;
+	
+
+	return (0);
+}
 int	fdf_main(char *path)
 {
 	t_vars		vars;
