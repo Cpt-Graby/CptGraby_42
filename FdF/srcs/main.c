@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/12 00:34:32 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/14 08:21:48 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,35 +20,7 @@ void	pixel_2img(t_img_dt *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-
-int	check_extension(char *path)
-{
-	char	**tab;
-	int		i;
-
-	tab = ft_split(path, '.');
-	if (!tab)
-	{
-		errno = ENOMEM;
-		perror("main.c - Check_extension");
-		exit(-1);
-	}
-	i = 0;
-
-	while (tab[i])
-		i++;
-	if  (i != 2)
-		return (0);
-	else if (ft_strncmp("fdf", tab[1], fmax(3, ft_strlen(tab[1]))))
-		return (0);
-	else
-	{
-		ft_free_tab((void **)tab, 3);
-		return (1);
-	}
-}
-
-void def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
+void	def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
 {
 	p1->x = -50;
 	p1->y = -50;
@@ -74,7 +46,7 @@ void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p)
 	p1p->y = p1->y + midy;
 }
 
-void draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
+void	draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
 {
 	t_vec2	p1p;
 	t_vec2	p2p;
@@ -92,15 +64,65 @@ void draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
 	draw_line(p4p, p2p, img);
 }
 
-int	**map_parser(char **path)
+int	main_parser(char *path, t_map *map)
 {
-	char	*str;
-	
+	int		fd;
 
-	return (0);
+	(void) map;
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("fdf_file2data.c - main_parser (fd):");
+		return (0);
+	}
+	if (!map_parser(fd, map))
+	{
+		perror("fdf_file2data.c - map_parser (fd):");
+		return (0);
+	}
+	return (1);
 }
+
+int	check_line(char *str)
+{
+	int	i;
+	int	flag;
+
+	flag = 1;
+	i = 0;
+	while (str[i] && flag)
+	{
+		if (ft_isalpha(str[i]))
+			flag = 0;
+		if (!ft_isprint(str[i]) && str[i] != '\n')
+			flag = 0;
+		i++;
+	}
+	if (flag == 0)
+	{
+		errno = EIO;
+		return (0);
+	}
+	return (1);
+}
+
+int	map_parser(int fd, t_map *map)
+{
+	char	*line;
+	(void)	map;
+
+	line = get_next_line(fd);
+	if (!check_line(line))
+	{
+		perror("fdf_file2data.c - checkline");
+		return (0);
+	}	
+	return (1);
+}
+
 int	fdf_main(char *path)
 {
+	t_map		map;
 	t_vars		vars;
 	t_img_dt	img;
 	t_vec2		p1;
@@ -114,6 +136,8 @@ int	fdf_main(char *path)
 		perror("main.c - fdf_main ");
 		exit(-1);
 	}
+	if (!main_parser(path, &map))
+		exit(-1);
 	def_4_point(&p1,&p2,&p3,&p4);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "My first window!");
