@@ -1,13 +1,22 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/14 22:50:29 by kino              #+#    #+#             */
+/*   Updated: 2022/11/14 22:52:30 by kino             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FT_LST_H
 # define FT_LST_H
 
-typedef struct	s_list
-{
+typedef struct s_list {
 	void		*content;
-	struct s_list	*next;
-}				t_list;
+	s_list		*next;
+}		t_list;
 
 void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstadd_back(t_list **lst, t_list *new);

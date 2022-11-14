@@ -6,23 +6,23 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 21:56:07 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/14 22:57:02 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void print_tabl(t_map *map)
+void	print_tabl(t_map *map)
 {
-	int y;
-	int i;
+	int	y;
+	int	i;
 
 	i = 0;
 	y = 0;
 	while (y < map->line)
 	{
 		i = 0;
-		while ( i < map->column)
+		while (i < map->column)
 		{
 			ft_printf("(%d-", map->tab_line[y].tab_pts[i].x);
 			ft_printf("%d-", map->tab_line[y].tab_pts[i].y);
@@ -32,19 +32,6 @@ void print_tabl(t_map *map)
 		ft_printf("\n");
 		y++;
 	}
-}
-
-void free_t_line(t_line *line, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len)
-	{
-		free(line->tab_pts);
-		i++;
-	}
-	free(line);
 }
 
 t_line	*get_next_pts_line(t_map *map, char **tab)
@@ -65,14 +52,13 @@ t_line	*get_next_pts_line(t_map *map, char **tab)
 		}
 		free(map->tab_line);
 	}
-	i = 0;
-	while ( i < map->column)
-		{
-			dt_pts[i].x = i;
-			dt_pts[i].y = map->line;
-			dt_pts[i].z = ft_atoi(tab[i]);
-			i++;
-		}
+	i = -1;
+	while (++i < map->column)
+	{
+		dt_pts[i].x = i;
+		dt_pts[i].y = map->line;
+		dt_pts[i].z = ft_atoi(tab[i]);
+	}
 	new_tab[map->line].tab_pts = dt_pts;
 	return (new_tab);
 }
@@ -90,7 +76,7 @@ void	get_first_info_parser(char *line, t_map *map)
 	map->line = 0;
 	map->max_h = 0;
 	map->tab_line = get_next_pts_line(map, tab);
-	map->line++; 
+	map->line++;
 	ft_free_tab((void **)tab, i);
 	free(line);
 }
@@ -105,8 +91,8 @@ int	line_2_tab(char *line, t_map *map)
 		perror("fdf_file2data.c - checkline");
 		free(line);
 		return (0);
-	}	
-	tab = ft_split(line, ' ');	
+	}
+	tab = ft_split(line, ' ');
 	i = 0;
 	while (tab[i])
 		i++;
@@ -116,7 +102,7 @@ int	line_2_tab(char *line, t_map *map)
 		perror("fdf_file2data.c - line_2_tab");
 		return (0);
 	}
- 	map->tab_line = get_next_pts_line(map, tab); 
+ 	map->tab_line = get_next_pts_line(map, tab);
 	free(line);
 	ft_free_tab((void **)tab, i);
 	return (1);
@@ -133,7 +119,6 @@ int	map_parser(int fd, t_map *map)
 		free(line);
 		return (0);
 	}	
-
 	get_first_info_parser(line, map);
 	line = get_next_line(fd);
 	while (line)
@@ -143,17 +128,13 @@ int	map_parser(int fd, t_map *map)
 		line = get_next_line(fd);
 		map->line++;
 	}
-	//print_tabl(map);
 	return (1);
 }
 
 int	main_parser(char *path, t_map *map)
 {
 	int		fd;
-	t_vec3	*test;
 
-	(void) map;
-	test = malloc(sizeof(*test) * 3);
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
@@ -165,6 +146,7 @@ int	main_parser(char *path, t_map *map)
 		perror("fdf_file2data.c - map_parser (fd):");
 		return (0);
 	}
+	print_tabl(map);
 	close (fd);
 	return (1);
 }

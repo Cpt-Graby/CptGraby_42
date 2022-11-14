@@ -6,7 +6,7 @@
 /*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:18:35 by kino              #+#    #+#             */
-/*   Updated: 2022/11/14 19:18:55 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/14 22:29:33 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ int	check_extension(char *path)
 		exit(-1);
 	}
 	i = 0;
-
 	while (tab[i])
 		i++;
-	if  (i != 2)
+	if (i != 2)
 		return (0);
 	else if (ft_strncmp("fdf", tab[1], fmax(3, ft_strlen(tab[1]))))
 		return (0);
@@ -62,3 +61,15 @@ int	check_line(char *str)
 	return (1);
 }
 
+void	free_t_line(t_line *line, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		free(line->tab_pts);
+		i++;
+	}
+	free(line);
+}
