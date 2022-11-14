@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 15:27:47 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/14 17:04:50 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,9 @@ void print_tabl(t_map *map)
 	{
 		while ( i < map->column)
 		{
-			ft_printf("%d-", map->tab_line[y].tab_pts[i].x);
-			ft_printf("%d-", map->tab_line[y].tab_pts[i].y);
-			ft_printf("%d\n", map->tab_line[y].tab_pts[i].z);
+			ft_printf("%d-", map->tab_line[y]->tab_pts[i]->x);
+			ft_printf("%d-", map->tab_line[y]->tab_pts[i]->y);
+			ft_printf("%d\n", map->tab_line[y]->tab_pts[i]->z);
 			i++;
 		}
 		y++;
@@ -110,14 +110,14 @@ void free_t_line(t_line *line, int len)
 	//free(line);
 }
 
-t_line	*get_next_pts_line(t_map *map, char **tab)
+t_line	**get_next_pts_line(t_map *map, char **tab)
 {
 	int		i;
-	t_vec3	*dt_pts;
-	t_line	*new_tab;
+	t_vec3	**dt_pts;
+	t_line	**new_tab;
 
-	new_tab = malloc(sizeof(*new_tab) * (map->line + 1));
-	dt_pts = malloc(sizeof(*dt_pts) * map->column);
+	new_tab = malloc(sizeof(**new_tab) * (map->line + 1));
+	dt_pts = malloc(sizeof(**dt_pts) * map->column);
 	i = 0;
 	if (map->line)
 	{
@@ -131,14 +131,29 @@ t_line	*get_next_pts_line(t_map *map, char **tab)
 	i = 0;
 	while ( i < map->column)
 		{
-			dt_pts[i].x = i;
-			dt_pts[i].y = 0;
-			dt_pts[i].z = ft_atoi(tab[i]);
+			dt_pts[map->line][i].x = i;
+			dt_pts[map->line][i].y = 0;
+			dt_pts[map->line][i].z = ft_atoi(tab[i]);
 			i++;
 		}
-	new_tab->tab_pts = dt_pts;
+	ft_printf("IcI\n");
+	new_tab[map->line]->tab_pts = dt_pts;
 	return (new_tab);
 }
+/*
+typedef struct s_line {
+	t_vec3	**tab_pts;
+}	t_line;
+
+typedef struct s_map {
+	char	*path;
+	int		line;
+	int		column;
+	int		max_h;
+	t_line	**tab_line;
+}	t_map;
+
+*/
 
 void	get_first_info_parser(char *line, t_map *map)
 {
@@ -173,13 +188,13 @@ int	line_2_tab(char *line, t_map *map)
 	i = 0;
 	while (tab[i])
 		i++;
-	if (i != map-> column)
+	if (i != map->column)
 	{
 		ft_free_tab((void **)tab, i);
 		perror("fdf_file2data.c - line_2_tab");
 		return (0);
 	}
-	map->tab_line = get_next_pts_line(map, tab); 
+ 	map->tab_line = get_next_pts_line(map, tab); 
 	free(line);
 	ft_free_tab((void **)tab, i);
 	return (1);
@@ -197,7 +212,7 @@ void spe_prt(int i, int j, t_map *map)
 		y = 0;
 		while (y < j)
 		{
-			print_vec3(map->tab_line[y].tab_pts[x]);
+			print_vec3(map->tab_line[y]->tab_pts[x]);
 			y++;
 		}
 		x++;
