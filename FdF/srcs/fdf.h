@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 16:58:33 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/14 19:29:33 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_img_dt {
 }	t_img_dt;
 
 typedef struct s_line {
-	t_vec3	**tab_pts;
+	t_vec3	*tab_pts;
 }	t_line;
 
 typedef struct s_map {
@@ -37,7 +37,7 @@ typedef struct s_map {
 	int		line;
 	int		column;
 	int		max_h;
-	t_line	**tab_line;
+	t_line	*tab_line;
 }	t_map;
 
 typedef struct s_vars_w{
@@ -54,7 +54,7 @@ void	print_tabl(t_map *map);
 int		main_parser(char *path, t_map *map);
 void	free_t_line(t_line *line, int len);
 void	get_first_info_parser(char *line, t_map *map);
-t_line	**get_next_pts_line(t_map *map, char **tab);
+t_line	*get_next_pts_line(t_map *map, char **tab);
 int		line_2_tab(char *line, t_map *map);
 //Keyevent
 int		close_win(int keycode, t_vars *vars);
