@@ -70,6 +70,7 @@ SRCS_PRINT	= ft_add.c \
 			  ft_printf.c
 
 SRCS_MATH	= ft_val_in_r.c \
+			  ft_print_vec3.c
 
 SRCS_NAME	= ${addprefix ft_main/, ${SRCS_MAIN}} \
 		  ${addprefix ft_lst/, ${SRCS_LST}} \

@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 08:06:34 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/14 08:40:10 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,28 @@ int	check_extension(char *path)
 		ft_free_tab((void **)tab, 3);
 		return (1);
 	}
+}
+
+int	check_line(char *str)
+{
+	int	i;
+	int	flag;
+
+	flag = 1;
+	i = 0;
+	while (str[i] && flag)
+	{
+		if (ft_isalpha(str[i]))
+			flag = 0;
+		if (!ft_isprint(str[i]) && str[i] != '\n')
+			flag = 0;
+		i++;
+	}
+	if (flag == 0)
+	{
+		errno = EIO;
+		return (0);
+	}
+	return (1);
 }
 
