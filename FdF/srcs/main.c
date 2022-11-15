@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 23:03:28 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/15 17:18:58 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,18 @@ int	main(int argc, char **argv)
 {
 	int	err;
 
+	err = 0;
 	if (argc == 1)
 	{
 		errno = EINVAL;
-		perror("main.c - main: too few arguments");
+		perror("main.c - main");
 	}
 	else if (argc == 2)
 		err = fdf_main(argv[1]);
 	else
 	{
 		errno = E2BIG;
-		perror("main.c - main:");
+		perror("main.c - main");
 	}
 	return (err);
 }
