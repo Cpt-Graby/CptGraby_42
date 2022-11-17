@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:55:22 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:58:19 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ int		print_key(int keycode, t_vars *vars);
 //fdf_mlx.c
 void	pixel_2img(t_img_dt *data, int x, int y, int color);
 int		vec2_in_scr(t_vec3 p, int max_h, int max_l);
-void	projection_ecran(t_vec3 *point, t_vec3 *screen, float zoom);
+void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom);
 void	calc_map(t_map *map, t_img_dt *data);
 void	line_2_img(t_map *map, t_img_dt *data, int x);
+void	map_2_img(t_map *map, t_img_dt *data);
 
 // fdf_bresenham.c
 void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);

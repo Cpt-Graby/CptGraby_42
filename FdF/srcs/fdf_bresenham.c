@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:16:03 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:57:22 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:10:38 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,9 @@ void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data)
 void	map_2_img(t_map *map, t_img_dt *data)
 {
 	int	x;
-	int	y;
 
 	x = 0;
-	while (x < map->line)
+	while (x < map->line - 1)
 	{
 		line_2_img(map, data, x);
 		x++;
@@ -104,7 +103,19 @@ void	map_2_img(t_map *map, t_img_dt *data)
 
 void	line_2_img(t_map *map, t_img_dt *data, int x)
 {
+	int	i;
+	t_vec3	pt1_sc;
+	t_vec3	pt2_sc;
 
+	i = 1;
+	while (i < map->column)
+	{
+		ft_printf("x:%d, i:%d, map:%d \n", x, i, map->column);
+		print_vec3(map->tab_line[x].tab_pts[i - 1]);
+		projection_ecran(map->tab_line[x].tab_pts[i - 1], &pt1_sc, 1);
+		projection_ecran(map->tab_line[x].tab_pts[i], &pt2_sc, 1);
+		printf("%f\n", pt1_sc.x);
+		draw_line(pt1_sc, pt2_sc, data);
+		i++;
+	}
 }
-
-

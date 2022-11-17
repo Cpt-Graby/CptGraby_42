@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:42:33 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:54:26 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	vec2_in_scr(t_vec3 p, int max_h, int max_l)
 		return (0);
 }
 
-void	projection_ecran(t_vec3 *point, t_vec3 *screen, float zoom)
+void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom)
 {
-	screen->x = (WIN_W / 2) + (point->x / point->z) * zoom;
-	screen->y = (WIN_H / 2) + (point->y / point->z) * zoom;
+	screen->x = (WIN_W / 2) + (point.x / point.z) * zoom;
+	screen->y = (WIN_H / 2) + (point.y / point.z) * zoom;
+	screen->z = point.z;
 }
