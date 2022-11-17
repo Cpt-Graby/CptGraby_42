@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/15 17:29:59 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:47:32 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ int		line_2_tab(char *line, t_map *map);
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);
 //int	update_image()
+void	pixel_2img(t_img_dt *data, int x, int y, int color);
 int		vec2_in_scr(t_vec2 p, int max_h, int max_l);
-void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data);
+void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data);
 void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p);
 //main.c
 int		val_in_r(int v, int min, int max);

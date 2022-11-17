@@ -6,19 +6,11 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/15 17:18:58 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 13:38:19 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void	pixel_2img(t_img_dt *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_lth + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
 
 void	def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
 {

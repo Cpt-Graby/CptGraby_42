@@ -6,11 +6,19 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/11 12:55:16 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/17 14:45:52 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	pixel_2img(t_img_dt *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_lth + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
 
 int	vec2_in_scr(t_vec2 p, int max_h, int max_l)
 {
@@ -23,7 +31,11 @@ int	vec2_in_scr(t_vec2 p, int max_h, int max_l)
 	/*if (!vec2_in_scr(p1, WIN_H, WIN_W) && !vec2_in_scr(p2, WIN_H, WIN_W))
 		ft_putstr_fd("Erreur coordonnee", 1); */
 
-void	draw_line(t_vec2 p1, t_vec2 p2, t_img_dt *data)
+void	case_dx_dy(t_vec2 *e, t_vec3 *p1, t_vec3 *p2, t_img_dt *data)
+{
+
+}
+void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data)
 {
 	int		i;
 	t_vec2	e;
