@@ -6,12 +6,12 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/15 17:30:00 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:08:28 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+/*
 void	print_tabl(t_map *map)
 {
 	int	y;
@@ -33,7 +33,7 @@ void	print_tabl(t_map *map)
 		y++;
 	}
 }
-
+*/
 t_line	*get_next_pts_line(t_map *map, char **tab)
 {
 	int		i;
@@ -102,7 +102,7 @@ int	line_2_tab(char *line, t_map *map)
 		perror("fdf_file2data.c - line_2_tab");
 		return (0);
 	}
- 	map->tab_line = get_next_pts_line(map, tab);
+	map->tab_line = get_next_pts_line(map, tab);
 	free(line);
 	ft_free_tab((void **)tab, i);
 	return (1);
@@ -146,7 +146,7 @@ int	main_parser(char *path, t_map *map)
 		perror("fdf_file2data.c - map_parser (fd):");
 		return (0);
 	}
-	print_tabl(map);
 	close (fd);
 	return (1);
 }
+//	print_tabl(map);

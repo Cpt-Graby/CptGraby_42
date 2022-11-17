@@ -6,13 +6,13 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 13:38:19 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:27:23 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
+void	def_4_point(t_vec3 *p1, t_vec3 *p2, t_vec3 *p3, t_vec3 *p4)
 {
 	p1->x = -50;
 	p1->y = -50;
@@ -24,7 +24,7 @@ void	def_4_point(t_vec2 *p1, t_vec2 *p2, t_vec2 *p3, t_vec2 *p4)
 	p4->y = 50;
 }
 
-void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p)
+void	mid_2_screen(t_vec3 *p1, t_vec3 *p1p)
 {
 	int	midx;
 	int	midy;
@@ -35,12 +35,12 @@ void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p)
 	p1p->y = p1->y + midy;
 }
 
-void	draw_cub(t_vec2 p1, t_vec2 p2, t_vec2 p3, t_vec2 p4, t_img_dt *img)
+void	draw_cub(t_vec3 p1, t_vec3 p2, t_vec3 p3, t_vec3 p4, t_img_dt *img)
 {
-	t_vec2	p1p;
-	t_vec2	p2p;
-	t_vec2	p3p;
-	t_vec2	p4p;
+	t_vec3	p1p;
+	t_vec3	p2p;
+	t_vec3	p3p;
+	t_vec3	p4p;
 
 	mid_2_screen(&p1, &p1p);
 	mid_2_screen(&p2, &p2p);
@@ -57,10 +57,10 @@ int	fdf_main(char *path)
 	t_map		map;
 	t_vars		vars;
 	t_img_dt	img;
-	t_vec2		p1;
-	t_vec2		p2;
-	t_vec2		p3;
-	t_vec2		p4;
+	t_vec3		p1;
+	t_vec3		p2;
+	t_vec3		p3;
+	t_vec3		p4;
 
 	if (!check_extension(path))
 	{

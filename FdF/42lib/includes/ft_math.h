@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:02:56 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 22:53:22 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/17 17:04:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define FT_MATH_H
 
 typedef struct s_vec3 {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 }	t_vec3;
 
 typedef struct s_vec2 {

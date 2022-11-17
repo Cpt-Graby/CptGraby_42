@@ -6,7 +6,7 @@
 /*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:50:29 by kino              #+#    #+#             */
-/*   Updated: 2022/11/15 17:18:05 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:00:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FT_LST_H
 
 typedef struct s_list {
-	void		*content;
-	struct s_list		*next;
+	void			*content;
+	struct s_list	*next;
 }		t_list;
 
 void	ft_lstadd_front(t_list **lst, t_list *new);

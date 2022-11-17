@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 13:47:32 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/17 17:55:22 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define WIN_H 300
 
 # include <math.h>
-# include "../42lib/libft.h"
 # include "../mlx.h"
+# include "../42lib/libft.h"
 
 typedef struct s_img_dt {
 	void	*img;
@@ -46,7 +46,7 @@ typedef struct s_vars_w{
 	t_img_dt	*pic;
 }	t_vars;
 
-//File 2 data
+//file_2_data.c
 int		check_extension(char *path);
 int		map_parser(int fd, t_map *map);
 int		check_line(char *str);
@@ -59,13 +59,18 @@ int		line_2_tab(char *line, t_map *map);
 //Keyevent
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);
-//int	update_image()
+//fdf_mlx.c
 void	pixel_2img(t_img_dt *data, int x, int y, int color);
-int		vec2_in_scr(t_vec2 p, int max_h, int max_l);
+int		vec2_in_scr(t_vec3 p, int max_h, int max_l);
+void	projection_ecran(t_vec3 *point, t_vec3 *screen, float zoom);
+void	calc_map(t_map *map, t_img_dt *data);
+void	line_2_img(t_map *map, t_img_dt *data, int x);
+
+// fdf_bresenham.c
+void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);
+void	case_dy_dx(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);
 void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data);
-void	mid_2_screen(t_vec2 *p1, t_vec2 *p1p);
 //main.c
 int		val_in_r(int v, int min, int max);
-void	pixel_2img(t_img_dt *data, int x, int y, int color);
 
 #endif
