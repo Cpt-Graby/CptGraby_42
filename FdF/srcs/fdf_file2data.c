@@ -6,11 +6,12 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 19:14:25 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/18 14:04:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+/*
 
 void	print_tabl(t_map *map)
 {
@@ -24,16 +25,16 @@ void	print_tabl(t_map *map)
 		i = 0;
 		while (i < map->column)
 		{
-			ft_printf("(%d-", map->tab_line[y].tab_pts[i].x);
-			ft_printf("%d-", map->tab_line[y].tab_pts[i].y);
-			ft_printf("%d) ", map->tab_line[y].tab_pts[i].z);
+			printf("(%f-", map->tab_line[y].tab_pts[i].x);
+			printf("%f-", map->tab_line[y].tab_pts[i].y);
+			printf("%f) ", map->tab_line[y].tab_pts[i].z);
 			i++;
 		}
 		ft_printf("\n");
 		y++;
 	}
 }
-
+*/
 t_line	*get_next_pts_line(t_map *map, char **tab)
 {
 	int		i;
@@ -56,7 +57,6 @@ t_line	*get_next_pts_line(t_map *map, char **tab)
 	while (++i < map->column)
 	{
 		dt_pts[i].x = (float) i;
-		printf("%f", dt_pts[i].x);
 		dt_pts[i].y = (float) map->line;
 		dt_pts[i].z = (float) ft_atoi(tab[i]);
 	}
@@ -147,7 +147,7 @@ int	main_parser(char *path, t_map *map)
 		perror("fdf_file2data.c - map_parser (fd):");
 		return (0);
 	}
-//	print_tabl(map);
 	close (fd);
 	return (1);
 }
+	//print_tabl(map);

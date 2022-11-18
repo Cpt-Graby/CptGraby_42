@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 18:54:26 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/18 15:19:49 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,12 @@ void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom)
 {
 	screen->x = (WIN_W / 2) + (point.x / point.z) * zoom;
 	screen->y = (WIN_H / 2) + (point.y / point.z) * zoom;
+	screen->z = point.z;
+}
+
+void	iso_transf(t_vec3 point, t_vec3 *screen)
+{
+	screen->x = (point.x - point.y) * cos(0.523599);
+	screen->y = point.z + (point.x + point.y) * sin(0.523599);
 	screen->z = point.z;
 }

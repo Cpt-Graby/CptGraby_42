@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 19:12:37 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/18 14:07:07 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	fdf_main(char *path)
 	img.img = mlx_new_image(vars.mlx, WIN_W, WIN_H);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lth,
 			&img.endian);
-//	map_2_img(&map, &img);
+	map_2_img(&map, &img);
 	draw_cub(p1, p2, p3, p4, &img);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_hook(vars.win, 17, 0, close_win, &vars);
