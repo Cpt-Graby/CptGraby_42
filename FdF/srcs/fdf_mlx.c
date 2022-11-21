@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/18 15:19:49 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/21 16:17:03 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,63 @@ void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom)
 	screen->z = point.z;
 }
 
-void	iso_transf(t_vec3 point, t_vec3 *screen)
+void	iso_transf(t_vec3 point, t_vec3 *screen, float d)
 {
-	screen->x = (point.x - point.y) * cos(0.523599);
-	screen->y = point.z + (point.x + point.y) * sin(0.523599);
+	screen->x = WIN_W / 2 +((point.x - point.y) * cos(0.523599) * d);
+	screen->y = WIN_H / 2 +((-1) *point.z + (point.x + point.y) * sin(0.523599)) * d;
 	screen->z = point.z;
+}
+
+void	map_2_img(t_map *map, t_img_dt *data)
+{
+	int		x;
+	float	zoom;
+
+	x = 0;
+	zoom = 5.5;
+	while (x < map->line)
+	{
+		line_2_img(map, data, x, zoom);
+		x++;
+	}
+	x = 0;
+	while (x < map->column)
+	{
+		column_2_img(map, data, x, zoom);
+		x++;
+	}
+}
+
+void	line_2_img(t_map *map, t_img_dt *data, int x, float zoom)
+{
+	int	i;
+
+	t_vec3	pt1_sc;
+	t_vec3	pt2_sc;
+
+	i = 1;
+	while (i < map->column)
+	{
+		iso_transf(map->tab_line[x].tab_pts[i - 1], &pt1_sc, zoom);
+		iso_transf(map->tab_line[x].tab_pts[i], &pt2_sc, zoom);
+		draw_line(pt1_sc, pt2_sc, data);
+		i++;
+	}
+}
+
+void	column_2_img(t_map *map, t_img_dt *data, int x, float zoom)
+{
+	int	i;
+
+	t_vec3	pt1_sc;
+	t_vec3	pt2_sc;
+
+	i = 1;
+	while (i < map->line)
+	{
+		iso_transf(map->tab_line[i - 1].tab_pts[x], &pt1_sc, zoom);
+		iso_transf(map->tab_line[i].tab_pts[x], &pt2_sc, zoom);
+		draw_line(pt1_sc, pt2_sc, data);
+		i++;
+	}
 }
