@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/21 16:17:03 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/21 23:33:16 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ int	vec2_in_scr(t_vec3 p, int max_h, int max_l)
 		return (0);
 }
 
-void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom)
-{
-	screen->x = (WIN_W / 2) + (point.x / point.z) * zoom;
-	screen->y = (WIN_H / 2) + (point.y / point.z) * zoom;
-	screen->z = point.z;
-}
-
 void	iso_transf(t_vec3 point, t_vec3 *screen, float d)
 {
 	screen->x = WIN_W / 2 +((point.x - point.y) * cos(0.523599) * d);
@@ -49,7 +42,7 @@ void	map_2_img(t_map *map, t_img_dt *data)
 	float	zoom;
 
 	x = 0;
-	zoom = 5.5;
+	zoom = 1.5;
 	while (x < map->line)
 	{
 		line_2_img(map, data, x, zoom);
@@ -65,8 +58,7 @@ void	map_2_img(t_map *map, t_img_dt *data)
 
 void	line_2_img(t_map *map, t_img_dt *data, int x, float zoom)
 {
-	int	i;
-
+	int		i;
 	t_vec3	pt1_sc;
 	t_vec3	pt2_sc;
 
@@ -82,8 +74,7 @@ void	line_2_img(t_map *map, t_img_dt *data, int x, float zoom)
 
 void	column_2_img(t_map *map, t_img_dt *data, int x, float zoom)
 {
-	int	i;
-
+	int		i;
 	t_vec3	pt1_sc;
 	t_vec3	pt2_sc;
 
