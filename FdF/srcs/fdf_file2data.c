@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/18 14:04:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/21 17:09:53 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ int	line_2_tab(char *line, t_map *map)
 		i++;
 	if (i != map->column)
 	{
+		ft_printf("%d elements. It should be %d\n", i, map->column);
 		ft_free_tab((void **)tab, i);
+		errno = EINVAL;
 		perror("fdf_file2data.c - line_2_tab");
 		return (0);
 	}
@@ -128,6 +130,7 @@ int	map_parser(int fd, t_map *map)
 			return (0);
 		line = get_next_line(fd);
 		map->line++;
+		ft_printf("%d\n", map->line);
 	}
 	return (1);
 }

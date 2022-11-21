@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:16:03 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/21 16:00:48 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/21 17:28:30 by kino             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,18 +75,34 @@ void	case_dy_dx(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data)
 		}
 	}
 }
+void	cp_vec3(t_vec3 point, t_vec3 *new_vec)
+{
+	new_vec->x = point.x;
+	new_vec->y = point.y;
+	new_vec->z = point.z;
+}
 
 void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data)
 {
-//	t_vec3 p1p;
-//	t_vec3 p2p;
+	t_vec3 p1p;
+	t_vec3 p2p;
 	t_vec2	e;
 
+	cp_vec3(p1, &p1p);
+	cp_vec3(p2, &p2p);
 	
-	e.x = abs((int) p2.x - (int) p1.x);
-	e.y = abs((int) p2.y - (int) p1.y);
+	if (p1.x > WIN_W)
+		p1p.x = WIN_W;
+	if (p1.y > WIN_H)
+		p1p.y = WIN_H;
+	if (p2.x > WIN_W)
+		p1p.x = WIN_W;
+	if (p2.y > WIN_H)
+		p2p.y = WIN_H;
+	e.x = abs((int) p2p.x - (int) p1p.x);
+	e.y = abs((int) p2p.y - (int) p1p.y);
 	if (e.x > e.y)
-		case_dx_dy(e, p1, p2, data);
+		case_dx_dy(e, p1p, p2p, data);
 	else
-		case_dy_dx(e, p1, p2, data);
+		case_dy_dx(e, p1p, p2p, data);
 }
