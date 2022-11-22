@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 15:16:03 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/21 23:28:22 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/22 13:03:48 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data)
 		inc.x = -1;
 	if (p1.y > p2.y)
 		inc.y = -1;
-	while (i <= del.x)
+	while (i <= del.x && vec3_in_screen(p1, WIN_W, WIN_H))
 	{
 		pixel_2img(data, p1.x, p1.y, 0x00FF0000);
 		i++;
@@ -62,7 +62,7 @@ void	case_dy_dx(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data)
 		inc.x = -1;
 	if (p1.y > p2.y)
 		inc.y = -1;
-	while (i <= del.y)
+	while (i <= del.y && vec3_in_screen(p1, WIN_W, WIN_H))
 	{
 		pixel_2img(data, p1.x, p1.y, 0x00FF0000);
 		i++;
@@ -101,18 +101,18 @@ void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data)
 	t_vec3	p1p;
 	t_vec3	p2p;
 	t_vec2	e;
+	int		x;
+	int		y;
 
 	ft_cp_vec3(p1, &p1p);
 	ft_cp_vec3(p2, &p2p);
 	check_in_screen(p1, p2, &p1p, &p2p);
+	x = vec3_in_screen(p1p, WIN_W, WIN_H);
+	y = vec3_in_screen(p2p, WIN_W, WIN_H);
 	e.x = abs((int) p2p.x - (int) p1p.x);
 	e.y = abs((int) p2p.y - (int) p1p.y);
-	if (e.x > e.y)
-	{
+	if (e.x > e.y && x && y)
 		case_dx_dy(e, p1p, p2p, data);
-	}
-	else
-	{
+	else if (e.y > e.x && x && y)
 		case_dy_dx(e, p1p, p2p, data);
-	}
 }

@@ -6,15 +6,15 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 08:39:45 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/22 13:33:34 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_W 600
-# define WIN_H 300
+# define WIN_W 2400
+# define WIN_H 1200
 
 # include <math.h>
 # include "../mlx.h"
@@ -56,6 +56,8 @@ void	free_t_line(t_line *line, int len);
 void	get_first_info_parser(char *line, t_map *map);
 t_line	*get_next_pts_line(t_map *map, char **tab);
 int		line_2_tab(char *line, t_map *map);
+//utils
+int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
 //Keyevent
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);

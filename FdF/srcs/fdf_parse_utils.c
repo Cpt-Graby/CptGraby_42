@@ -6,7 +6,7 @@
 /*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:18:35 by kino              #+#    #+#             */
-/*   Updated: 2022/11/14 22:29:33 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/22 13:02:12 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,17 @@ void	free_t_line(t_line *line, int len)
 		i++;
 	}
 	free(line);
+}
+
+int	vec3_in_screen(t_vec3 vec, int max_L, int max_H)
+{
+	int	y;
+	int	x;
+
+	x = (int)(vec.x);
+	y = (int)(vec.y);
+	if (((int) vec.x <= 0 || x >= max_L) || ((int) vec.y <= 0 || y >= max_H))
+		return (0);
+	else
+		return (1);
 }

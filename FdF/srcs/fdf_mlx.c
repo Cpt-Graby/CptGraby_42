@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 08:57:40 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/22 13:05:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,6 @@ void	pixel_2img(t_img_dt *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	vec2_in_scr(t_vec3 p, int max_h, int max_l)
-{
-	if ((ft_val_in_r(p.x, 0, max_l) && ft_val_in_r(p.y, 0, max_h))
-		&& (ft_val_in_r(p.x, 0, max_l) && ft_val_in_r(p.y, 0, max_h)))
-		return (1);
-	else
-		return (0);
-}
-
 void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
 {
 	float	d;
@@ -37,9 +28,9 @@ void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
 	float	trsx;
 	float	trsy;
 
-	d = 1.0;
-	trsx =(float)(map->column / 2) * (-1);
-	trsy =(float)(map->line / 2) * (-1);
+	d = 10.0;
+	trsx = (float)(map->column / 2) * (-1);
+	trsy = (float)(map->line / 2) * (-1);
 	xmy = (point.x - point.y);
 	xpy = (point.x + point.y);
 	screen->x = WIN_W / 2 + (xmy * cos(0.523599) * d) + trsx;

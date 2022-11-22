@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:28:12 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 22:12:54 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/22 13:35:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ int	close_win(int keycode, t_vars *vars)
 int	print_key(int keycode, t_vars *vars)
 {
 	(void) vars;
-	ft_printf("-%d-", keycode);
-	if (keycode == 65307)
+	if (keycode == 53)
 		close_win(keycode, vars);
 	return (0);
 }
