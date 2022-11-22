@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/21 16:11:09 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/22 08:39:45 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ void	pixel_2img(t_img_dt *data, int x, int y, int color);
 int		vec2_in_scr(t_vec3 p, int max_h, int max_l);
 void	calc_map(t_map *map, t_img_dt *data);
 void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom);
-void	iso_transf(t_vec3 point, t_vec3 *screen, float d);
 void	map_2_img(t_map *map, t_img_dt *data);
-void	line_2_img(t_map *map, t_img_dt *data, int x, float zoom);
-void	column_2_img(t_map *map, t_img_dt *data, int x, float zoom);
+void	column_2_img(t_map *map, t_img_dt *data, int x);
+void	line_2_img(t_map *map, t_img_dt *data, int x);
+void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map);
 
 // fdf_bresenham.c
 void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);
