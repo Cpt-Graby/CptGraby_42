@@ -1,6 +1,7 @@
 NAME =		fdf
 CC =		gcc
 CFLAGS =	-Wall -Wextra -Werror
+# -fsanitize=address
 RM =		rm -f
 LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
@@ -52,7 +53,7 @@ test: $(OBJS)
 	@make -C 42lib
 ifeq ($(shell uname), Linux)
 	@make -C minilibx-linux
-	$(CC) $(CFLAGS) -g $(OBJS) $(LIBFT) $(LINUX_L) -o $(NAME)
+	$(CC) $(CFLAGS) -g3 $(OBJS) $(LIBFT) $(LINUX_L) -o $(NAME)
 else
 	@make -C minilibx_macos
 	$(CC) $(CFLAGS) -g $(OBJS) $(LIBFT) $(MAC_L) -o $(NAME)

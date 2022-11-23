@@ -6,15 +6,15 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 13:33:34 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:25:06 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_W 2400
-# define WIN_H 1200
+# define WIN_W 1200
+# define WIN_H 800
 
 # include <math.h>
 # include "../mlx.h"
