@@ -6,34 +6,12 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 08:22:47 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/22 15:05:39 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
-void	print_tabl(t_map *map)
-{
-	int	y;
-	int	i;
 
-	i = 0;
-	y = 0;
-	while (y < map->line)
-	{
-		i = 0;
-		while (i < map->column)
-		{
-			printf("(%f-", map->tab_line[y].tab_pts[i].x);
-			printf("%f-", map->tab_line[y].tab_pts[i].y);
-			printf("%f) ", map->tab_line[y].tab_pts[i].z);
-			i++;
-		}
-		ft_printf("\n");
-		y++;
-	}
-}
-*/
 t_line	*get_next_pts_line(t_map *map, char **tab)
 {
 	int		i;
@@ -151,4 +129,3 @@ int	main_parser(char *path, t_map *map)
 	close (fd);
 	return (1);
 }
-	//print_tabl(map);

@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:28:12 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 13:35:01 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:05:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	close_win(int keycode, t_vars *vars)
 {
-	if (keycode == 65307)
+	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 	}
