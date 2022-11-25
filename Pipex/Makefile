@@ -4,7 +4,8 @@ CFLAGS =	-Wall -Wextra -Werror
 # -fsanitize=address
 RM =		rm -f
 LIBFT =		-L./42lib -lft
-SRCS =		srcs/main.c 
+SRCS =		srcs/main.c \
+			srcs/pipex_file_descriptor.c
 
 OBJS =		$(SRCS:.c=.o)
 
