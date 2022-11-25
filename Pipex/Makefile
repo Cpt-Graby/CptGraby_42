@@ -29,6 +29,15 @@ re: fclean all
 test: $(OBJS)
 	@make -C 42lib
 	$(CC) $(CFLAGS) -g3 $(OBJS) $(LIBFT) -o $(NAME)
-	clear
+	@touch file1
+	./pipex file1 cmd1 cmd2 "String 1." file2
+	@echo ""
+	@cat file2
+	@echo ""
+	./pipex here_doc file1 cmd1 cmd2 "String 2." file2
+	@echo ""
+	@cat file2
+	@echo ""
+	rm file1 file2
 
 .PHONY: all clean fclean re libft test
