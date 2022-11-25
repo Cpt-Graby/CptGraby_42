@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/25 17:01:09 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/25 17:59:14 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_init_fd_out(char *path, int cas_val)
 	if (!cas_val)
 		filedesc = open(path, O_APPEND);
 	else
-		filedesc = open(path, O_CREAT | O_WRONLY, mode);
+		filedesc = open(path, O_CREAT | O_WRONLY | O_RDWR | O_TRUNC, mode);
 	if (filedesc == -1)
 	{
 		perror("ft_init_fd - file Output");
@@ -70,7 +70,9 @@ int	main(int argc, char **argv)
 {
 	int	fd_in;
 	int	fd_out;
+	char	*str;
 
+	str = "asnsdo iaf:";
 	if (argc < 5)
 	{
 		errno = EINVAL;
@@ -80,7 +82,8 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_init_fd(argc, argv, &fd_in, &fd_out);
-		write(fd_out, "an error writing to standard out\n", 70);
+		write(fd_out, str, ft_strlen(str));
+		write(1, str, ft_strlen(str));
 	}
 	close(fd_in);
 	close(fd_out);
