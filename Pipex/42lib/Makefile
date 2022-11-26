@@ -73,11 +73,14 @@ SRCS_MATH	= ft_val_in_r.c \
 			  ft_print_vec3.c \
 			  ft_cp_vec3.c
 
+SRCS_STRING	= ft_maxlstr.c 
+
 SRCS_NAME	= ${addprefix ft_main/, ${SRCS_MAIN}} \
 		  ${addprefix ft_lst/, ${SRCS_LST}} \
 		  ${addprefix ft_read/, ${SRCS_READ}} \
 		  ${addprefix ft_print/, ${SRCS_PRINT}} \
-		  ${addprefix ft_math/, ${SRCS_MATH}} 
+		  ${addprefix ft_math/, ${SRCS_MATH}} \
+		  ${addprefix ft_string/, ${SRCS_STRING}} 
 
 OBJS_NAME 	= ${SRCS_NAME:.c=.o}
 

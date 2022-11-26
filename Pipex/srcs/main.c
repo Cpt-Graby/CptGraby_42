@@ -6,13 +6,13 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/25 23:40:14 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:51:51 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int test (int fd_inp, int fd_out, char *str)
+int	test(int fd_inp, int fd_out, char *str)
 {
 	(void) fd_inp;
 	write(fd_out, str, ft_strlen(str));
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_init_fd(argc, argv, &fd_in, &fd_out);
+		ft_init_fd(argc, argv, &fd_in, &fd_out); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Todo implementer ft_max_str(str1, str2);
 		test(fd_in, fd_out, argv[argc - 2]);
 	}
 	close(fd_in);
