@@ -5,7 +5,8 @@ CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
 LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
-			srcs/pipex_file_descriptor.c
+			srcs/pipex_file_descriptor.c \
+			srcs/pipex_utils.c
 
 OBJS =		$(SRCS:.c=.o)
 

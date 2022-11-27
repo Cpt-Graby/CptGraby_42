@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/25 23:51:51 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/28 00:05:21 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_init_fd(argc, argv, &fd_in, &fd_out); // <<<<<<<<<<<<<<<<<<<<<<<<<<<<< Todo implementer ft_max_str(str1, str2);
+		ft_init_fd(argc, argv, &fd_in, &fd_out);
 		test(fd_in, fd_out, argv[argc - 2]);
 	}
 	close(fd_in);
