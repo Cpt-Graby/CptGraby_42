@@ -6,11 +6,19 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/28 00:05:21 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:44:24 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+
+typedef struct s_cmd
+{
+	char			*bin;
+	char			*flags;
+	int				index;
+	struct s_cmd	*next_cmd;
+}					t_cmd;
 
 int	test(int fd_inp, int fd_out, char *str)
 {
@@ -19,10 +27,39 @@ int	test(int fd_inp, int fd_out, char *str)
 	return (0);
 }
 
-int	main(int argc, char **argv)
+int	ft_execute(char	*cmd, char *flags)
 {
-	int	fd_in;
-	int	fd_out;
+	int	val;
+
+	val = execve(cmd, flags, NULL);
+	if (val == -1)
+	{
+		perror("ft_execute:");
+	}
+	return (-1);
+}
+
+int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
+{
+	int		bonus;
+	int		i;
+	t_cmd	cmd1;
+
+	bonus = ft_check_bonus(argv);
+	if (!bonus)
+		i = 2;
+	else
+		i = 3;
+	while (i < argc - 1)
+	{
+		i++;
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv, char *envp[])
+{
+	int	fd[2];
 
 	if (argc < 5)
 	{
@@ -32,10 +69,10 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_init_fd(argc, argv, &fd_in, &fd_out);
-		test(fd_in, fd_out, argv[argc - 2]);
+		ft_init_fd(argc, argv, &fd[0], &fd[1]);
+		test(fd[0], fd[1], argv[argc - 2]);
 	}
-	close(fd_in);
-	close(fd_out);
+	close(fd[0]);
+	close(fd[1]);
 	return (0);
 }
