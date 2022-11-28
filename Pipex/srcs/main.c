@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/28 16:44:24 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/28 20:53:19 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 {
 	int		bonus;
 	int		i;
-	t_cmd	cmd1;
+	//t_cmd	cmd1;
 
+	(void) envp;
+	(void) fd;
+	
 	bonus = ft_check_bonus(argv);
 	if (!bonus)
 		i = 2;
@@ -71,6 +74,7 @@ int	main(int argc, char **argv, char *envp[])
 	{
 		ft_init_fd(argc, argv, &fd[0], &fd[1]);
 		test(fd[0], fd[1], argv[argc - 2]);
+		printf("%s", envp[0]);
 	}
 	close(fd[0]);
 	close(fd[1]);
