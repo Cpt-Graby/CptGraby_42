@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   pipex_cmd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/10 13:00:04 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/29 10:09:49 by agonelle         ###   ########.fr       */
+/*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
+/*   Updated: 2022/11/29 17:51:29 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft.h"
+#include "pipex.h"
 
-char	*ft_strdup(const char *s)
+t_cmd	*set_cmd(char *argv, char **path, int index)
 {
-	size_t	len;
-	size_t	i;
-	char	*cp;
+	t_cmd	*cmd;
 
-	len = ft_strlen(s);
-	i = 0;
-	cp = ft_calloc(sizeof(*cp), (len + 1));
-	if (!cp)
-		return (NULL);
-	while (*(s + i) != 0)
-	{
-		*(cp + i) = *(s + i);
-		i++;
-	}
-	return (cp);
+	cmd = malloc(sizeof(t_cmd) * 1);
+	cmd->index = index;
+	cmd->next_cmd = NULL;
+	return (cmd);
+}
+
+char	*ft_get_bin(char *cmd_name, char **tab_env)
+{
+	char	*new_path;
+
+	new_path = ft_strjoin("./", cmd_name);
+	if (access(cmd_name, X_OK))
+		return (new_path);
+	return (new_path);
 }

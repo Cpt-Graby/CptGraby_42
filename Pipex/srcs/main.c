@@ -6,12 +6,12 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/29 09:30:28 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/29 14:30:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
+/*
 typedef struct s_cmd
 {
 	char			*bin;
@@ -19,7 +19,7 @@ typedef struct s_cmd
 	int				index;
 	struct s_cmd	*next_cmd;
 }					t_cmd;
-
+*/
 int	test(int fd_inp, int fd_out, char *str)
 {
 	(void) fd_inp;
@@ -42,15 +42,18 @@ int	ft_execute(char	*cmd, char **flags)
 int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 {
 	int		i;
-	char	*path_env;
+	char	**tab_path_env;
+	t_cmd	*cmd1;
 
 	(void) argv;
 	(void) fd;
 	i = 0;
+	tab_path_env = ft_get_path(envp);
 	while (i < argc - 1)
 	{
 		i++;
 	}
+	ft_printf("%s", tab_path_env[0]);
 	return (0);
 }
 
@@ -75,7 +78,6 @@ int	main(int argc, char **argv, char *envp[])
 		ft_init_fd(argc, argv, &fd[0], &fd[1]);
 		ft_core_pipex(argc, argv, envp, &fd[1]);
 		test(fd[0], fd[1], argv[argc - 2]);
-		printf("%s", envp[0]);
 	}
 	close(fd[0]);
 	close(fd[1]);

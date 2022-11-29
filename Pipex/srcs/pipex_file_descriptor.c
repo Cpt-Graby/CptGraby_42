@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 23:11:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/28 13:33:14 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/29 10:12:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	ft_init_fd(int argc, char **argv, int *fd1, int *fd2)
 {
 	int	bonus;
 
-	bonus = ft_check_bonus(argv);
+	if (argc != 5)
+		bonus = ft_check_bonus(argv);
+	else
+		bonus = 1;
 	*fd1 = ft_init_fd_in(argv, bonus);
 	*fd2 = ft_init_fd_out(argv[argc - 1], bonus);
 	if (*fd2 == -1)
