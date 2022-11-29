@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/28 20:53:19 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/29 09:30:28 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	test(int fd_inp, int fd_out, char *str)
 	return (0);
 }
 
-int	ft_execute(char	*cmd, char *flags)
+int	ft_execute(char	*cmd, char **flags)
 {
 	int	val;
 
@@ -41,18 +41,12 @@ int	ft_execute(char	*cmd, char *flags)
 
 int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 {
-	int		bonus;
 	int		i;
-	//t_cmd	cmd1;
+	char	*path_env;
 
-	(void) envp;
+	(void) argv;
 	(void) fd;
-	
-	bonus = ft_check_bonus(argv);
-	if (!bonus)
-		i = 2;
-	else
-		i = 3;
+	i = 0;
 	while (i < argc - 1)
 	{
 		i++;
@@ -70,9 +64,16 @@ int	main(int argc, char **argv, char *envp[])
 		perror("main.c - main");
 		return (-1);
 	}
+	else if (argc > 5)
+	{
+		errno = EINVAL;
+		perror("main.c - main - not the bonus");
+		return (-1);
+	}
 	else
 	{
 		ft_init_fd(argc, argv, &fd[0], &fd[1]);
+		ft_core_pipex(argc, argv, envp, &fd[1]);
 		test(fd[0], fd[1], argv[argc - 2]);
 		printf("%s", envp[0]);
 	}

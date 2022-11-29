@@ -6,6 +6,7 @@ RM =		rm -f
 LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
 			srcs/pipex_file_descriptor.c \
+			srcs/pipex_get_env.c \
 			srcs/pipex_utils.c
 
 OBJS =		$(SRCS:.c=.o)
@@ -31,11 +32,11 @@ test: $(OBJS)
 	@make -C 42lib
 	$(CC) $(CFLAGS) -g3 $(OBJS) $(LIBFT) -o $(NAME)
 	@touch file1
-	./pipex file1 cmd1 cmd2 "String 1." file2
+	./pipex file1 cmd1 "String 1." file2
 	@echo ""
 	@cat file2
 	@echo ""
-	./pipex here_doc file1 cmd1 cmd2 "String 2." file2
+	./pipex file1 cmd1 "String 2." file2
 	@echo ""
 	@cat file2
 	@echo ""
