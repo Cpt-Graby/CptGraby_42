@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/29 17:51:29 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:56:15 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,27 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 char	*ft_get_bin(char *cmd_name, char **tab_env)
 {
 	char	*new_path;
+	int		i;
 
-	new_path = ft_strjoin("./", cmd_name);
-	if (access(cmd_name, X_OK))
-		return (new_path);
-	return (new_path);
+	if (ft_strncmp(cmd_name, "./", 3))
+	{
+		if (access(cmd_name, X_OK) != -1)
+			return (cmd_name);
+	}
+	else
+	{
+		i = 0;
+		while (tab_env[i])
+		{
+			new_path = ft_strjoin(tab_env[i], cmd_name);
+			if (!new_path)
+				perror("pipex_cmd.c - ft_get_bin");
+			if (new_path && access(new_path, X_OK) != -1)
+				return (new_path);
+			free(new_path);
+			i++;
+		}
+		perror("ft_get_bin - command not found ");
+	}
+	return (NULL);
 }
