@@ -7,6 +7,7 @@ LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
 			srcs/pipex_file_descriptor.c \
 			srcs/pipex_get_env.c \
+			srcs/pipex_cmd.c \
 			srcs/pipex_utils.c
 
 OBJS =		$(SRCS:.c=.o)

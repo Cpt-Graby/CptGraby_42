@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/29 19:07:19 by mura             ###   ########.fr       */
+/*   Updated: 2022/11/30 16:52:26 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,13 @@ int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 	(void) argv;
 	(void) fd;
 	i = 0;
+	cmd1 = NULL;
+	printf("%d\n", i);
 	tab_path_env = ft_get_path(envp);
+	ft_get_cmds(cmd1, argc, argv, tab_path_env);
 	while (i < argc - 1)
 	{
+		printf("%d\n", i);
 		i++;
 	}
 	ft_printf("%s", tab_path_env[0]);
