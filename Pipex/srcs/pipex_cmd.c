@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/30 16:58:49 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:55:08 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_get_cmds(t_cmd	*cmd1, int argc, char **argv, char **env_paths)
 	int		i;
 
 	bonus = 1;
-	ind_cmd = 1;
+	ind_cmd = 2;
 	i = 1;
 	if (argc != 5)
 		bonus = ft_check_bonus(argv);
@@ -46,7 +46,6 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 
 	cmd = malloc(sizeof(t_cmd) * 1);
 	cmd->bin = ft_get_bin(argv, path);
-	printf("bin:%s \n", cmd->bin)// todo check why null
 	//cmd->flags;
 	cmd->index = index;
 	cmd->next_cmd = NULL;
@@ -63,7 +62,7 @@ char	*ft_get_bin(char *cmd_name, char **tab_env)
 	char	*new_path;
 	int		i;
 
-	if (ft_strncmp(cmd_name, "./", 3))
+	if (!ft_strncmp(cmd_name, "./", 3))
 	{
 		if (access(cmd_name, X_OK) != -1)
 			return (cmd_name);
@@ -73,7 +72,7 @@ char	*ft_get_bin(char *cmd_name, char **tab_env)
 		i = 0;
 		while (tab_env[i])
 		{
-			new_path = ft_strjoin(tab_env[i], cmd_name);
+			new_path = ft_pathmaker(tab_env[i], cmd_name);
 			if (!new_path)
 				perror("pipex_cmd.c - ft_get_bin");
 			if (new_path && access(new_path, X_OK) != -1)

@@ -32,12 +32,12 @@ re: fclean all
 test: $(OBJS)
 	@make -C 42lib
 	$(CC) $(CFLAGS) -g3 $(OBJS) $(LIBFT) -o $(NAME)
-	@touch file1
-	./pipex file1 cmd1 "String 1." file2
+	@echo "Voici un super long text pour mettre plusieurs un" > file1
+	./pipex file1 cat ls file2
 	@echo ""
 	@cat file2
 	@echo ""
-	./pipex file1 cmd1 "String 2." file2
+	./pipex file1 cat ls file2
 	@echo ""
 	@cat file2
 	@echo ""

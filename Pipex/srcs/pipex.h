@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:35:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/30 11:07:52 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/01 09:53:37 by mura             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_init_fd_out(char *path, int cas_val);
 int		ft_init_fd_in(char **arg, int cas_val);
 //pipex_utils
 int		ft_check_bonus(char **argv);
+char	*ft_pathmaker(char *init_path, char *end_path);
 //get_env.c
 char	**ft_get_path(char *envp[]);
 char	*ft_get_bin(char *cmd_name, char **tab_env);
