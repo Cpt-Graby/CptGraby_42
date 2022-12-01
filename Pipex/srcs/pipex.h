@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:35:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/01 09:53:37 by mura             ###   ########.fr       */
+/*   Updated: 2022/12/01 19:11:44 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 typedef struct s_cmd
 {
 	char			*bin;
-	char			*flags;
+	char			**flags;
 	int				index;
 	struct s_cmd	*next_cmd;
 }					t_cmd;

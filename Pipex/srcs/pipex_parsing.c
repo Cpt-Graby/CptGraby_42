@@ -30,32 +30,8 @@ char	*ft_get_bin(char *cmd_name, char **tab_env)
 
 char	**ft_get_flag(char *format)
 {
-	int	i;
+	char	**flags;
 
-	return (NULL);
-}
-
-size_t	ft_count_arg(char *format)
-{
-	int		state_s;
-	int		i;
-	size_t	count;
-
-	i = 0;
-	state_s = 1;
-	count = 1;
-	if (format[i] != '\0')
-		return (0);
-	while (format[i])
-	{
-if (format[i] == "'")
-		if (ft_isspace(format[i]) && state_s)
-		{
-			while (ft_isspace(format[i]))
-				i++;
-			count++;
-		}
-		i++;
-	}
-	return (count);
+	flags = ft_split(format, ' ');
+	return (flags);
 }

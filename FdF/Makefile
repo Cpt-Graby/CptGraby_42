@@ -58,7 +58,6 @@ else
 	@make -C minilibx_macos
 	$(CC) $(CFLAGS) -g $(OBJS) $(LIBFT) $(MAC_L) -o $(NAME)
 endif
-	clear
 	./fdf test_maps/42.fdf
 
 .PHONY: all clean fclean re libft test

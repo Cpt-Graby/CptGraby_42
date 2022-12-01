@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/01 09:55:08 by mura             ###   ########.fr       */
+/*   Updated: 2022/12/01 19:11:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 	t_cmd	*cmd;
 
 	cmd = malloc(sizeof(t_cmd) * 1);
-	cmd->flags = NULL;
+	cmd->flags = ft_get_flag(argv);
 	cmd->bin = ft_get_bin(argv, path);
 	cmd->index = index;
 	cmd->next_cmd = NULL;
