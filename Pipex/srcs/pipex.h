@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:35:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/01 19:11:44 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/02 00:31:30 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ char	*ft_get_bin(char *cmd_name, char **tab_env);
 void	connect_cmd(t_cmd *cmd_before, t_cmd *cmd_after);
 t_cmd	*set_cmd(char *argv, char **path, int index);
 void	ft_get_cmds(t_cmd	*cmd1, int argc, char **argv, char **env_paths);
+t_cmd	*clean_front(t_cmd	*front_cmd);
 //pipex_parsing.c
 char	*ft_get_bin(char *cmd_name, char **tab_env);
 char	**ft_get_flag(char *format);

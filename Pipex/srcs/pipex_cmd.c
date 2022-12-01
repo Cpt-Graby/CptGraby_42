@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/01 19:11:11 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/02 00:33:37 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,13 @@ void	connect_cmd(t_cmd *cmd_before, t_cmd *cmd_after)
 	cmd_before->next_cmd = cmd_after;
 }
 
+t_cmd	*clean_front(t_cmd	*front_cmd)
+{
+	t_cmd	*tmp;
+
+	ft_free_tab((void *)front_cmd->flags, ft_lensplit(front_cmd->flags));
+	free(front_cmd->bin);
+	tmp = front_cmd->next_cmd;
+	free(front_cmd);
+	return (tmp);
+}
