@@ -45,8 +45,8 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 	t_cmd	*cmd;
 
 	cmd = malloc(sizeof(t_cmd) * 1);
+	cmd->flags = NULL;
 	cmd->bin = ft_get_bin(argv, path);
-	//cmd->flags;
 	cmd->index = index;
 	cmd->next_cmd = NULL;
 	return (cmd);
@@ -57,30 +57,3 @@ void	connect_cmd(t_cmd *cmd_before, t_cmd *cmd_after)
 	cmd_before->next_cmd = cmd_after;
 }
 
-char	*ft_get_bin(char *cmd_name, char **tab_env)
-{
-	char	*new_path;
-	int		i;
-
-	if (!ft_strncmp(cmd_name, "./", 3))
-	{
-		if (access(cmd_name, X_OK) != -1)
-			return (cmd_name);
-	}
-	else
-	{
-		i = 0;
-		while (tab_env[i])
-		{
-			new_path = ft_pathmaker(tab_env[i], cmd_name);
-			if (!new_path)
-				perror("pipex_cmd.c - ft_get_bin");
-			if (new_path && access(new_path, X_OK) != -1)
-				return (new_path);
-			free(new_path);
-			i++;
-		}
-		perror("ft_get_bin - command not found");
-	}
-	return (NULL);
-}

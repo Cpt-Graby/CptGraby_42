@@ -8,7 +8,8 @@ SRCS =		srcs/main.c \
 			srcs/pipex_file_descriptor.c \
 			srcs/pipex_get_env.c \
 			srcs/pipex_cmd.c \
-			srcs/pipex_utils.c
+			srcs/pipex_utils.c \
+			srcs/pipex_parsing.c
 
 OBJS =		$(SRCS:.c=.o)
 
@@ -31,7 +32,7 @@ re: fclean all
 
 test: $(OBJS)
 	@make -C 42lib
-	$(CC) $(CFLAGS) -g3 $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) -g -fsanitize=address $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "Voici un super long text pour mettre plusieurs un" > file1
 	./pipex file1 cat ls file2
 	@echo ""
