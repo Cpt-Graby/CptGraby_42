@@ -20,6 +20,12 @@ typedef struct s_cmd
 	struct s_cmd	*next_cmd;
 }					t_cmd;
 */
+typedef struct s_pipe
+{
+	int	pipe_in;
+	int	pipe_out;
+}					t_pipe;
+
 int	test(int fd_inp, int fd_out, char *str)
 {
 	(void) fd_inp;
@@ -39,20 +45,47 @@ int	ft_execute(char	*cmd, char **flags)
 	return (-1);
 }
 
+int	execute_cmd(t_cmd *cmd_2_ex, int fd_in, int fd_out)
+{
+	pid_t	cpid;
+
+	if (fd_in != -1)
+		dup2(fd_in, 0);
+	if (fd_out != -1)
+		dup2(fd_out, 1);
+	cpid = fork();
+	if (cpid == -1)
+	{
+		perror("execute_cmd");
+		return (EXIT_FAILURE);
+	}
+	else if (cpid == 0)
+	{
+		execve(cmd_2_ex->bin, cmd_2_ex->flags, NULL);
+	}
+	else
+		wait(0);
+	return (0);
+}
+
 int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 {
 	int		i;
+	int		pipe_1[2];
 	char	**tab_path_env;
 	t_cmd	*cmd1;
 
-	(void) fd;
 	i = 2;
 	tab_path_env = ft_get_path(envp);
 	cmd1 = ft_get_cmds(argc, argv, tab_path_env);
 	ft_free_tab((void *)tab_path_env, ft_lensplit(tab_path_env));
 	while (i < argc - 1)
 	{
-		printf("%d: %s\n", i, cmd1->bin);
+		printf("%d\n", cmd1->index);
+		if (cmd1->index == 1)
+			execute_cmd(cmd1, fd[0], 0);
+		else if (cmd1->next_cmd == NULL)
+			execute_cmd(cmd1, fd[0], fd[1]);
 		cmd1 = clean_front(cmd1);
 		i++;
 	}

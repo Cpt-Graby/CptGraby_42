@@ -13,6 +13,7 @@ SRCS =		srcs/main.c \
 
 OBJS =		$(SRCS:.c=.o)
 
+DCFLAGS =	-g3 -fsanitize=address
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -32,15 +33,11 @@ re: fclean all
 
 test: $(OBJS)
 	@make -C 42lib
-	$(CC) $(CFLAGS) -g3 -fsanitize=address $(OBJS) $(LIBFT) -o $(NAME)
+	$(CC) $(CFLAGS) $(DCFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "Voici un super long text pour mettre plusieurs un" > file1
 	./pipex file1 cat ls file2
 	@echo ""
-	@cat file2
-	@echo ""
-	./pipex file1 cat ls file2
-	@echo ""
-	@cat file2
+	cat file2
 	@echo ""
 	rm file1 file2
 
