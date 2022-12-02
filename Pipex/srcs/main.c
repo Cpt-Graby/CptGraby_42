@@ -43,23 +43,20 @@ int	ft_core_pipex(int argc, char **argv, char *envp[], int *fd)
 {
 	int		i;
 	char	**tab_path_env;
-	t_cmd	*cmd;
+	t_cmd	*cmd1;
 
 	(void) fd;
 	i = 2;
-	cmd = NULL;
 	tab_path_env = ft_get_path(envp);
-	ft_get_cmds(cmd, argc, argv, tab_path_env);
-	printf("HELLO \n");
+	cmd1 = ft_get_cmds(argc, argv, tab_path_env);
 	ft_free_tab((void *)tab_path_env, ft_lensplit(tab_path_env));
-	printf("HELLO \n");
 	while (i < argc - 1)
 	{
-		printf("%d:Not up yet\n", i);
-		printf("%s \n", cmd->bin);
-	//	cmd = clean_front(cmd);
+		printf("%d: %s\n", i, cmd1->bin);
+		cmd1 = clean_front(cmd1);
 		i++;
 	}
+	free(cmd1);
 	return (0);
 }
 
@@ -76,7 +73,7 @@ int	main(int argc, char **argv, char *envp[])
 	else if (argc > 5)
 	{
 		errno = EINVAL;
-		perror("main.c - main - not the bonus");
+		perror("main.c - main - not in bonus mode");
 		return (-1);
 	}
 	else

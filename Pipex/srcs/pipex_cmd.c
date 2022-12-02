@@ -12,23 +12,20 @@
 
 #include "pipex.h"
 
-void	ft_get_cmds(t_cmd	*cmd1, int argc, char **argv, char **env_paths)
+t_cmd	*ft_get_cmds(int argc, char **argv, char **env_paths)
 {
-	int		bonus;
 	int		ind_cmd;
+	t_cmd	*cmd_head;
 	t_cmd	*cmd_ini;
 	t_cmd	*cmd_next;
 	int		i;
 
-	bonus = 1;
 	ind_cmd = 2;
 	i = 1;
-	if (argc != 5)
-		bonus = ft_check_bonus(argv);
-	if (!bonus)
+	if (argc != 5 && ft_check_bonus(argv))
 		ind_cmd += 1;
-	cmd1 = set_cmd(argv[ind_cmd], env_paths, i);
-	cmd_ini = cmd1;
+	cmd_head = set_cmd(argv[ind_cmd], env_paths, i);
+	cmd_ini = cmd_head;
 	ind_cmd += 1;
 	while (ind_cmd < argc - 1)
 	{
@@ -38,6 +35,7 @@ void	ft_get_cmds(t_cmd	*cmd1, int argc, char **argv, char **env_paths)
 		ind_cmd++;
 		i++;
 	}
+	return (cmd_head);
 }
 
 t_cmd	*set_cmd(char *argv, char **path, int index)
@@ -45,6 +43,11 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 	t_cmd	*cmd;
 
 	cmd = malloc(sizeof(t_cmd) * 1);
+	if (!cmd)
+	{
+		perror("pipex_cmd.c - set_cmd");
+		exit(errno);
+	}
 	cmd->flags = ft_get_flag(argv);
 	cmd->bin = ft_get_bin(argv, path);
 	cmd->index = index;

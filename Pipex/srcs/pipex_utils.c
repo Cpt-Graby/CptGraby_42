@@ -27,6 +27,11 @@ char	*ft_pathmaker(char *init_path, char *end_path)
 
 	new_name = ft_strjoin("/", end_path);
 	new_path = ft_strjoin(init_path, new_name);
+	if (!new_name || !new_path)
+	{
+		perror("pipex_utils.c - ft_pathmaker");
+		exit(errno);
+	}
 	free(new_name);
 	return (new_path);
 }

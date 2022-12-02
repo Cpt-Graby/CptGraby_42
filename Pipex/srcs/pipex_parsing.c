@@ -33,5 +33,10 @@ char	**ft_get_flag(char *format)
 	char	**flags;
 
 	flags = ft_split(format, ' ');
+	if (!flags)
+	{
+		perror("pipex_parsing.c - ft_get_flags");
+		exit(-1);
+	}
 	return (flags);
 }

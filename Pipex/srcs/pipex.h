@@ -38,7 +38,7 @@ char	*ft_get_bin(char *cmd_name, char **tab_env);
 //pipex_cmd.c
 void	connect_cmd(t_cmd *cmd_before, t_cmd *cmd_after);
 t_cmd	*set_cmd(char *argv, char **path, int index);
-void	ft_get_cmds(t_cmd	*cmd1, int argc, char **argv, char **env_paths);
+t_cmd	*ft_get_cmds(int argc, char **argv, char **env_paths);
 t_cmd	*clean_front(t_cmd	*front_cmd);
 //pipex_parsing.c
 char	*ft_get_bin(char *cmd_name, char **tab_env);
