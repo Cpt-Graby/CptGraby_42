@@ -70,3 +70,7 @@ t_cmd	*clean_front(t_cmd	*front_cmd)
 	free(front_cmd);
 	return (tmp);
 }
+
+size_t	len_cmd(t_cmd *front_cmd)
+{
+}

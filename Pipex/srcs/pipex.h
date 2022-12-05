@@ -23,9 +23,15 @@ typedef struct s_cmd
 	struct s_cmd	*next_cmd;
 }					t_cmd;
 
+typedef struct s_pipe
+{
+	int	r_end;
+	int	w_end;
+}		t_pipe;
+
 //main,c
-int		ft_core_pipex(int argc, char **argv, char *envp[], int *fd);
-//pipex_filedescriptor
+int		ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes);
+//pipex_filedescriptor.c
 void	ft_init_fd(int argc, char **argv, int *fd1, int *fd2);
 int		ft_init_fd_out(char *path, int cas_val);
 int		ft_init_fd_in(char **arg, int cas_val);
