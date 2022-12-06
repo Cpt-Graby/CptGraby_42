@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/06 17:21:41 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:55:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,9 @@ void	ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes)
 	if (cpid[1] == -1)
 		perror("ft_core_pipex: cmd2");
 	cmd1 = clean_front(cmd1);
-	free(cmd1);
+	clean_pipe(pipes, cmd1);
 	waitpid(cpid[0], NULL, 0);
-	ft_printf("%d\n", cpid[0]);
-	ft_printf("%d\n", cpid[1]);
-	//waitpid(cpid[1], NULL, 0);
+	waitpid(cpid[1], NULL, 0);
 }
 
 int	main(int argc, char **argv, char *envp[])
@@ -120,10 +118,6 @@ int	main(int argc, char **argv, char *envp[])
 		pipes = malloc(sizeof(t_pipe) * nbr_pipe);
 		ft_init_fd(argc, argv, &pipes[0].fd[0], &pipes[0].fd[1]);
 		ft_core_pipex(argc, argv, envp, pipes);
-		close(pipes[0].fd[0]);
-		close(pipes[0].fd[1]);
-		close(pipes[1].fd[0]);
-		close(pipes[1].fd[1]);
 		free(pipes);
 	}
 	return (0);

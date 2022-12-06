@@ -36,9 +36,10 @@ test: $(OBJS)
 	$(CC) $(CFLAGS) $(DCFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "Voici un super long text pour mettre plusieurs un" > file1
 	cat file1
-	./pipex file1 cat "grep un" file2
+	./pipex file1 cat "wc -w" file2
 	@echo ""
 	cat file2
 	@echo ""
+	rm file1 file2
 
 .PHONY: all clean fclean re libft test
