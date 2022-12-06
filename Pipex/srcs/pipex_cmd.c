@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 14:28:10 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/02 00:33:37 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:24:00 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_cmd	*set_cmd(char *argv, char **path, int index)
 		exit(errno);
 	}
 	cmd->flags = ft_get_flag(argv);
-	cmd->bin = ft_get_bin(argv, path);
+	cmd->bin = ft_get_bin(cmd->flags[0], path);
 	cmd->index = index;
 	cmd->next_cmd = NULL;
 	return (cmd);
@@ -69,8 +69,4 @@ t_cmd	*clean_front(t_cmd	*front_cmd)
 	tmp = front_cmd->next_cmd;
 	free(front_cmd);
 	return (tmp);
-}
-
-size_t	len_cmd(t_cmd *front_cmd)
-{
 }

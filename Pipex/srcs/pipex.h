@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:35:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/02 00:31:30 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:55:20 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PIPEX_H
 
 # include "../42lib/libft.h"
+# include <sys/wait.h>
 
 typedef struct s_cmd
 {
@@ -25,8 +26,7 @@ typedef struct s_cmd
 
 typedef struct s_pipe
 {
-	int	r_end;
-	int	w_end;
+	int	fd[2];
 }		t_pipe;
 
 //main,c

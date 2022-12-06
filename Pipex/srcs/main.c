@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/02 00:41:02 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:47:44 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,6 @@ typedef struct s_pipe
 }		t_pipe;
 */
 
-int	test(int fd_inp, int fd_out, char *str)
-{
-	(void) fd_inp;
-	write(fd_out, str, ft_strlen(str));
-	return (0);
-}
-
 int	ft_execute(char	*cmd, char **flags)
 {
 	int	val;
@@ -45,52 +38,61 @@ int	ft_execute(char	*cmd, char **flags)
 	return (-1);
 }
 
-int	execute_cmd(t_cmd *cmd_2_ex, int fd_in, int fd_out)
+int	cmd_exe_1(t_cmd *cmd_2_ex, t_pipe *all_pipes, char *envp[])
 {
-	pid_t	cpid;
+	dup2(all_pipes[0].fd[0], 0);
+	close(all_pipes[1].fd[0]);
+	dup2(all_pipes[1].fd[1], 1);
+	if (!cmd_2_ex->bin)
+	{
+		perror("cmd_exe_1 - command not found");
+		exit(-1);
+	}
+	ft_printf("Starting the process\n");
+	execve(cmd_2_ex->bin, cmd_2_ex->flags, envp);
+	exit(0);
+}
 
-	if (fd_in != -1)
-		dup2(fd_in, 0);
-	if (fd_out != -1)
-		dup2(fd_out, 1);
-	cpid = fork();
-	if (cpid == -1)
+int	cmd_exe_2(t_cmd *cmd_2_ex, t_pipe *all_pipes, char *envp[])
+{
+	dup2(all_pipes[1].fd[0], 0);
+	close(all_pipes[1].fd[1]);
+	dup2(all_pipes[0].fd[1], 1);
+	if (!cmd_2_ex->bin)
 	{
-		perror("execute_cmd");
-		return (EXIT_FAILURE);
+		perror("cmd_exe_2 - command not found");
+		exit(-1);
 	}
-	else if (cpid == 0)
-	{
-		if (cmd_2_ex->next_cmd)
-			cpid = fork();
-		execve(cmd_2_ex->bin, cmd_2_ex->flags, NULL);
-	}
-	else
-		wait(0);
-	return (0);
+	execve(cmd_2_ex->bin, cmd_2_ex->flags, envp);
+	exit(0);
 }
 
 int	ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes)
 {
-	int		i;
-	int		pipe_1[2];
 	char	**tab_path_env;
 	t_cmd	*cmd1;
-	pid_t	cpid;
+	pid_t	cpid[2];
 
-	i = 2;
 	tab_path_env = ft_get_path(envp);
 	cmd1 = ft_get_cmds(argc, argv, tab_path_env);
 	ft_free_tab((void *)tab_path_env, ft_lensplit(tab_path_env));
-	while (i < argc - 1)
+	if (pipe(pipes[1].fd) == -1)
 	{
-		if (cmd1->next_cmd)
-			cpid
-
-		cmd1 = clean_front(cmd1);
-		i++;
+		perror("ft_core_pipex.c");
+		exit(-1);
 	}
+	cpid[0] = fork();
+	if (cpid[0] == 0)
+		cmd_exe_1(cmd1, pipes, envp);
+	cmd1 = clean_front(cmd1);
+	cpid[1] = fork();
+	if (cpid[1] == 0)
+		cmd_exe_2(cmd1, pipes, envp);
+	cmd1 = clean_front(cmd1);
 	free(cmd1);
+	ft_printf(" NICE \n");
+	waitpid(cpid[0], NULL, 0);
+	waitpid(cpid[1], NULL, 0);
 	return (0);
 }
 
@@ -99,16 +101,10 @@ int	main(int argc, char **argv, char *envp[])
 	t_pipe	*pipes;
 	int		nbr_pipe;
 
-	if (argc < 5)
+	if (argc != 5)
 	{
 		errno = EINVAL;
-		perror("main.c - main");
-		return (-1);
-	}
-	else if (argc > 5)
-	{
-		errno = EINVAL;
-		perror("main.c - main - not in bonus mode");
+		perror("main.c - main - arguments");
 		return (-1);
 	}
 	else
@@ -118,10 +114,13 @@ int	main(int argc, char **argv, char *envp[])
 		else
 			nbr_pipe = argc - 3;
 		pipes = malloc(sizeof(t_pipe) * nbr_pipe);
-		ft_init_fd(argc, argv, pipes[0].r_end, pipes[0].w_end);
+		ft_init_fd(argc, argv, &pipes[0].fd[0], &pipes[0].fd[1]);
 		ft_core_pipex(argc, argv, envp, pipes);
+		close(pipes[0].fd[0]);
+		close(pipes[0].fd[1]);
+		close(pipes[1].fd[0]);
+		close(pipes[1].fd[1]);
+		free(pipes);
 	}
-	close(fd[0]);
-	close(fd[1]);
 	return (0);
 }

@@ -35,7 +35,8 @@ test: $(OBJS)
 	@make -C 42lib
 	$(CC) $(CFLAGS) $(DCFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
 	@echo "Voici un super long text pour mettre plusieurs un" > file1
-	./pipex file1 cat ls file2
+	cat file1
+	./pipex file1 cat "wc -w" file2
 	@echo ""
 	cat file2
 	@echo ""

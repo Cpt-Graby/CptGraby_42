@@ -19,7 +19,9 @@ char	*ft_get_bin(char *cmd_name, char **tab_env)
 			if (!new_path)
 				perror("pipex_cmd.c - ft_get_bin");
 			if (new_path && access(new_path, X_OK) != -1)
+			{
 				return (new_path);
+			}
 			free(new_path);
 			i++;
 		}
