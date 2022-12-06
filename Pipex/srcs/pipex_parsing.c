@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex_parsing.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/06 16:27:19 by agonelle          #+#    #+#             */
+/*   Updated: 2022/12/06 16:28:46 by agonelle         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 char	*ft_get_bin(char *cmd_name, char **tab_env)
@@ -19,9 +31,7 @@ char	*ft_get_bin(char *cmd_name, char **tab_env)
 			if (!new_path)
 				perror("pipex_cmd.c - ft_get_bin");
 			if (new_path && access(new_path, X_OK) != -1)
-			{
 				return (new_path);
-			}
 			free(new_path);
 			i++;
 		}

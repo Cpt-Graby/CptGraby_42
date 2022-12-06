@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 10:05:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/30 09:35:15 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:29:04 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,3 @@ char	**ft_get_path(char *envp[])
 	free(path);
 	return (tab);
 }
-
