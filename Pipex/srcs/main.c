@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 14:02:16 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/06 16:33:21 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:21:41 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes)
 	cmd1 = clean_front(cmd1);
 	free(cmd1);
 	waitpid(cpid[0], NULL, 0);
+	ft_printf("%d\n", cpid[0]);
+	ft_printf("%d\n", cpid[1]);
 	//waitpid(cpid[1], NULL, 0);
 }
 

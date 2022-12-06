@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:35:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/06 13:55:20 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:19:48 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_pipe
 }		t_pipe;
 
 //main,c
-int		ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes);
+void	ft_core_pipex(int argc, char **argv, char *envp[], t_pipe *pipes);
 //pipex_filedescriptor.c
 void	ft_init_fd(int argc, char **argv, int *fd1, int *fd2);
 int		ft_init_fd_out(char *path, int cas_val);
