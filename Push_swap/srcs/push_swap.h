@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/08 10:53:51 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/09 11:49:49 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../42lib/libft.h"
 // main.c
+int	ckeck_digit_flow(int arg, char **asci_num);
+int	check_double(int arg, char **asci_num);
 
 // push_swap_utils.c
 int	ft_check_int(char *strnum);
