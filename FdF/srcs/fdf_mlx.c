@@ -6,39 +6,13 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:55 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 13:05:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:41:39 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	pixel_2img(t_img_dt *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_lth + x * (data->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-
-void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
-{
-	float	d;
-	float	xpy;
-	float	xmy;
-	float	trsx;
-	float	trsy;
-
-	d = 10.0;
-	trsx = (float)(map->column / 2) * (-1);
-	trsy = (float)(map->line / 2) * (-1);
-	xmy = (point.x - point.y);
-	xpy = (point.x + point.y);
-	screen->x = WIN_W / 2 + (xmy * cos(0.523599) * d) + trsx;
-	screen->y = WIN_H / 2 + ((-1) * point.z + xpy) * sin(0.523599) * d + trsy;
-	screen->z = point.z;
-}
-
-void	map_2_img(t_map *map, t_img_dt *data)
+void	transfer_2_screen(t_map *map, t_img_dt *data)
 {
 	int		x;
 
@@ -86,4 +60,30 @@ void	column_2_img(t_map *map, t_img_dt *data, int x)
 		draw_line(pt1_sc, pt2_sc, data);
 		i++;
 	}
+}
+
+void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
+{
+	float	zoom;
+	float	y_transf_iso;
+	float	x_transf_iso;
+	float	trsx;
+	float	trsy;
+
+	zoom = 10.0;
+	trsx = (float)(map->column / 2) * (-1);
+	trsy = (float)(map->line / 2) * (-1);
+	x_transf_iso = (point.x - point.y) * cos(0.523599);
+	y_transf_iso = ((-1) * point.z + (point.x + point.y)) * sin(0.523599);
+	screen->x = WIN_W / 2 + x_transf_iso * zoom + trsx;
+	screen->y = WIN_H / 2 + y_transf_iso * zoom + trsy;
+	screen->z = point.z;
+}
+
+void	pixel_2img(t_img_dt *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_lth + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

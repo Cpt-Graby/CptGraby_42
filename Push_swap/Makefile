@@ -4,7 +4,8 @@ CFLAGS =	-Wall -Wextra -Werror
 RM =		rm -f
 LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
-			srcs/push_swap_utils.c
+			srcs/push_swap_utils.c \
+			srcs/push_swap_checking_input.c
 OBJS =		$(SRCS:.c=.o) 
 
 all: $(NAME)
@@ -15,10 +16,11 @@ $(NAME): $(OBJS)
 
 clean:
 	make clean -C 42lib
+	
 
 fclean: clean
 	rm -f 42lib/libft.a
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
 

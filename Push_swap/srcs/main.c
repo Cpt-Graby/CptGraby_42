@@ -6,58 +6,51 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/09 12:02:17 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:15:18 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../42lib/libft.h"
 #include "push_swap.h"
 
-int	ckeck_digit_flow(int arg, char **asci_num)
+int	check_pile_order(int *pile, int len)
 {
 	int	i;
 
-	i = 1;
-	while (i < arg && ft_check_int(asci_num[i]))
-		i++;
-	if (i < arg && !ft_check_int(asci_num[i]))
+	i = 0;
+	while (i < len && pile[i])
 	{
-		ft_putstr_fd("Error \n", 2);
-		return (0);
+		if (pile[i] < pile[i + 1])
+			return (0);
+		i++;
 	}
-	return (i);
+	if (!pile[i])
+		return (0);
+	return (1);
 }
 
-int	check_double(int arg, char **asci_num)
+int	core_push_swap(int argc, char **argv)
 {
-	int		i;
-	int		y;
-	size_t	len_i;
+	int	*tab_a;
+	int	*tab_b;
+	int	i;
 
-	i = 1;
-	while (i < arg)
+	i = argc - 1;
+	tab_a = malloc(sizeof(*tab_a) * (argc - 1));
+	tab_b = malloc(sizeof(*tab_b) * (argc - 1));
+	if (!tab_a)
+		return (-1);
+	if (!tab_b)
 	{
-		y = i + 1;
-		len_i = ft_strlen(asci_num[i]);
-		while (y < arg)
-		{
-			if (!ft_strncmp(asci_num[i], asci_num[y], len_i))
-			{
-				ft_putstr_fd("Error \n", 2);
-				return (0);
-			}
-			y++;
-		}
-		i++;
-	}
-	return (1);
+		free(tab_a);
+		return (-1);
+	}	
+	while (--i > 0)
+		tab_a[i] = atoi(argv[i]);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	*tab_a;
-
 	if (argc == 1)
 	{
 		ft_putstr_fd("Error \n", 2);
@@ -65,19 +58,15 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		i = ckeck_digit_flow(argc, argv);
-		if (!i)
+		if (!ckeck_digit_flow(argc, argv))
 			return (-1);
 		if (!check_double(argc, argv))
 			return (-1);
-		tab_a = malloc(sizeof(*tab_a) * (argc - 1));
-		if (!tab_a)
+		if (!core_push_swap(argc, argv))
 		{
 			ft_putstr_fd("Error \n", 2);
 			return (-1);
 		}
-		while (--i > 0)
-			tab_a[i] = atoi(argv[i]);
 		return (0);
 	}
 }

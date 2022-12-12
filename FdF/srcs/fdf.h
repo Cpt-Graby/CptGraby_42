@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/23 15:53:47 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:40:46 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,11 @@ int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);
 //fdf_mlx.c
-void	pixel_2img(t_img_dt *data, int x, int y, int color);
-int		vec2_in_scr(t_vec3 p, int max_h, int max_l);
-void	calc_map(t_map *map, t_img_dt *data);
-void	projection_ecran(t_vec3 point, t_vec3 *screen, float zoom);
-void	map_2_img(t_map *map, t_img_dt *data);
+void	transfer_2_screen(t_map *map, t_img_dt *data);
 void	column_2_img(t_map *map, t_img_dt *data, int x);
 void	line_2_img(t_map *map, t_img_dt *data, int x);
 void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map);
+void	pixel_2img(t_img_dt *data, int x, int y, int color);
 
 // fdf_bresenham.c
 void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);

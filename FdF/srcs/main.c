@@ -6,13 +6,13 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:55:41 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/22 15:05:42 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 13:18:14 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	fdf_main(char *path)
+int	fdf_core(char *path)
 {
 	t_map		map;
 	t_vars		vars;
@@ -21,7 +21,7 @@ int	fdf_main(char *path)
 	if (!check_extension(path))
 	{
 		errno = EINVAL;
-		perror("main.c - fdf_main ");
+		perror("main.c - fdf_core ");
 		exit(-1);
 	}
 	if (!main_parser(path, &map))
@@ -31,7 +31,7 @@ int	fdf_main(char *path)
 	img.img = mlx_new_image(vars.mlx, WIN_W, WIN_H);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lth,
 			&img.endian);
-	map_2_img(&map, &img);
+	transfer_2_screen(&map, &img);
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
 	mlx_hook(vars.win, 17, 0, close_win, &vars);
 	mlx_key_hook(vars.win, print_key, &vars);
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 		perror("main.c - main");
 	}
 	else if (argc == 2)
-		err = fdf_main(argv[1]);
+		err = fdf_core(argv[1]);
 	else
 	{
 		errno = E2BIG;
