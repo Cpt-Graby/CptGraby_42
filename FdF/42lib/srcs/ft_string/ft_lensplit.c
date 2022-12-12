@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/13 16:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/23 15:17:34 by agonelle         ###   ########.fr       */
+/*   Created: 2022/11/30 12:22:19 by agonelle          #+#    #+#             */
+/*   Updated: 2022/11/30 12:37:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "../../libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new_l)
+size_t	ft_lensplit(char **tab)
 {
-	new_l->next = *lst;
-	*lst = new_l;
+	size_t	len;
+	size_t	i;
+
+	len = 1;
+	i = 0;
+	while (tab[i])
+	{
+		len++;
+		i++;
+	}
+	return (len);
 }

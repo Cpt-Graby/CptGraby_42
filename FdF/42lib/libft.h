@@ -6,7 +6,7 @@
 /*   By: agonelle <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:34:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/14 22:54:09 by kino             ###   ########.fr       */
+/*   Updated: 2022/11/26 12:36:18 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@
 # include "includes/ft_read.h"
 # include "includes/ft_printf.h"
 # include "includes/ft_math.h"
+# include "includes/ft_string.h"
 
 #endif

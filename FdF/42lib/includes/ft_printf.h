@@ -6,14 +6,12 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 15:06:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/11/17 17:02:21 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:00 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include "../libft.h"
 
 int		ft_printf(const char *format, ...);
 size_t	add_2_res(const char *str, int start, va_list ap);

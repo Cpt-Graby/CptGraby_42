@@ -6,7 +6,7 @@
 /*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 22:50:29 by kino              #+#    #+#             */
-/*   Updated: 2022/11/17 17:00:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:36:54 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ typedef struct s_list {
 	struct s_list	*next;
 }		t_list;
 
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstadd_back(t_list **lst, t_list *new);
+void	ft_lstadd_front(t_list **lst, t_list *new_l);
+void	ft_lstadd_back(t_list **lst, t_list *new_l);
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
