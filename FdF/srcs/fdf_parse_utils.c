@@ -6,7 +6,7 @@
 /*   By: kino </var/spool/mail/kino>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 19:18:35 by kino              #+#    #+#             */
-/*   Updated: 2022/12/12 14:18:27 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:40:03 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ int	check_line(char *str)
 	i = 0;
 	while (str[i] && flag)
 	{
-		if (ft_isalpha(str[i]))
-			flag = 0;
 		if (!ft_isprint(str[i]) && str[i] != '\n')
 			flag = 0;
 		i++;
