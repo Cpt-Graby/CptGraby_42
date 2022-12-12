@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/12 13:40:46 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:25:34 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,27 @@ typedef struct s_vars_w{
 	t_img_dt	*pic;
 }	t_vars;
 
+//main.c
+int	main(int argc, char **argv);
+int	fdf_core(char *path);
+
 //file_2_data.c
-int		check_extension(char *path);
-int		map_parser(int fd, t_map *map);
-int		check_line(char *str);
-void	print_tabl(t_map *map);
 int		main_parser(char *path, t_map *map);
-void	free_t_line(t_line *line, int len);
+int		map_parser(int fd, t_map *map);
 void	get_first_info_parser(char *line, t_map *map);
 t_line	*get_next_pts_line(t_map *map, char **tab);
 int		line_2_tab(char *line, t_map *map);
+
 //utils
+int		check_extension(char *path);
+int		check_line(char *str);
+void	free_t_line(t_line *line, int len);
 int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
+
 //Keyevent
 int		close_win(int keycode, t_vars *vars);
 int		print_key(int keycode, t_vars *vars);
+
 //fdf_mlx.c
 void	transfer_2_screen(t_map *map, t_img_dt *data);
 void	column_2_img(t_map *map, t_img_dt *data, int x);
@@ -72,7 +78,5 @@ void	pixel_2img(t_img_dt *data, int x, int y, int color);
 void	case_dx_dy(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);
 void	case_dy_dx(t_vec2 e, t_vec3 p1, t_vec3 p2, t_img_dt *data);
 void	draw_line(t_vec3 p1, t_vec3 p2, t_img_dt *data);
-//main.c
-int		val_in_r(int v, int min, int max);
 
 #endif
