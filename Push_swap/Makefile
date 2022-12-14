@@ -26,4 +26,7 @@ fclean: clean
 
 re: fclean all
 
+test: all
+	./push_swap 2 1 3 6 5 8 
+
 .PHONY: all clean fclean re 

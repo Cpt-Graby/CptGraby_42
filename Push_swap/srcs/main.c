@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 14:02:55 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/14 19:37:39 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ t_pile_elem	**get_pile_a(int len, char **ascii_value)
 	int			i;
 	int			tmp;
 	t_pile_elem	**addr_first_elem;
+	t_pile_elem	*first;
 	t_pile_elem	*new;
 
 	i = 1;
 	tmp = ft_atoi(ascii_value[i]);
-	new = create_element(tmp);
-	if (!new)
+	first = create_element(tmp);
+	if (!first)
 		return (NULL);
-	addr_first_elem = &new;
+	addr_first_elem = &first;
+	new = first;
 	while (++i < len)
 	{
 		tmp = ft_atoi(ascii_value[i]);
@@ -53,7 +55,6 @@ int	core_push_swap(int argc, char **argv)
 		return (-1);
 	lec_head_b = NULL;
 	printf_piles(lec_head_a, lec_head_b, argc - 1);
-	printf("you got at the end \n");
 	return (0);
 }
 
