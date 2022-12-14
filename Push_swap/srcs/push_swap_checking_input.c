@@ -6,13 +6,13 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:31:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/09 17:32:25 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:52:10 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ckeck_digit_flow(int arg, char **asci_num)
+int	check_digit_flow(int arg, char **asci_num)
 {
 	int	i;
 
@@ -25,31 +25,6 @@ int	ckeck_digit_flow(int arg, char **asci_num)
 		return (0);
 	}
 	return (i);
-}
-
-int	check_double(int arg, char **asci_num)
-{
-	int		i;
-	int		y;
-	size_t	len_i;
-
-	i = 1;
-	while (i < arg)
-	{
-		y = i + 1;
-		len_i = ft_strlen(asci_num[i]);
-		while (y < arg)
-		{
-			if (!ft_strncmp(asci_num[i], asci_num[y], len_i))
-			{
-				ft_putstr_fd("Error \n", 2);
-				return (0);
-			}
-			y++;
-		}
-		i++;
-	}
-	return (1);
 }
 
 int	ft_check_int(char *strnum)
@@ -94,4 +69,29 @@ int	check_flow(char *num, int len)
 	}
 	else
 		return (1);
+}
+
+int	check_double(int arg, char **asci_num)
+{
+	int		i;
+	int		y;
+	size_t	len_i;
+
+	i = 1;
+	while (i < arg)
+	{
+		y = i + 1;
+		len_i = ft_strlen(asci_num[i]);
+		while (y < arg)
+		{
+			if (!ft_strncmp(asci_num[i], asci_num[y], len_i))
+			{
+				ft_putstr_fd("Error \n", 2);
+				return (0);
+			}
+			y++;
+		}
+		i++;
+	}
+	return (1);
 }

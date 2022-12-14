@@ -6,46 +6,54 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/09 18:15:18 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/14 14:02:55 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/*
+typedef struct s_pile_elem {
+	int					value;
+	struct s_pile_elem	*next;
+	struct s_pile_elem	*privious;
+}	t_pile_elem;
+ */
 
-int	check_pile_order(int *pile, int len)
+t_pile_elem	**get_pile_a(int len, char **ascii_value)
 {
-	int	i;
+	int			i;
+	int			tmp;
+	t_pile_elem	**addr_first_elem;
+	t_pile_elem	*new;
 
-	i = 0;
-	while (i < len && pile[i])
+	i = 1;
+	tmp = ft_atoi(ascii_value[i]);
+	new = create_element(tmp);
+	if (!new)
+		return (NULL);
+	addr_first_elem = &new;
+	while (++i < len)
 	{
-		if (pile[i] < pile[i + 1])
-			return (0);
-		i++;
+		tmp = ft_atoi(ascii_value[i]);
+		new = add_elem_pile(new, tmp);
+		if (!new)
+			return (NULL);
 	}
-	if (!pile[i])
-		return (0);
-	return (1);
+	link_last_2_first(new, *addr_first_elem);
+	return (addr_first_elem);
 }
 
 int	core_push_swap(int argc, char **argv)
 {
-	int	*tab_a;
-	int	*tab_b;
-	int	i;
+	t_pile_elem	**lec_head_a;
+	t_pile_elem	**lec_head_b;
 
-	i = argc - 1;
-	tab_a = malloc(sizeof(*tab_a) * (argc - 1));
-	tab_b = malloc(sizeof(*tab_b) * (argc - 1));
-	if (!tab_a)
+	lec_head_a = get_pile_a(argc, argv);
+	if (!lec_head_a)
 		return (-1);
-	if (!tab_b)
-	{
-		free(tab_a);
-		return (-1);
-	}	
-	while (--i > 0)
-		tab_a[i] = atoi(argv[i]);
+	lec_head_b = NULL;
+	printf_piles(lec_head_a, lec_head_b, argc - 1);
+	printf("you got at the end \n");
 	return (0);
 }
 
@@ -58,11 +66,11 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		if (!ckeck_digit_flow(argc, argv))
+		if (!check_digit_flow(argc, argv))
 			return (-1);
 		if (!check_double(argc, argv))
 			return (-1);
-		if (!core_push_swap(argc, argv))
+		if (core_push_swap(argc, argv))
 		{
 			ft_putstr_fd("Error \n", 2);
 			return (-1);
