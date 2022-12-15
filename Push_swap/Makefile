@@ -6,7 +6,8 @@ LIBFT =		-L./42lib -lft
 SRCS =		srcs/main.c \
 			srcs/push_swap_utils.c \
 			srcs/push_swap_checking_input.c \
-			srcs/push_swap_piles.c
+			srcs/push_swap_piles.c \
+			srcs/push_swap_pile_operation.c 
 
 OBJS =		$(SRCS:.c=.o) 
 

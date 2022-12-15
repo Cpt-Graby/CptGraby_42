@@ -19,11 +19,10 @@ typedef struct s_pile_elem {
 }	t_pile_elem;
  */
 
-t_pile_elem	**get_pile_a(int len, char **ascii_value)
+t_pile_elem	*get_pile_a(int len, char **ascii_value)
 {
 	int			i;
 	int			tmp;
-	t_pile_elem	**addr_first_elem;
 	t_pile_elem	*first;
 	t_pile_elem	*new;
 
@@ -32,7 +31,6 @@ t_pile_elem	**get_pile_a(int len, char **ascii_value)
 	first = create_element(tmp);
 	if (!first)
 		return (NULL);
-	addr_first_elem = &first;
 	new = first;
 	while (++i < len)
 	{
@@ -41,19 +39,27 @@ t_pile_elem	**get_pile_a(int len, char **ascii_value)
 		if (!new)
 			return (NULL);
 	}
-	link_last_2_first(new, *addr_first_elem);
-	return (addr_first_elem);
+	link_last_2_first(new, first);
+	return (first);
 }
 
 int	core_push_swap(int argc, char **argv)
 {
-	t_pile_elem	**lec_head_a;
-	t_pile_elem	**lec_head_b;
+	t_pile_elem	*lec_head_a;
+	t_pile_elem	*lec_head_b;
 
 	lec_head_a = get_pile_a(argc, argv);
 	if (!lec_head_a)
 		return (-1);
 	lec_head_b = NULL;
+	printf_piles(lec_head_a, lec_head_b, argc - 1);
+	push(&lec_head_a, lec_head_a, &lec_head_b, 'b');
+	printf_piles(lec_head_a, lec_head_b, argc - 1);
+	push(&lec_head_a, lec_head_a, &lec_head_b, 'b');
+	printf_piles(lec_head_a, lec_head_b, argc - 1);
+	push(&lec_head_b, lec_head_b, &lec_head_a, 'a');
+	printf_piles(lec_head_a, lec_head_b, argc - 1);
+	push(&lec_head_b, lec_head_b, &lec_head_a, 'a');
 	printf_piles(lec_head_a, lec_head_b, argc - 1);
 	return (0);
 }

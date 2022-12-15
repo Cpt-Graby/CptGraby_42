@@ -45,8 +45,8 @@ t_pile_elem	*add_elem_pile(t_pile_elem *privious_elem, int val_2_save)
 
 void	link_last_2_first(t_pile_elem *last_elem, t_pile_elem *first_elem)
 {
-	first_elem->privious = last_elem;
 	last_elem->next = first_elem;
+	first_elem->privious = last_elem;
 }
 
 void	free_pile(t_pile_elem *privious_elem)
@@ -60,4 +60,21 @@ void	free_pile(t_pile_elem *privious_elem)
 		free(tmp);
 	}
 	free(privious_elem);
+}
+
+int	remove_elem_pile(t_pile_elem **head, t_pile_elem *first_elem)
+{
+	if (first_elem != *head)
+	{
+		ft_putstr_fd("Error \n", 2);
+		return (0);
+	}
+	if (first_elem->next != first_elem)
+	{
+		link_last_2_first(first_elem->privious, first_elem->next);
+		*head = first_elem->next;
+	}
+	else
+		*head = NULL;
+	return (1);
 }

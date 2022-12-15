@@ -22,21 +22,26 @@ typedef struct s_pile_elem {
 }	t_pile_elem;
 
 // main.c
-int			check_pile_order(int *pile, int len);
 
 // push_swap_checking input.c 
 int			check_digit_flow(int arg, char **asci_num);
 int			check_double(int arg, char **asci_num);
 int			ft_check_int(char *strnum);
 int			check_flow(char *num, int len);
+
 //push_swap_piles.c
 t_pile_elem	*create_element(int val_2_save);
 t_pile_elem	*add_elem_pile(t_pile_elem *privious_elem, int val_2_save);
 void		link_last_2_first(t_pile_elem *last_elem, t_pile_elem *first_elem);
 void		free_pile(t_pile_elem *privious_elem);
+int			remove_elem_pile(t_pile_elem **head, t_pile_elem *first_elem);
 
 // push_swap_utils.c
-void		printf_heads(t_pile_elem **head_a, t_pile_elem **head_b);
-void		printf_piles(t_pile_elem **head_a, t_pile_elem **head_b, int len);
+void		printf_heads(t_pile_elem *head_a, t_pile_elem *head_b);
+void		printf_piles(t_pile_elem *head_a, t_pile_elem *head_b, int len);
+
+// push_swap_pile_operation.c
+int			swap(t_pile_elem *head, char pile);
+int			push(t_pile_elem **head, t_pile_elem *start, t_pile_elem **head_e, char p);
 
 #endif 
