@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 19:37:39 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:37:26 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,9 @@ int	core_push_swap(int argc, char **argv)
 		return (-1);
 	lec_head_b = NULL;
 	printf_piles(lec_head_a, lec_head_b, argc - 1);
-	push(&lec_head_a, lec_head_a, &lec_head_b, 'b');
+	rotate(&lec_head_a, lec_head_a, 'a');
 	printf_piles(lec_head_a, lec_head_b, argc - 1);
 	push(&lec_head_a, lec_head_a, &lec_head_b, 'b');
-	printf_piles(lec_head_a, lec_head_b, argc - 1);
-	push(&lec_head_b, lec_head_b, &lec_head_a, 'a');
-	printf_piles(lec_head_a, lec_head_b, argc - 1);
-	push(&lec_head_b, lec_head_b, &lec_head_a, 'a');
 	printf_piles(lec_head_a, lec_head_b, argc - 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:37:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/15 13:37:39 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:45:30 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,21 @@ int	push(t_pile_elem **head, t_pile_elem *elem, t_pile_elem **head_e, char p)
 	*head_e = elem;
 	tmp = *head_e;
 	ft_printf("p%c\n", p);
+	return (1);
+}
+
+int	rotate(t_pile_elem **head_pile, t_pile_elem *first, char pile)
+{
+	first = first->next;
+	*head_pile = first;
+	ft_printf("r%c\n", pile);
+	return (1);
+}
+
+int	rev_rotate(t_pile_elem **head_pile, t_pile_elem *first, char pile)
+{
+	first = first->privious;
+	*head_pile = first;
+	ft_printf("r%c\n", pile);
 	return (1);
 }

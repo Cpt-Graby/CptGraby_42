@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 13:45:24 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/16 11:37:07 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,6 @@ void		printf_piles(t_pile_elem *head_a, t_pile_elem *head_b, int len);
 // push_swap_pile_operation.c
 int			swap(t_pile_elem *head, char pile);
 int			push(t_pile_elem **head, t_pile_elem *start, t_pile_elem **head_e, char p);
+int			rotate(t_pile_elem **head_pile,t_pile_elem *first, char pile);
 
 #endif 
