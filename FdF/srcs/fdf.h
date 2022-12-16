@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/12 14:25:34 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:56:37 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ typedef struct s_vars_w{
 }	t_vars;
 
 //main.c
-int	main(int argc, char **argv);
-int	fdf_core(char *path);
+int		main(int argc, char **argv);
+int		fdf_core(char *path);
 
 //file_2_data.c
 int		main_parser(char *path, t_map *map);
 int		map_parser(int fd, t_map *map);
 void	get_first_info_parser(char *line, t_map *map);
 t_line	*get_next_pts_line(t_map *map, char **tab);
-int		line_2_tab(char *line, t_map *map);
+int		new_line_2_tab(char *line, t_map *map);
 
 //utils
 int		check_extension(char *path);

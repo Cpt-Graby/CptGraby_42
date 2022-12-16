@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 14:04:09 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/12 14:23:29 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/12 14:56:40 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	map_parser(int fd, t_map *map)
 	line = get_next_line(fd);
 	while (line)
 	{
-		if (!line_2_tab(line, map))
+		if (!new_line_2_tab(line, map))
 			return (0);
 		line = get_next_line(fd);
 		map->line++;
@@ -101,7 +101,7 @@ t_line	*get_next_pts_line(t_map *map, char **tab)
 	return (new_tab);
 }
 
-int	line_2_tab(char *line, t_map *map)
+int	new_line_2_tab(char *line, t_map *map)
 {
 	char	**tab;
 	int		i;
@@ -121,7 +121,7 @@ int	line_2_tab(char *line, t_map *map)
 		ft_printf("%d elements. It should be %d\n", i, map->column);
 		ft_free_tab((void **)tab, i);
 		errno = EINVAL;
-		perror("fdf_file2data.c - line_2_tab");
+		perror("fdf_file2data.c - new_line_2_tab");
 		return (0);
 	}
 	map->tab_line = get_next_pts_line(map, tab);

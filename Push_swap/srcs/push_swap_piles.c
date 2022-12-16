@@ -6,15 +6,15 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 11:25:56 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 13:21:22 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:06:22 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_pile_elem	*create_element(int val_2_save)
+t_pi_el	*create_element(int val_2_save)
 {
-	t_pile_elem	*nw;
+	t_pi_el	*nw;
 
 	nw = malloc(sizeof(*nw) * 1);
 	if (!nw)
@@ -28,9 +28,9 @@ t_pile_elem	*create_element(int val_2_save)
 	return (nw);
 }
 
-t_pile_elem	*add_elem_pile(t_pile_elem *privious_elem, int val_2_save)
+t_pi_el	*add_elem_pile(t_pi_el *privious_elem, int val_2_save)
 {
-	t_pile_elem	*new_element;
+	t_pi_el	*new_element;
 
 	new_element = create_element(val_2_save);
 	if (!new_element)
@@ -43,15 +43,15 @@ t_pile_elem	*add_elem_pile(t_pile_elem *privious_elem, int val_2_save)
 	return (new_element);
 }
 
-void	link_last_2_first(t_pile_elem *last_elem, t_pile_elem *first_elem)
+void	link_last_2_first(t_pi_el *last_elem, t_pi_el *first_elem)
 {
 	last_elem->next = first_elem;
 	first_elem->privious = last_elem;
 }
 
-void	free_pile(t_pile_elem *privious_elem)
+void	free_pile(t_pi_el *privious_elem)
 {
-	t_pile_elem	*tmp;
+	t_pi_el	*tmp;
 
 	while (privious_elem->privious)
 	{
@@ -62,7 +62,7 @@ void	free_pile(t_pile_elem *privious_elem)
 	free(privious_elem);
 }
 
-int	remove_elem_pile(t_pile_elem **head, t_pile_elem *first_elem)
+int	remove_elem_pile(t_pi_el **head, t_pi_el *first_elem)
 {
 	if (first_elem != *head)
 	{

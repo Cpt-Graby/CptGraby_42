@@ -6,17 +6,17 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 19:38:16 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/16 13:07:17 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	printf_piles(t_pile_elem *head_a, t_pile_elem *head_b, int len)
+void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len)
 {
 	int			i;
-	t_pile_elem	*tmp_a;
-	t_pile_elem	*tmp_b;
+	t_pi_el	*tmp_a;
+	t_pi_el	*tmp_b;
 
 	if (head_a)
 		tmp_a = head_a;
@@ -39,7 +39,7 @@ void	printf_piles(t_pile_elem *head_a, t_pile_elem *head_b, int len)
 	ft_printf("- -\na b\n");
 }
 
-void	printf_heads(t_pile_elem *head_a, t_pile_elem *head_b)
+void	printf_heads(t_pi_el *head_a, t_pi_el *head_b)
 {
 	if (!head_a)
 		ft_printf("  %d\n", head_a->value, head_b->value);
