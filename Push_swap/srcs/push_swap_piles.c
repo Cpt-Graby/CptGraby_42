@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 11:25:56 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/16 13:06:22 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:57:59 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_pi_el	*create_element(int val_2_save)
 		return (NULL);
 	}
 	nw->value = val_2_save;
+	nw->cp_value = val_2_save;
 	nw->next = NULL;
 	nw->privious = NULL;
 	return (nw);

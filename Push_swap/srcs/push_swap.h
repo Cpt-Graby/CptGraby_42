@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/16 13:45:29 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/17 14:57:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 typedef struct s_pile_elem {
 	int					value;
+	int					cp_value;
 	struct s_pile_elem	*next;
 	struct s_pile_elem	*privious;
 }	t_pi_el;
