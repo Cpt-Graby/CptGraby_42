@@ -52,8 +52,7 @@ int	core_push_swap(int argc, char **argv)
 	if (!lec_head_a)
 		return (-1);
 	lec_head_b = NULL;
-	if (!solve_engine(lec_head_a, lec_head_b))
-		return (1);
+	radix_sort(lec_head_a, lec_head_b, argc - 1);
 	return (0);
 }
 

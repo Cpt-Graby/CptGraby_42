@@ -8,7 +8,8 @@ SRCS =		srcs/main.c \
 			srcs/push_swap_checking_input.c \
 			srcs/push_swap_piles.c \
 			srcs/push_swap_pile_operation.c \
-			srcs/push_swap_pile_operation_double.c 
+			srcs/push_swap_pile_operation_double.c \
+			srcs/push_swap_solve_engine.c
 
 OBJS =		$(SRCS:.c=.o) 
 

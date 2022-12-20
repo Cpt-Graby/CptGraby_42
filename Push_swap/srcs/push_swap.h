@@ -15,6 +15,10 @@
 
 # include "../42lib/libft.h"
 
+# ifndef NBR_BYTES
+#  define NBR_BYTES 4;
+# endif
+
 typedef struct s_pile_elem {
 	int					value;
 	int					cp_value;
@@ -52,4 +56,7 @@ int		swap_ab(t_pi_el *head_a, t_pi_el *head_b);
 int		rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb);
 int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
 
+//push_swap_solve_engine.c
+int		solve_engine(t_pi_el *first_a, t_pi_el *first_b, int len);
+int	radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len);
 #endif 
