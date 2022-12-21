@@ -6,18 +6,11 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/21 02:46:26 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:20:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-typedef struct s_pile_elem {
-	int					value;
-	struct s_pile_elem	*next;
-	struct s_pile_elem	*privious;
-}	t_pi_el;
- */
 
 t_pi_el	*get_pile_a(int len, char **ascii_value)
 {
