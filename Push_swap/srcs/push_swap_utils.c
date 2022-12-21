@@ -6,15 +6,37 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/16 13:07:17 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:30:48 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+char	**ft_cpy_in_new_tab(char **old_tab, int len)
+{
+	char	**tab;
+	int		i;
+
+	tab = malloc(sizeof(*tab) * len);
+	i = 1;
+	while (i < len)
+	{
+		tab[i - 1] = ft_strdup(old_tab[i]);
+		i++;
+	}
+	tab[i] = NULL;
+	return (tab);
+}
+
+int	exit_message(int i)
+{
+	ft_putstr_fd("Error\n", 2);
+	return (i);
+}
+
 void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len)
 {
-	int			i;
+	int		i;
 	t_pi_el	*tmp_a;
 	t_pi_el	*tmp_b;
 

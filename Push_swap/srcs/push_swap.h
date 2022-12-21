@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/17 14:57:31 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:45:47 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_pile_elem {
 // main.c
 
 // push_swap_checking input.c 
-int		check_digit_flow(int arg, char **asci_num);
-int		check_double(int arg, char **asci_num);
+int		main_checking_input(char **ascii_num_tab);
+int		check_digit_flow(char **asci_num);
+int		check_double(char **asci_num);
 int		ft_check_int(char *strnum);
 int		check_flow(char *num, int len);
 
@@ -42,6 +43,8 @@ void	free_pile(t_pi_el *privious_elem);
 int		remove_elem_pile(t_pi_el **head, t_pi_el *first_elem);
 
 // push_swap_utils.c
+char	**ft_cpy_in_new_tab(char **old_tab, int len);
+int		exit_message(int i);
 void	printf_heads(t_pi_el *head_a, t_pi_el *head_b);
 void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len);
 
@@ -58,5 +61,5 @@ int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
 
 //push_swap_solve_engine.c
 int		solve_engine(t_pi_el *first_a, t_pi_el *first_b, int len);
-int	radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len);
+int		radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len);
 #endif 

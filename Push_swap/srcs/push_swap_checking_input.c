@@ -6,20 +6,29 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:31:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/14 10:52:10 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/21 02:45:38 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_digit_flow(int arg, char **asci_num)
+int	main_checking_input(char **ascii_num_tab)
+{
+	if (!check_digit_flow(ascii_num_tab))
+		return (0);
+	if (!check_double(ascii_num_tab))
+		return (0);
+	return (1);
+}
+
+int	check_digit_flow(char **asci_num)
 {
 	int	i;
 
-	i = 1;
-	while (i < arg && ft_check_int(asci_num[i]))
+	i = 0;
+	while (asci_num[i] && ft_check_int(asci_num[i]))
 		i++;
-	if (i < arg && !ft_check_int(asci_num[i]))
+	if (asci_num[i] && !ft_check_int(asci_num[i]))
 	{
 		ft_putstr_fd("Error \n", 2);
 		return (0);
@@ -71,18 +80,18 @@ int	check_flow(char *num, int len)
 		return (1);
 }
 
-int	check_double(int arg, char **asci_num)
+int	check_double(char **asci_num)
 {
 	int		i;
 	int		y;
 	size_t	len_i;
 
-	i = 1;
-	while (i < arg)
+	i = 0;
+	while (asci_num[i])
 	{
 		y = i + 1;
 		len_i = ft_strlen(asci_num[i]);
-		while (y < arg)
+		while (asci_num[y])
 		{
 			if (!ft_strncmp(asci_num[i], asci_num[y], len_i))
 			{
