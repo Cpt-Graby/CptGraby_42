@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/21 11:21:11 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:40:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	**ft_cpy_in_new_tab(char **old_tab, int len)
 int	exit_message(int i)
 {
 	ft_putstr_fd("Error\n", 2);
-	return (i);
+	exit (i);
 }
 
 void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len)
@@ -49,7 +49,7 @@ void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len)
 	else
 		tmp_b = NULL;
 	i = 0;
-	while (i < len)
+	while (i < len - 1)
 	{
 		printf_heads(tmp_a, tmp_b);
 		if (tmp_a)

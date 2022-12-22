@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:31:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/21 02:45:38 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 11:10:28 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int	check_digit_flow(char **asci_num)
 	while (asci_num[i] && ft_check_int(asci_num[i]))
 		i++;
 	if (asci_num[i] && !ft_check_int(asci_num[i]))
-	{
-		ft_putstr_fd("Error \n", 2);
 		return (0);
-	}
 	return (i);
 }
 
@@ -94,10 +91,7 @@ int	check_double(char **asci_num)
 		while (asci_num[y])
 		{
 			if (!ft_strncmp(asci_num[i], asci_num[y], len_i))
-			{
-				ft_putstr_fd("Error \n", 2);
 				return (0);
-			}
 			y++;
 		}
 		i++;

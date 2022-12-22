@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/21 02:45:47 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:47:23 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include "../42lib/libft.h"
 
-# ifndef NBR_BYTES
-#  define NBR_BYTES 4;
+# ifndef SIZE_BIT
+#  define SIZE_BIT 31
 # endif
 
 typedef struct s_pile_elem {
@@ -27,6 +27,8 @@ typedef struct s_pile_elem {
 }	t_pi_el;
 
 // main.c
+int		core_push_swap(int len_tab, char **tab_num_ascii);
+t_pi_el	*get_pile_a(int len, char **ascii_value);
 
 // push_swap_checking input.c 
 int		main_checking_input(char **ascii_num_tab);
@@ -60,6 +62,7 @@ int		rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb);
 int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
 
 //push_swap_solve_engine.c
-int		solve_engine(t_pi_el *first_a, t_pi_el *first_b, int len);
-int		radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len);
+int		radix_sort(t_pi_el *fh_a, t_pi_el *fh_b, int len);
+int		check_order(t_pi_el *head, int len);
+
 #endif 

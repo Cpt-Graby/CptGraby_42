@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 18:51:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 18:18:57 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,23 @@
 int	radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len)
 {
 	int		y;
+	int		check;
 	int		i;
+	int		size_int;
 
 	i = 0;
-	while (i < SIZE_BIT)
+	size_int = 31;
+	while (i < size_int)
 	{
-		y = -1;
-		while (++y < len - 1)
+		y = 0;
+		while (y < len - 1)
 		{
-			if (!(f_a->value & (1 << i)))
+			check = f_a->value & (1 << i);
+			if (!check)
 				push(&f_a, f_a, &f_b, 'b');
 			else
 				rotate(&f_a, f_a, 'a');
+			y++;
 		}
 		while (f_b)
 			push(&f_b, f_b, &f_a, 'a');
@@ -34,8 +39,10 @@ int	radix_sort(t_pi_el *f_a, t_pi_el *f_b, int len)
 		{
 			while (f_a->privious->value < 0)
 				rev_rotate(&f_a, f_a, 'a');
+			printf("Done\n");
 			return (0);
 		}
+		printf_piles(f_a, f_b, len);
 		i++;
 	}
 	return (0);
