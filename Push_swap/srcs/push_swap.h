@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 18:47:23 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/24 15:25:15 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb);
 int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
 
 //push_swap_solve_engine.c
-int		radix_sort(t_pi_el *fh_a, t_pi_el *fh_b, int len);
-int		check_order(t_pi_el *head, int len);
+int		radix_sort(t_pi_el **fh_a, t_pi_el *f_a, t_pi_el *f_b, int len);
+int		check_order_after_radix(t_pi_el *head, int len);
 
 #endif 
