@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 18:38:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 19:40:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int	main(int argc, char **argv)
 		new_argv = ft_cpy_in_new_tab(argv, argc);
 	}
 	if (!main_checking_input(new_argv))
-	{
-		ft_free_tab((void *)new_argv, new_argc);
 		return (exit_message(-1));
-	}
 	core_push_swap(new_argc, new_argv);
 	return (0);
 }

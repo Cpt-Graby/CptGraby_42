@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 18:51:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/22 20:10:46 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,10 @@ int	check_order(t_pi_el *head, int len)
 		value1 = tmp->value;
 		value2 = tmp->next->value;
 		if (value1 > 0 && value2 > 0 && value1 > value2)
-		{
 			return (0);
-		}
+		else if (value1 < 0 && value2 > 0)
+			return (0);
 		else if (value1 <= 0 && value2 < 0 && value1 > value2)
-			return (0);
-		else if (value1 <= 0 && value2 > 0)
 			return (0);
 		tmp = tmp->next;
 	}
