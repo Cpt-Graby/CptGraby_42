@@ -6,56 +6,40 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 12:35:41 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:23:18 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_bits(t_pi_f *frame, int index)
-{
-	int		y;
-	int		check;
-	t_pi_el	*f_a;
-
-	y = -1;
-	printf("frame->f_elem_a%p\n", frame->f_elem_a);
-	printf("f_a:%p\n", f_a);
-	f_a = frame->f_elem_a;
-	while (++y < (frame->len - 1))
-	{
-		check = f_a->value;
-		if (!(check & (1 << index)))
-			push(&f_a, f_a, &frame->f_elem_b, 'b');
-		else
-			rotate(&f_a, f_a, 'a');
-	}
-	frame->f_elem_a = f_a;
-	printf("%p\n", frame->f_elem_a);
-	printf_piles(frame);
-}
-
 int	radix_sort(t_pi_f *frame)
 {
+	int		y;
 	int		i;
 
 	i = 0;
-	//while (i < SIZE_BIT)
-	while (i < 3)
+	while (i < SIZE_BIT)
 	{
-		sort_bits(frame, i);
-		while (frame->f_elem_b)
-			push(frame->head_b, frame->f_elem_b, frame->head_a, 'a');
-		if (check_order_after_radix(frame->f_elem_a, frame->len))
+		y = -1;
+		while (++y < frame->len - 1)
 		{
-			while (frame->f_elem_a->privious->value < 0)
-				rev_rotate(frame->head_a, frame->f_elem_a, 'a');
-			*(frame->head_a) = frame->f_elem_a;
+			if (!(frame->first_elem_a->value & (1 << i)))
+				push(&frame->first_elem_a, frame->first_elem_a, frame->head_b, 'b');
+			else
+				rotate(frame->head_a, frame->first_elem_a, 'a');
+		}
+		while (frame->first_elem_b)
+			push(frame->head_b, frame->first_elem_b, frame->head_a, 'a');
+		if (check_order_after_radix(frame->first_elem_a, frame->len))
+		{
+			while (frame->first_elem_a->privious->value < 0)
+				rev_rotate(frame->head_a, frame->first_elem_a, 'a');
+			*frame->head_a = frame->first_elem_a;
 			return (0);
 		}
 		i++;
 	}
-	*frame->head_a = frame->f_elem_a;
+	*frame->head_a = frame->first_elem_a;
 	return (0);
 }
 

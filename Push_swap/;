@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 17:10:58 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/25 12:33:56 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,6 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	printf_frame(t_pi_f *pile_frame, char *s)
-{
-	ft_printf("start %s\n", s);
-	ft_printf("pile_head_a: %p\n", *pile_frame->head_a);
-	ft_printf("lec_head_a : %p\n", pile_frame->f_elem_a);
-	ft_printf("pile_head_b: %p\n", *pile_frame->head_b);
-	ft_printf("lec_head_b : %p\n", pile_frame->f_elem_b);
-	ft_printf("end %s\n", s);
-}
-
 int	core_push_swap(int len_tab, char **tab_num_ascii)
 {
 	t_pi_f	*pile_frame;
@@ -58,17 +48,7 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 	if (!lec_head_a)
 		return (-1);
 	lec_head_b = NULL;
-	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
-	swap(pile_frame, 'a', 1);
-	printf_piles(pile_frame);
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "before push");
-	ft_printf("===============\n");
-	push(pile_frame->head_a, pile_frame->f_elem_a, pile_frame->head_b, 'b');
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "After push");
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "before push");
+	pile_frame = set_frame(lec_head_a, lec_head_b, len_tab);
 //	radix_sort(pile_frame);
 	printf_piles(pile_frame);
 	return (0);

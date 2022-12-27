@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 18:40:11 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:20:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,22 @@ int	exit_message(int i)
 	exit (i);
 }
 
-void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len)
+void	printf_piles(t_pi_f *frame)
 {
 	int		i;
 	t_pi_el	*tmp_a;
 	t_pi_el	*tmp_b;
 
-	if (head_a)
-		tmp_a = head_a;
+	if (frame->f_elem_a)
+		tmp_a = frame->f_elem_a;
 	else
 		tmp_a = NULL;
-	if (head_b)
-		tmp_b = head_b;
+	if (frame->f_elem_b)
+		tmp_b = frame->f_elem_b;
 	else
 		tmp_b = NULL;
 	i = 0;
-	while (i < len - 1)
+	while (i < frame->len - 1)
 	{
 		printf_heads(tmp_a, tmp_b);
 		if (tmp_a)

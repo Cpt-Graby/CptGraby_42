@@ -6,16 +6,16 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:09:53 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/16 13:46:33 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:07:59 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap_ab(t_pi_el *head_a, t_pi_el *head_b)
+int	swap_ab(t_pi_f *frame)
 {
-	swap(head_a, 'x');
-	swap(head_b, 'x');
+	swap(frame, 'a', 0);
+	swap(frame, 'b', 0);
 	ft_printf("ss\n");
 	return (1);
 }

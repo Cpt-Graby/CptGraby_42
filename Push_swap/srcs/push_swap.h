@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/24 15:25:15 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/25 19:21:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,18 @@ typedef struct s_pile_elem {
 	struct s_pile_elem	*privious;
 }	t_pi_el;
 
+typedef struct s_pile_frame {
+	int					len;
+	struct s_pile_elem	**head_a;
+	struct s_pile_elem	*f_elem_a;
+	struct s_pile_elem	**head_b;
+	struct s_pile_elem	*f_elem_b;
+}	t_pi_f;
+
 // main.c
 int		core_push_swap(int len_tab, char **tab_num_ascii);
 t_pi_el	*get_pile_a(int len, char **ascii_value);
+void	printf_frame(t_pi_f *pile_frame, char *s);
 
 // push_swap_checking input.c 
 int		main_checking_input(char **ascii_num_tab);
@@ -44,25 +53,28 @@ void	link_last_2_first(t_pi_el *last_elem, t_pi_el *first_elem);
 void	free_pile(t_pi_el *privious_elem);
 int		remove_elem_pile(t_pi_el **head, t_pi_el *first_elem);
 
-// push_swap_utils.c
+//push_swap_piles_frames.c
+t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len);
+
+//push_swap_utils.c
 char	**ft_cpy_in_new_tab(char **old_tab, int len);
 int		exit_message(int i);
 void	printf_heads(t_pi_el *head_a, t_pi_el *head_b);
-void	printf_piles(t_pi_el *head_a, t_pi_el *head_b, int len);
+void	printf_piles(t_pi_f *frame);
 
 // push_swap_pile_operation.c
-int		swap(t_pi_el *head, char pile);
+int		swap(t_pi_f *frame, char pile, int print);
 int		push(t_pi_el **head, t_pi_el *start, t_pi_el **head_e, char p);
 int		rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
 int		rev_rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
 
 // push_swap_pile_operation_double.c
-int		swap_ab(t_pi_el *head_a, t_pi_el *head_b);
+int		swap_ab(t_pi_f *frame);
 int		rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb);
 int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
 
 //push_swap_solve_engine.c
-int		radix_sort(t_pi_el **fh_a, t_pi_el *f_a, t_pi_el *f_b, int len);
+int		radix_sort(t_pi_f *frame);
 int		check_order_after_radix(t_pi_el *head, int len);
 
 #endif 
