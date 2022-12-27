@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:37:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/26 00:27:17 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 13:56:07 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,46 +39,33 @@ int	swap(t_pi_f *frame, char pile, int print)
 	return (1);
 }
 
-int	push(t_pi_el **head, t_pi_el *elem, t_pi_el **head_e, char p)
+int	push(t_pi_f *frame, char pile, int print)
 {
 	t_pi_el	*tmp;
+	t_pi_el	**tmp_head;
+	t_pi_el	**tmp_next_head;
 
-	tmp = elem;
-	if (!*head)
-		return (0);
-	ft_printf("Berfore remove\n");
-	ft_printf("pile_head_a: %p\n", *head);
-	ft_printf("lec_head_a : %p\n", elem);
-	ft_printf("pile_head_b: %p\n", *head_e);
-	remove_elem_pile(head, elem);
-	ft_printf("After remove\n");
-	ft_printf("pile_head_a: %p\n", *head);
-	ft_printf("lec_head_a : %p\n", elem);
-	ft_printf("pile_head_b: %p\n", *head_e);
-
-	if (!*head_e)
+	if (pile == 'b')
 	{
-		elem->privious = elem;
-		elem->next = elem;
+		tmp = frame->f_elem_a;
+		tmp_head = frame->head_a;
+		tmp_next_head = frame->head_b;
 	}
-	else
+	else if (pile == 'a')
 	{
-		elem->next = *head_e;
-		tmp = *head_e;
-		if (tmp->next == tmp)
-			link_last_2_first(tmp->next, elem);
-		link_last_2_first(elem->next->privious, elem);
-		link_last_2_first(elem, elem->next);
+		tmp = frame->f_elem_b;
+		tmp_head = frame->head_b;
+		tmp_next_head = frame->head_a;
 	}
-	*head_e = elem;
-	tmp = *head_e;
-	if (p != 'x')
-		ft_printf("p%c\n", p);
-	ft_printf("pile_head_a: %p\n", *head);
-	ft_printf("lec_head_a : %p\n", elem);
-	ft_printf("pile_head_b: %p\n", *head_e);
-	elem = *head;
-	return (1);
+	remove_elem_pile(tmp_head, tmp);
+	insert_elem_pile(tmp, tmp_next_head);
+	if (print)
+		ft_printf("p%c\n", pile);
+	if (pile == 'a')
+		actu_frame(frame, tmp_next_head, tmp_head);
+	else if (pile == 'b')
+		actu_frame(frame, tmp_head, tmp_next_head);
+	return (0);
 }
 
 int	rotate(t_pi_el **head_pile, t_pi_el *first, char pile)

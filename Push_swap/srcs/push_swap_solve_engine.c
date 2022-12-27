@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 12:35:41 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:38:21 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sort_bits(t_pi_f *frame, int index)
 	{
 		check = f_a->value;
 		if (!(check & (1 << index)))
-			push(&f_a, f_a, &frame->f_elem_b, 'b');
+			push(frame, 'b', 1);
 		else
 			rotate(&f_a, f_a, 'a');
 	}
@@ -45,7 +45,7 @@ int	radix_sort(t_pi_f *frame)
 	{
 		sort_bits(frame, i);
 		while (frame->f_elem_b)
-			push(frame->head_b, frame->f_elem_b, frame->head_a, 'a');
+			push(frame, 'a', 1);
 		if (check_order_after_radix(frame->f_elem_a, frame->len))
 		{
 			while (frame->f_elem_a->privious->value < 0)

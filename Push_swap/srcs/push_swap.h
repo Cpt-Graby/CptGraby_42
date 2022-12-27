@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 19:21:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 13:55:19 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ typedef struct s_pile_frame {
 	int					len;
 	struct s_pile_elem	**head_a;
 	struct s_pile_elem	*f_elem_a;
+	int					len_pile_a;
 	struct s_pile_elem	**head_b;
 	struct s_pile_elem	*f_elem_b;
+	int					len_pile_b;
 }	t_pi_f;
 
 // main.c
@@ -52,9 +54,12 @@ t_pi_el	*add_elem_pile(t_pi_el *privious_elem, int val_2_save);
 void	link_last_2_first(t_pi_el *last_elem, t_pi_el *first_elem);
 void	free_pile(t_pi_el *privious_elem);
 int		remove_elem_pile(t_pi_el **head, t_pi_el *first_elem);
+//push_swap_piles2.c
+void	insert_elem_pile(t_pi_el *element, t_pi_el **head);
 
 //push_swap_piles_frames.c
 t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len);
+void	actu_frame(t_pi_f *frame, t_pi_el **lec_a, t_pi_el **lec_b);
 
 //push_swap_utils.c
 char	**ft_cpy_in_new_tab(char **old_tab, int len);
@@ -64,7 +69,7 @@ void	printf_piles(t_pi_f *frame);
 
 // push_swap_pile_operation.c
 int		swap(t_pi_f *frame, char pile, int print);
-int		push(t_pi_el **head, t_pi_el *start, t_pi_el **head_e, char p);
+int		push(t_pi_f *frame, char pile, int print);
 int		rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
 int		rev_rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
 

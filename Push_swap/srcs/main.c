@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 17:10:58 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 14:40:13 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,9 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
 	swap(pile_frame, 'a', 1);
-	printf_piles(pile_frame);
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "before push");
-	ft_printf("===============\n");
-	push(pile_frame->head_a, pile_frame->f_elem_a, pile_frame->head_b, 'b');
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "After push");
-	ft_printf("===============\n");
-	printf_frame(pile_frame, "before push");
+	push(pile_frame, 'b', 1);
+	push(pile_frame, 'a', 1);
+	swap(pile_frame, 'a', 1);
 //	radix_sort(pile_frame);
 	printf_piles(pile_frame);
 	return (0);

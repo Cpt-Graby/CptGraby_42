@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 11:25:56 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 16:56:08 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 13:23:07 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,19 @@ t_pi_el	*create_element(int val_2_save)
 	return (nw);
 }
 
+void	free_pile(t_pi_el *privious_elem)
+{
+	t_pi_el	*tmp;
+
+	while (privious_elem->privious)
+	{
+		tmp = privious_elem;
+		privious_elem = privious_elem->privious;
+		free(tmp);
+	}
+	free(privious_elem);
+}
+
 t_pi_el	*add_elem_pile(t_pi_el *privious_elem, int val_2_save)
 {
 	t_pi_el	*new_element;
@@ -47,19 +60,6 @@ void	link_last_2_first(t_pi_el *last_elem, t_pi_el *first_elem)
 {
 	last_elem->next = first_elem;
 	first_elem->privious = last_elem;
-}
-
-void	free_pile(t_pi_el *privious_elem)
-{
-	t_pi_el	*tmp;
-
-	while (privious_elem->privious)
-	{
-		tmp = privious_elem;
-		privious_elem = privious_elem->privious;
-		free(tmp);
-	}
-	free(privious_elem);
 }
 
 int	remove_elem_pile(t_pi_el **head, t_pi_el *first_elem)
