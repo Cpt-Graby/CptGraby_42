@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 14:40:13 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:10:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,7 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 		return (-1);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
-	swap(pile_frame, 'a', 1);
-	push(pile_frame, 'b', 1);
-	push(pile_frame, 'a', 1);
-	swap(pile_frame, 'a', 1);
-//	radix_sort(pile_frame);
-	printf_piles(pile_frame);
+	radix_sort(pile_frame);
 	return (0);
 }
 

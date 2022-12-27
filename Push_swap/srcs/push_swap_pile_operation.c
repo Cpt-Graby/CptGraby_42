@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:37:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 13:56:07 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:39:00 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,54 @@ int	push(t_pi_f *frame, char pile, int print)
 	return (0);
 }
 
-int	rotate(t_pi_el **head_pile, t_pi_el *first, char pile)
+int	rotate(t_pi_f *frame, char pile, int print)
 {
+	t_pi_el	*first;
+	t_pi_el	**tmp_head;
+
+	if (pile == 'a')
+	{
+		first = frame->f_elem_a;
+		tmp_head = frame->head_a;
+	}
+	else if (pile == 'b')
+	{
+		first = frame->f_elem_b;
+		tmp_head = frame->head_b;
+	}
 	first = first->next;
-	*head_pile = first;
-	if (pile != 'x')
+	*tmp_head = first;
+	if (pile == 'a')
+		actu_frame(frame, tmp_head, frame->head_b);
+	else if (pile == 'b')
+		actu_frame(frame, frame->head_b, tmp_head);
+	if (print)
 		ft_printf("r%c\n", pile);
 	return (1);
 }
 
-int	rev_rotate(t_pi_el **head_pile, t_pi_el *first, char pile)
+int	rev_rotate(t_pi_f *frame, char pile, int print)
 {
+	t_pi_el	*first;
+	t_pi_el	**tmp_head;
+
+	if (pile == 'a')
+	{
+		first = frame->f_elem_a;
+		tmp_head = frame->head_a;
+	}
+	else if (pile == 'b')
+	{
+		first = frame->f_elem_b;
+		tmp_head = frame->head_b;
+	}
 	first = first->privious;
-	*head_pile = first;
-	if (pile != 'x')
-		ft_printf("rr%c\n", pile);
+	*tmp_head = first;
+	if (pile == 'a')
+		actu_frame(frame, tmp_head, frame->head_b);
+	else if (pile == 'b')
+		actu_frame(frame, frame->head_b, tmp_head);
+	if (print)
+		ft_printf("r%c\n", pile);
 	return (1);
 }

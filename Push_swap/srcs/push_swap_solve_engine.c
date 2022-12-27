@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 14:38:21 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 17:06:44 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,16 @@ void	sort_bits(t_pi_f *frame, int index)
 {
 	int		y;
 	int		check;
-	t_pi_el	*f_a;
 
 	y = -1;
-	printf("frame->f_elem_a%p\n", frame->f_elem_a);
-	printf("f_a:%p\n", f_a);
-	f_a = frame->f_elem_a;
 	while (++y < (frame->len - 1))
 	{
-		check = f_a->value;
+		check = frame->f_elem_a->value;
 		if (!(check & (1 << index)))
 			push(frame, 'b', 1);
 		else
-			rotate(&f_a, f_a, 'a');
+			rotate(frame, 'a', 1);
 	}
-	frame->f_elem_a = f_a;
-	printf("%p\n", frame->f_elem_a);
-	printf_piles(frame);
 }
 
 int	radix_sort(t_pi_f *frame)
@@ -40,8 +33,7 @@ int	radix_sort(t_pi_f *frame)
 	int		i;
 
 	i = 0;
-	//while (i < SIZE_BIT)
-	while (i < 3)
+	while (i < 31)
 	{
 		sort_bits(frame, i);
 		while (frame->f_elem_b)
@@ -49,7 +41,7 @@ int	radix_sort(t_pi_f *frame)
 		if (check_order_after_radix(frame->f_elem_a, frame->len))
 		{
 			while (frame->f_elem_a->privious->value < 0)
-				rev_rotate(frame->head_a, frame->f_elem_a, 'a');
+				rev_rotate(frame, 'a', 1);
 			*(frame->head_a) = frame->f_elem_a;
 			return (0);
 		}

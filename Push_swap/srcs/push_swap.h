@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 13:55:19 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:41:59 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,13 @@ void	printf_piles(t_pi_f *frame);
 // push_swap_pile_operation.c
 int		swap(t_pi_f *frame, char pile, int print);
 int		push(t_pi_f *frame, char pile, int print);
-int		rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
-int		rev_rotate(t_pi_el **head_pile, t_pi_el *first, char pile);
+int		rotate(t_pi_f *frame, char pile, int print);
+int		rev_rotate(t_pi_f *frame, char pile, int print);
 
 // push_swap_pile_operation_double.c
-int		swap_ab(t_pi_f *frame);
-int		rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb);
-int		rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb);
+int		swap_ab(t_pi_f *frame, int print);
+int		rotate_ab(t_pi_f *frame, int print);
+int		rev_rotate_ab(t_pi_f *frame, int print);
 
 //push_swap_solve_engine.c
 int		radix_sort(t_pi_f *frame);

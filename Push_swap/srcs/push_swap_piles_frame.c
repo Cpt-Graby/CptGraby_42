@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/25 19:19:48 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 13:54:41 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 15:54:23 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len)
 void	actu_frame(t_pi_f *frame, t_pi_el **lec_a, t_pi_el **lec_b)
 {
 	frame->head_a = lec_a;
-	frame->f_elem_a = *lec_a;
+	if (!lec_a)
+		frame->f_elem_b = NULL;
+	else
+		frame->f_elem_a = *lec_a;
 	frame->head_b = lec_b;
-	frame->f_elem_b = *lec_b;
+	if (!lec_b)
+		frame->f_elem_b = NULL;
+	else
+		frame->f_elem_b = *lec_b;
 }

@@ -6,32 +6,35 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 13:09:53 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 14:07:59 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 16:41:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap_ab(t_pi_f *frame)
+int	swap_ab(t_pi_f *frame, int print)
 {
 	swap(frame, 'a', 0);
 	swap(frame, 'b', 0);
-	ft_printf("ss\n");
+	if (print)
+		ft_printf("ss\n");
 	return (1);
 }
 
-int	rotate_ab(t_pi_el **p_a, t_pi_el *heada, t_pi_el **p_b, t_pi_el *headb)
+int	rotate_ab(t_pi_f *frame, int print)
 {
-	rotate(p_a, heada, 'x');
-	rotate(p_b, headb, 'x');
-	ft_printf("rr\n");
+	rotate(frame, 'a', 0);
+	rotate(frame, 'b', 0);
+	if (print)
+		ft_printf("rr\n");
 	return (1);
 }
 
-int	rev_rotate_ab(t_pi_el **p_a, t_pi_el *ha, t_pi_el **p_b, t_pi_el *hb)
+int	rev_rotate_ab(t_pi_f *frame, int print)
 {
-	rev_rotate(p_a, ha, 'x');
-	rev_rotate(p_b, hb, 'x');
-	ft_printf("rrr\n");
+	rev_rotate(frame, 'a', 0);
+	rev_rotate(frame, 'b', 0);
+	if (print)
+		ft_printf("rrr\n");
 	return (1);
 }
