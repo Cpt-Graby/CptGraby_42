@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:37:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 16:39:00 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 18:38:11 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ int	rev_rotate(t_pi_f *frame, char pile, int print)
 	else if (pile == 'b')
 		actu_frame(frame, frame->head_b, tmp_head);
 	if (print)
-		ft_printf("r%c\n", pile);
+		ft_printf("rr%c\n", pile);
 	return (1);
 }

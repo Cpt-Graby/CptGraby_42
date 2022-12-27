@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 16:41:59 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 19:54:51 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef struct s_pile_elem {
 	int					value;
-	int					cp_value;
+	int					index;
 	struct s_pile_elem	*next;
 	struct s_pile_elem	*privious;
 }	t_pi_el;
@@ -79,7 +79,8 @@ int		rotate_ab(t_pi_f *frame, int print);
 int		rev_rotate_ab(t_pi_f *frame, int print);
 
 //push_swap_solve_engine.c
-int		radix_sort(t_pi_f *frame);
+int		radix_sort(t_pi_f *frame, int print);
 int		check_order_after_radix(t_pi_el *head, int len);
+int		check_order_index(t_pi_el *head, int len);
 
 #endif 

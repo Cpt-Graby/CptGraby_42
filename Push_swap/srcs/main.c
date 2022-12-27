@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 17:10:43 by agonelle         ###   ########.fr       */
+/*   Updated: 2022/12/27 20:31:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,28 +38,54 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	printf_frame(t_pi_f *pile_frame, char *s)
+int	get_index(t_pi_f *frame, int target_value)
 {
-	ft_printf("start %s\n", s);
-	ft_printf("pile_head_a: %p\n", *pile_frame->head_a);
-	ft_printf("lec_head_a : %p\n", pile_frame->f_elem_a);
-	ft_printf("pile_head_b: %p\n", *pile_frame->head_b);
-	ft_printf("lec_head_b : %p\n", pile_frame->f_elem_b);
-	ft_printf("end %s\n", s);
+	int		count;
+	t_pi_el	*tmp;
+
+	count = 0;
+	tmp = frame->f_elem_a;
+	while (tmp->value != target_value)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	ft_printf("%d", count);
+	return (count);
+}
+
+void	set_index(t_pi_f *frame, t_pi_f *frame2)
+{
+	int		i;
+
+	i = 0;
+	while (i < frame2->len - 2)
+	{
+		frame2->f_elem_a->index = get_index(frame, frame2->f_elem_a->value);
+		rotate(frame2, 'a', 0);
+		i++;
+	}
 }
 
 int	core_push_swap(int len_tab, char **tab_num_ascii)
 {
 	t_pi_f	*pile_frame;
+	t_pi_f	*pile_frame_2;
 	t_pi_el	*lec_head_a;
 	t_pi_el	*lec_head_b;
+	t_pi_el	*lec_head_c;
 
 	lec_head_a = get_pile_a(len_tab, tab_num_ascii);
+	lec_head_c = get_pile_a(len_tab, tab_num_ascii);
 	if (!lec_head_a)
 		return (-1);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
-	radix_sort(pile_frame);
+	pile_frame_2 = set_frame(&lec_head_c, &lec_head_b, len_tab);
+	radix_sort(pile_frame, 0);
+	set_index(pile_frame, pile_frame_2);
+	printf_piles(pile_frame_2);
+	radix_sort(pile_frame_2, 1);
 	return (0);
 }
 
