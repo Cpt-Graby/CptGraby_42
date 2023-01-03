@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 13:23:24 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/03 12:11:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:49:23 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	set_index(t_pi_f *frame, t_pi_f *frame2)
 	int		i;
 
 	i = 0;
-	while (i < frame2->len - 2)
+	while (i < frame2->len - 1)
 	{
 		frame2->f_elem_a->index = get_index(frame, frame2->f_elem_a->value);
 		rotate(frame2, 'a', 0);
@@ -40,19 +40,17 @@ void	set_index(t_pi_f *frame, t_pi_f *frame2)
 	}
 }
 
-void	free_pile(t_pi_el *privious_elem)
+void	free_pile(t_pi_el **adress_elem)
 {
 	t_pi_el	*tmp;
 
-	while (privious_elem && privious_elem->privious)
+	if (!adress_elem)
+		return ;
+	while ((*adress_elem)->next)
 	{
-		tmp = privious_elem;
-		if (tmp != privious_elem->privious)
-			privious_elem = privious_elem->privious;
-		else
-			privious_elem = NULL;
-		free(tmp);
+		tmp = (*adress_elem)->next;
+		(*adress_elem)->next = NULL;
+		free(*adress_elem);
+		(*adress_elem) = tmp;
 	}
-	if (privious_elem)
-		free(privious_elem);
 }

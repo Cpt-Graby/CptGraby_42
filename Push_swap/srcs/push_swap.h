@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/03 11:51:31 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:58:56 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,19 @@ void	insert_elem_pile(t_pi_el *element, t_pi_el **head);
 //push_swap_piles2.c
 void	set_index(t_pi_f *frame, t_pi_f *frame2);
 int		get_index(t_pi_f *frame, int target_value);
-void	free_pile(t_pi_el *privious_elem);
+void	free_pile(t_pi_el **adress_elem);
 
 //push_swap_piles_frames.c
 t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len);
 void	actu_frame(t_pi_f *frame, t_pi_el **lec_a, t_pi_el **lec_b);
+void	free_frame(t_pi_f *frame);
 
 //push_swap_utils.c
 char	**ft_cpy_in_new_tab(char **old_tab, int len);
 int		exit_message(int i);
 void	printf_heads(t_pi_el *head_a, t_pi_el *head_b);
 void	printf_piles(t_pi_f *frame);
+void	printf_index(t_pi_f *frame);
 
 // push_swap_pile_operation.c
 int		swap(t_pi_f *frame, char pile, int print);

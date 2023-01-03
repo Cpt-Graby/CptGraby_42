@@ -14,6 +14,8 @@ SRCS =		srcs/main.c \
 			srcs/push_swap_solve_engine.c 
 
 OBJS =		$(SRCS:.c=.o) 
+DCFLAGS =	-g3 -fsanitize=address
+ARG = "3 5 6 7 2 43 23 0   "
 
 all: $(NAME)
 
@@ -32,6 +34,7 @@ fclean: clean
 re: fclean all
 
 test: all
-	./push_swap 2 1 3 6 5 8 
+	$(CC) $(CFLAGS) $(DCFLAGS) $(OBJS) $(LIBFT) -o $(NAME)
+	@./push_swap $(ARG)
 
 .PHONY: all clean fclean re 

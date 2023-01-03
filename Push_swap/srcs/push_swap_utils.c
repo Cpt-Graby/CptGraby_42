@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/25 19:20:31 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/03 14:05:36 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,26 @@ int	exit_message(int i)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit (i);
+}
+
+void	printf_index(t_pi_f *frame)
+{
+	int		i;
+	t_pi_el	*tmp_a;
+
+	if (frame->f_elem_a)
+		tmp_a = frame->f_elem_a;
+	else
+		tmp_a = NULL;
+	i = 0;
+	while (i < frame->len - 1)
+	{
+		ft_printf("%d - %d\n", tmp_a->value, tmp_a->index);
+		if (tmp_a)
+			tmp_a = tmp_a->next;
+		i++;
+	}
+	ft_printf("- -\na b\n");
 }
 
 void	printf_piles(t_pi_f *frame)
