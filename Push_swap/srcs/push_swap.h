@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 19:54:51 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/03 11:51:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,13 @@ int		check_flow(char *num, int len);
 t_pi_el	*create_element(int val_2_save);
 t_pi_el	*add_elem_pile(t_pi_el *privious_elem, int val_2_save);
 void	link_last_2_first(t_pi_el *last_elem, t_pi_el *first_elem);
-void	free_pile(t_pi_el *privious_elem);
 int		remove_elem_pile(t_pi_el **head, t_pi_el *first_elem);
-//push_swap_piles2.c
 void	insert_elem_pile(t_pi_el *element, t_pi_el **head);
+
+//push_swap_piles2.c
+void	set_index(t_pi_f *frame, t_pi_f *frame2);
+int		get_index(t_pi_f *frame, int target_value);
+void	free_pile(t_pi_el *privious_elem);
 
 //push_swap_piles_frames.c
 t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len);
@@ -79,8 +82,9 @@ int		rotate_ab(t_pi_f *frame, int print);
 int		rev_rotate_ab(t_pi_f *frame, int print);
 
 //push_swap_solve_engine.c
+void	sort_bits(t_pi_f *frame, int index, int print);
 int		radix_sort(t_pi_f *frame, int print);
-int		check_order_after_radix(t_pi_el *head, int len);
+int		check_order_value(t_pi_el *head, int len);
 int		check_order_index(t_pi_el *head, int len);
 
 #endif 
