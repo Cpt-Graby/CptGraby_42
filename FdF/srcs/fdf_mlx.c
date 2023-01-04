@@ -75,8 +75,8 @@ void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
 	trsy = (float)(map->line / 2) * (-1);
 	x_transf_iso = (point.x - point.y) * cos(0.523599);
 	y_transf_iso = ((-1) * point.z + (point.x + point.y)) * sin(0.523599);
-	screen->x = WIN_W / 2 + x_transf_iso * zoom + trsx;
-	screen->y = WIN_H / 2 + y_transf_iso * zoom + trsy;
+	screen->x = map->win_w / 2 + x_transf_iso * zoom + trsx;
+	screen->y = map->win_h / 2 + y_transf_iso * zoom + trsy;
 	screen->z = point.z;
 }
 
@@ -84,6 +84,9 @@ void	pixel_2img(t_img_dt *data, int x, int y, int color)
 {
 	char	*dst;
 
+	if ((x > 0 && x <= data->win_w) && (y > 0 && y < data->win_h))
+	{
 	dst = data->addr + (y * data->line_lth + x * (data->bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
+	}
 }

@@ -41,14 +41,16 @@ int	fdf_core(char *path)
 	if (!check_extension(path))
 	{
 		errno = EINVAL;
-		perror("main.c - fdf_core ");
+		perror("main.c - fdf_core");
 		exit(-1);
 	}
 	if (!main_parser(path, &map))
 		exit(-1);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, WIN_W, WIN_H, "FdF");
-	img.img = mlx_new_image(vars.mlx, WIN_W, WIN_H);
+	img.win_h = map.win_h;
+	img.win_w = map.win_w;
+	vars.win = mlx_new_window(vars.mlx, img.win_w, img.win_h, "FdF");
+	img.img = mlx_new_image(vars.mlx, img.win_h, img.win_h);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_lth,
 			&img.endian);
 	transfer_2_screen(&map, &img);

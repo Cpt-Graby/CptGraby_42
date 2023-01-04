@@ -28,6 +28,7 @@ int	main_parser(char *path, t_map *map)
 		return (0);
 	}
 	close (fd);
+	set_window_size(map);
 	return (1);
 }
 
@@ -47,7 +48,10 @@ int	map_parser(int fd, t_map *map)
 	while (line)
 	{
 		if (!new_line_2_tab(line, map))
+		{
+			free(line);
 			return (0);
+		}
 		line = get_next_line(fd);
 		map->line++;
 	}
@@ -118,7 +122,6 @@ int	new_line_2_tab(char *line, t_map *map)
 		i++;
 	if (i != map->column)
 	{
-		ft_printf("%d elements. It should be %d\n", i, map->column);
 		ft_free_tab((void **)tab, i);
 		errno = EINVAL;
 		perror("fdf_file2data.c - new_line_2_tab");
@@ -129,4 +132,3 @@ int	new_line_2_tab(char *line, t_map *map)
 	ft_free_tab((void **)tab, i);
 	return (1);
 }
-

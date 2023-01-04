@@ -13,9 +13,6 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define WIN_W 1200
-# define WIN_H 800
-
 # include <math.h>
 # include "../mlx.h"
 # include "../42lib/libft.h"
@@ -26,7 +23,15 @@ typedef struct s_img_dt {
 	int		bits_per_pixel;
 	int		line_lth;
 	int		endian;
+	int		win_w;
+	int		win_h;
 }	t_img_dt;
+
+typedef struct s_vars_w{
+	void		*mlx;
+	void		*win;
+	t_img_dt	*pic;
+}	t_vars;
 
 typedef struct s_line {
 	t_vec3	*tab_pts;
@@ -37,14 +42,10 @@ typedef struct s_map {
 	int		line;
 	int		column;
 	int		max_h;
+	int		win_w;
+	int		win_h;
 	t_line	*tab_line;
 }	t_map;
-
-typedef struct s_vars_w{
-	void		*mlx;
-	void		*win;
-	t_img_dt	*pic;
-}	t_vars;
 
 //main.c
 int		main(int argc, char **argv);
@@ -62,6 +63,7 @@ int		check_extension(char *path);
 int		check_line(char *str);
 void	free_t_line(t_line *line, int len);
 int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
+void	set_window_size(t_map *map);
 
 //Keyevent
 int		close_win(int keycode, t_vars *vars);

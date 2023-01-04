@@ -16,6 +16,7 @@ int	check_extension(char *path)
 {
 	char	**tab;
 	int		i;
+	int		c;
 
 	tab = ft_split(path, '.');
 	if (!tab)
@@ -28,14 +29,13 @@ int	check_extension(char *path)
 	while (tab[i])
 		i++;
 	if (i != 2)
-		return (0);
+		c = 0;
 	else if (ft_strncmp("fdf", tab[1], fmax(3, ft_strlen(tab[1]))))
-		return (0);
+		c = 0;
 	else
-	{
-		ft_free_tab((void **)tab, 3);
-		return (1);
-	}
+		c = 1;
+	ft_free_tab((void **)tab, i);
+	return (c);
 }
 
 int	check_line(char *str)
@@ -83,4 +83,20 @@ int	vec3_in_screen(t_vec3 vec, int max_L, int max_H)
 		return (0);
 	else
 		return (1);
+}
+
+void	set_window_size(t_map *map)
+{
+	if (map->column >= 0 && map->column < 99)
+		map->win_w = 400;
+	else if (map->column >= 100 && map->column < 500)
+		map->win_w = 800;
+	else
+		map->win_w = 1600;
+	if (map->line >= 0 && map->line < 99)
+		map->win_h = 400;
+	else if (map->line >= 100 && map->line < 500)
+		map->win_h = 800;
+	else
+		map->win_h = 1600;
 }
