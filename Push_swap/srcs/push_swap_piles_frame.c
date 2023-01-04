@@ -17,6 +17,8 @@ t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len)
 	t_pi_f	*new_frame;
 
 	new_frame = malloc(sizeof(*new_frame) * 1);
+	if (!new_frame)
+		exit(-1);
 	new_frame->head_a = lec_a;
 	new_frame->f_elem_a = *lec_a;
 	new_frame->head_b = lec_b;
@@ -41,6 +43,6 @@ void	actu_frame(t_pi_f *frame, t_pi_el **lec_a, t_pi_el **lec_b)
 
 void	free_frame(t_pi_f *frame)
 {
-	free_pile(frame->head_a);
+	free_pile(frame->head_a, frame->len - 1);
 	free(frame);
 }

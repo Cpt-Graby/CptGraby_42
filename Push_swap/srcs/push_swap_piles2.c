@@ -40,17 +40,19 @@ void	set_index(t_pi_f *frame, t_pi_f *frame2)
 	}
 }
 
-void	free_pile(t_pi_el **adress_elem)
+void	free_pile(t_pi_el **adress_elem, int len2del)
 {
 	t_pi_el	*tmp;
+	int		i;
 
 	if (!adress_elem)
 		return ;
-	while ((*adress_elem)->next)
+	i = 0;
+	while (i < len2del)
 	{
 		tmp = (*adress_elem)->next;
-		(*adress_elem)->next = NULL;
 		free(*adress_elem);
 		(*adress_elem) = tmp;
+		i++;
 	}
 }

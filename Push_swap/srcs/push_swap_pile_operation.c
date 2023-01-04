@@ -20,7 +20,7 @@ int	swap(t_pi_f *frame, char pile, int print)
 
 	if (pile == 'a')
 		tmp_first = frame->f_elem_a;
-	else if (pile == 'b')
+	else
 		tmp_first = frame->f_elem_b;
 	if (pile == 'a' && (!frame->f_elem_a || !frame->f_elem_a->next))
 		return (0);
@@ -51,7 +51,7 @@ int	push(t_pi_f *frame, char pile, int print)
 		tmp_head = frame->head_a;
 		tmp_next_head = frame->head_b;
 	}
-	else if (pile == 'a')
+	else
 	{
 		tmp = frame->f_elem_b;
 		tmp_head = frame->head_b;
@@ -78,7 +78,7 @@ int	rotate(t_pi_f *frame, char pile, int print)
 		first = frame->f_elem_a;
 		tmp_head = frame->head_a;
 	}
-	else if (pile == 'b')
+	else
 	{
 		first = frame->f_elem_b;
 		tmp_head = frame->head_b;
@@ -104,7 +104,7 @@ int	rev_rotate(t_pi_f *frame, char pile, int print)
 		first = frame->f_elem_a;
 		tmp_head = frame->head_a;
 	}
-	else if (pile == 'b')
+	else
 	{
 		first = frame->f_elem_b;
 		tmp_head = frame->head_b;
@@ -113,7 +113,7 @@ int	rev_rotate(t_pi_f *frame, char pile, int print)
 	*tmp_head = first;
 	if (pile == 'a')
 		actu_frame(frame, tmp_head, frame->head_b);
-	else if (pile == 'b')
+	else
 		actu_frame(frame, frame->head_b, tmp_head);
 	if (print)
 		ft_printf("rr%c\n", pile);

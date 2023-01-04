@@ -51,12 +51,10 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 	if (!lec_head_a || !lec_head_c)
 	{
 		if (lec_head_a)
-			free_pile(&lec_head_a);
+			free_pile(&lec_head_a, len_tab - 1);
 		return (-1);
 	}
 	ft_free_tab((void **)tab_num_ascii, len_tab);
-	if (!lec_head_a)
-		return (-1);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
 	pile_frame_2 = set_frame(&lec_head_c, &lec_head_b, len_tab);
@@ -64,6 +62,7 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 	set_index(pile_frame, pile_frame_2);
 	free_frame(pile_frame);
 	radix_sort(pile_frame_2, 1);
+	free_frame(pile_frame_2);
 	return (0);
 }
 
@@ -86,7 +85,7 @@ t_pi_el	*get_pile_a(int len, char **ascii_value)
 		new = add_elem_pile(new, tmp);
 		if (!new)
 		{
-			free_pile(&first);
+			free_pile(&first, i);
 			return (NULL);
 		}
 	}

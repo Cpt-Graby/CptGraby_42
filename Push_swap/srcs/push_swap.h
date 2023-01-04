@@ -58,7 +58,7 @@ void	insert_elem_pile(t_pi_el *element, t_pi_el **head);
 //push_swap_piles2.c
 void	set_index(t_pi_f *frame, t_pi_f *frame2);
 int		get_index(t_pi_f *frame, int target_value);
-void	free_pile(t_pi_el **adress_elem);
+void	free_pile(t_pi_el **adress_elem, int len2del);
 
 //push_swap_piles_frames.c
 t_pi_f	*set_frame(t_pi_el **lec_a, t_pi_el **lec_b, int max_len);
