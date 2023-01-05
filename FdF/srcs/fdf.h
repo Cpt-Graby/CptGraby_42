@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 14:18:50 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/12 14:56:37 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/05 12:29:56 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,9 @@ int		new_line_2_tab(char *line, t_map *map);
 int		check_extension(char *path);
 int		check_line(char *str);
 void	free_t_line(t_line *line, int len);
-int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
+int	vec3_in_screen(t_vec3 vec, int max_L, int max_H);
 void	set_window_size(t_map *map);
+float	set_zoom(t_map *map);
 
 //Keyevent
 int		close_win(int keycode, t_vars *vars);
