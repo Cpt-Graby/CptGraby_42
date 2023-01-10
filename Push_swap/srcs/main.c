@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/03 17:52:25 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/09 19:31:25 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	if (!main_checking_input(new_argv))
 		return (exit_message(-1));
 	core_push_swap(new_argc, new_argv);
+	ft_free_tab((void **)new_argv, new_argc);
 	return (0);
 }
 
@@ -54,7 +55,6 @@ int	core_push_swap(int len_tab, char **tab_num_ascii)
 			free_pile(&lec_head_a, len_tab - 1);
 		return (-1);
 	}
-	ft_free_tab((void **)tab_num_ascii, len_tab);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
 	pile_frame_2 = set_frame(&lec_head_c, &lec_head_b, len_tab);
