@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:29:23 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/03 14:05:36 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/10 11:40:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	**ft_cpy_in_new_tab(char **old_tab, int len)
 		tab[i - 1] = ft_strdup(old_tab[i]);
 		i++;
 	}
-	tab[i] = NULL;
+	tab[i - 1] = NULL;
 	return (tab);
 }
 
