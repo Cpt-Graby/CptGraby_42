@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:31:01 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/22 19:00:53 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/23 08:20:56 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ int	ft_check_int(char *strnum)
 	int	i;
 
 	i = 0;
+	if (strnum[i] == '-' || strnum[i] == '+')
+		i++;
 	while (strnum[i] != '\0')
 	{
-		if (!ft_isdigit(strnum[i]) && strnum[i] != '-')
+		if (!ft_isdigit(strnum[i]))
 			return (0);
 		i++;
 	}
+	if ((strnum[0] == '-' || strnum[0] == '+') && i == 1)
+		return (0);
 	if (!check_flow(strnum, i))
 		return (0);
 	return (1);
@@ -87,12 +91,12 @@ int	check_double(char **asci_num)
 	i = 0;
 	while (asci_num[i])
 	{
-		len_i = ft_strlen(asci_num[i]);
+		len_i = ft_atoi(asci_num[i]);
 		y = i + 1;
 		while (asci_num[y])
 		{
-			len_y = ft_strlen(asci_num[y]);
-			if (len_y == len_i && !ft_strncmp(asci_num[i], asci_num[y], len_i))
+			len_y = ft_atoi(asci_num[y]);
+			if (len_y == len_i)
 				return (0);
 			y++;
 		}

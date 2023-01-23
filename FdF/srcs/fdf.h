@@ -62,7 +62,9 @@ int		new_line_2_tab(char *line, t_map *map);
 int		check_extension(char *path);
 int		check_line(char *str);
 void	free_t_line(t_line *line, int len);
-int	vec3_in_screen(t_vec3 vec, int max_L, int max_H);
+int		vec3_in_screen(t_vec3 vec, int max_L, int max_H);
+
+//fdf_windows_utils.c
 void	set_window_size(t_map *map);
 float	set_zoom(t_map *map);
 

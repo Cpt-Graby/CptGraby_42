@@ -9,7 +9,8 @@ SRCS =		srcs/main.c \
 			srcs/fdf_file2data.c \
 			srcs/fdf_mlx.c \
 			srcs/fdf_bresenham.c \
-			srcs/fdf_parse_utils.c
+			srcs/fdf_parse_utils.c \
+			srcs/fdf_windows_utils.c
 
 OBJS =		$(SRCS:.c=.o)
 

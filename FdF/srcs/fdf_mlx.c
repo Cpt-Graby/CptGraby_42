@@ -75,10 +75,11 @@ void	iso_transf(t_vec3 point, t_vec3 *screen, t_map *map)
 	trsy = (float)(map->line / 2) * (-1);
 	x_transf_iso = (point.x - point.y) * cos(0.523599);
 	y_transf_iso = ((-1) * point.z + (point.x + point.y)) * sin(0.523599);
-	screen->x = map->win_w / 2 + (x_transf_iso + trsx) * zoom;
+	screen->x = map->win_w / 2 + (x_transf_iso) * zoom;
 	screen->y = map->win_h / 2 + (y_transf_iso + trsy) * zoom;
 	screen->z = point.z;
 }
+//- trsx
 
 void	pixel_2img(t_img_dt *data, int x, int y, int color)
 {
