@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:30:18 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/03 17:58:56 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:44:43 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,9 @@ int		check_digit_flow(char **asci_num);
 int		check_double(char **asci_num);
 int		ft_check_int(char *strnum);
 int		check_flow(char *num, int len);
+
+//push_swap_sol_5_3.c
+int		hard_code_swap(int len_tab, char **tab_num_ascii);
 
 //push_swap_piles.c
 t_pi_el	*create_element(int val_2_save);

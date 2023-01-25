@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/10 11:41:29 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/23 11:40:45 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	main(int argc, char **argv)
 	int		new_argc;
 
 	if (argc == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (-1);
-	}
+		return (0);
 	else if (argc == 2)
 	{
 		new_argv = ft_split(argv[1], ' ');
@@ -32,9 +29,12 @@ int	main(int argc, char **argv)
 		new_argc = argc;
 		new_argv = ft_cpy_in_new_tab(argv, argc);
 	}
-	if (!main_checking_input(new_argv))
+	if (new_argv[0] != NULL && !main_checking_input(new_argv))
 		return (exit_message(-1));
-	core_push_swap(new_argc, new_argv);
+	if (new_argv[0] != NULL && new_argc > 6)
+		core_push_swap(new_argc, new_argv);
+	if (new_argv[0] != NULL && new_argc <= 6)
+		hard_code_swap(new_argc, new_argv);
 	ft_free_tab((void **)new_argv, new_argc);
 	return (0);
 }
