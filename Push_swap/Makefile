@@ -11,7 +11,9 @@ SRCS =		srcs/main.c \
 			srcs/push_swap_piles_frame.c \
 			srcs/push_swap_pile_operation.c \
 			srcs/push_swap_pile_operation_double.c \
-			srcs/push_swap_solve_engine.c 
+			srcs/push_swap_solve_engine.c \
+			srcs/push_swap_sol_5.c \
+			srcs/push_swap_sol_5_3.c
 
 OBJS =		$(SRCS:.c=.o) 
 DCFLAGS =	-g3 -fsanitize=address
