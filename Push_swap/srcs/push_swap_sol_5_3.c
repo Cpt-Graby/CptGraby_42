@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:39:27 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/26 17:37:50 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/27 13:49:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	print_and_return(char *msg, int ret_val)
 
 int	sort_2_element(t_pi_f *frame)
 {
+	printf("s2\n");
 	if (frame->f_elem_a->value < frame->f_elem_a->next->value)
 		return (0);
 	else
@@ -64,6 +65,8 @@ int	hard_code_swap(int len_tab, char **tab_num_ascii)
 		free_pile(&lec_head_a, len_tab - 1);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
+	printf_piles(pile_frame);
+	printf("coucou\n");
 	if (len_tab == 2)
 		sort_2_element(pile_frame);
 	else if (len_tab <= 4)
@@ -71,12 +74,12 @@ int	hard_code_swap(int len_tab, char **tab_num_ascii)
 	else
 	{
 		radix_sort(pile_frame, 0);
+		printf("%d\n", len_tab);
 		if (len_tab == 5)
 			sort_4_element(pile_frame, tab_num_ascii, len_tab);
 		else
 			sort_5_element(pile_frame, tab_num_ascii, len_tab);
 	}
-	printf("coucou\n");
 	free_frame(pile_frame);
 	return (0);
 }
