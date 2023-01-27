@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:17:10 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/27 13:02:40 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:29:23 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	sort_5_element(t_pi_f *pile_frame, char **tab, int len)
 	push(pile_frame_2, 'b', 1);
 	push(pile_frame_2, 'b', 1);
 	sort_3_element(pile_frame_2);
-	if (pile_frame_2->f_elem_b->value < pile_frame_2->f_elem_b->next->value)
+	if (pile_frame_2->f_elem_b->value > pile_frame_2->f_elem_b->next->value)
 		swap(pile_frame_2, 'b', 1);
 	while (pile_frame_2->f_elem_b)
 	{
@@ -42,7 +42,6 @@ int	sort_5_element(t_pi_f *pile_frame, char **tab, int len)
 
 int	sort_4_element(t_pi_f *pile_frame, char **tab, int len)
 {
-	printf("coucou2\n");
 	t_pi_f	*pile_frame_2;
 	t_pi_el	*lec_head_c;
 
@@ -53,15 +52,9 @@ int	sort_4_element(t_pi_f *pile_frame, char **tab, int len)
 	set_index(pile_frame, pile_frame_2);
 	push(pile_frame_2, 'b', 1);
 	sort_3_element(pile_frame_2);
-	if (pile_frame_2->f_elem_b->value < pile_frame_2->f_elem_b->next->value)
-		swap(pile_frame_2, 'b', 1);
-	while (pile_frame_2->f_elem_b)
-	{
-		if (pile_frame_2->f_elem_b->index < pile_frame_2->f_elem_a->index)
-			push(pile_frame_2, 'a', 1);
-		else
-			rotate(pile_frame_2, 'a', 1);
-	}
+	while (pile_frame_2->f_elem_b->index > pile_frame_2->f_elem_a->index)
+		rotate(pile_frame_2, 'a', 1);
+	push(pile_frame_2, 'a', 1);
 	while (pile_frame_2->f_elem_a->index != 0)
 		rotate(pile_frame_2, 'a', 1);
 	free_frame(pile_frame_2);

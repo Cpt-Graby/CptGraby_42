@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 17:31:01 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/23 10:11:38 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:47:31 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	check_flow(char *num, int len)
 	}
 	else if (num[0] != '-' && len == 10)
 	{
-		res = ft_strncmp(num, "2147483647", 10);
+		res = ft_strncmp(num, "2147483647", 11);
 		if (res > 0)
 			return (0);
 		else

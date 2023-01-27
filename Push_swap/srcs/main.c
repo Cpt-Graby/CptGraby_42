@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:18:36 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/23 11:40:45 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:44:05 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	main(int argc, char **argv)
 	}
 	if (new_argv[0] != NULL && !main_checking_input(new_argv))
 		return (exit_message(-1));
+	if (new_argv[0] != NULL && new_argc <= 6 && new_argc > 2)
+		hard_code_swap(new_argc, new_argv);
 	if (new_argv[0] != NULL && new_argc > 6)
 		core_push_swap(new_argc, new_argv);
-	if (new_argv[0] != NULL && new_argc <= 6)
-		hard_code_swap(new_argc, new_argv);
 	ft_free_tab((void **)new_argv, new_argc);
 	return (0);
 }

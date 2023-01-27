@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:39:27 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/27 13:49:05 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/27 15:16:41 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	print_and_return(char *msg, int ret_val)
 
 int	sort_2_element(t_pi_f *frame)
 {
-	printf("s2\n");
 	if (frame->f_elem_a->value < frame->f_elem_a->next->value)
 		return (0);
 	else
@@ -40,18 +39,22 @@ int	sort_3_element(t_pi_f *frame)
 	if (cond1 && cond2 && cond3)
 		return (0);
 	else if (cond1 && cond2 && !cond3)
-		print_and_return("sa\nra\n", 0);
+	{
+		swap(frame, 'a', 1);
+		rotate(frame, 'a', 1);
+	}
 	else if (!cond1 && cond2 && cond3)
-		print_and_return("sa\n", 0);
-	else if (!cond1 && cond2 && cond3)
-		print_and_return("sa\n", 0);
+		swap(frame, 'a', 1);
 	else if (cond1 && !cond2 && !cond3)
-		print_and_return("rra\n", 0);
+		rev_rotate(frame, 'a', 1);
 	else if (!cond1 && !cond2 && cond3)
-		print_and_return("ra\n", 0);
+		rotate(frame, 'a', 1);
 	else
-		print_and_return("sa\nrra\n", 0);
-	return (1);
+	{
+		swap(frame, 'a', 1);
+		rev_rotate(frame, 'a', 1);
+	}
+	return (0);
 }
 
 int	hard_code_swap(int len_tab, char **tab_num_ascii)
@@ -61,20 +64,17 @@ int	hard_code_swap(int len_tab, char **tab_num_ascii)
 	t_pi_el	*lec_head_b;
 
 	lec_head_a = get_pile_a(len_tab, tab_num_ascii);
-	if (lec_head_a)
+	if (!lec_head_a)
 		free_pile(&lec_head_a, len_tab - 1);
 	lec_head_b = NULL;
 	pile_frame = set_frame(&lec_head_a, &lec_head_b, len_tab);
-	printf_piles(pile_frame);
-	printf("coucou\n");
-	if (len_tab == 2)
+	if (len_tab == 3)
 		sort_2_element(pile_frame);
 	else if (len_tab <= 4)
 		sort_3_element(pile_frame);
 	else
 	{
 		radix_sort(pile_frame, 0);
-		printf("%d\n", len_tab);
 		if (len_tab == 5)
 			sort_4_element(pile_frame, tab_num_ascii, len_tab);
 		else
