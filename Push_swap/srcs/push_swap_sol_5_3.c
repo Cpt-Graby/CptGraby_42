@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:39:27 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/27 15:16:41 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:25:22 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,31 @@ int	sort_2_element(t_pi_f *frame)
 	return (-1);
 }
 
-int	sort_3_element(t_pi_f *frame)
+int	sort_3_element(t_pi_f *fra)
 {
-	int	cond1;
+	int	cond1[2];
 	int	cond2;
-	int	cond3;
 
-	cond1 = (frame->f_elem_a->value < frame->f_elem_a->next->value);
-	cond2 = (frame->f_elem_a->value < frame->f_elem_a->privious->value);
-	cond3 = (frame->f_elem_a->next->value < frame->f_elem_a->privious->value);
-	if (cond1 && cond2 && cond3)
+	cond1[0] = (fra->f_elem_a->value < fra->f_elem_a->next->value);
+	cond2 = (fra->f_elem_a->value < fra->f_elem_a->privious->value);
+	cond1[1] = (fra->f_elem_a->next->value < fra->f_elem_a->privious->value);
+	if (cond1[0] && cond2 && cond1[1])
 		return (0);
-	else if (cond1 && cond2 && !cond3)
+	else if (cond1[0] && cond2 && !cond1[1])
 	{
-		swap(frame, 'a', 1);
-		rotate(frame, 'a', 1);
+		swap(fra, 'a', 1);
+		rotate(fra, 'a', 1);
 	}
-	else if (!cond1 && cond2 && cond3)
-		swap(frame, 'a', 1);
-	else if (cond1 && !cond2 && !cond3)
-		rev_rotate(frame, 'a', 1);
-	else if (!cond1 && !cond2 && cond3)
-		rotate(frame, 'a', 1);
+	else if (!cond1[0] && cond2 && cond1[1])
+		swap(fra, 'a', 1);
+	else if (cond1[0] && !cond2 && !cond1[1])
+		rev_rotate(fra, 'a', 1);
+	else if (!cond1[0] && !cond2 && cond1[1])
+		rotate(fra, 'a', 1);
 	else
 	{
-		swap(frame, 'a', 1);
-		rev_rotate(frame, 'a', 1);
+		swap(fra, 'a', 1);
+		rev_rotate(fra, 'a', 1);
 	}
 	return (0);
 }

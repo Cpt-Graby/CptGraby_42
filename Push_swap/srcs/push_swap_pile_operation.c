@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:37:39 by agonelle          #+#    #+#             */
-/*   Updated: 2022/12/27 18:38:11 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/28 19:14:29 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	swap(t_pi_f *frame, char pile, int print)
 {
-	int		tmp_value;
+	int		tmp_value[2];
 	t_pi_el	*secon_elem;
 	t_pi_el	*tmp_first;
 
@@ -22,19 +22,21 @@ int	swap(t_pi_f *frame, char pile, int print)
 		tmp_first = frame->f_elem_a;
 	else
 		tmp_first = frame->f_elem_b;
-	if (pile == 'a' && (!frame->f_elem_a || !frame->f_elem_a->next))
-		return (0);
-	else if (pile == 'b' && (!frame->f_elem_b || !frame->f_elem_b->next))
+	if ((pile == 'a' && (!frame->f_elem_a || !frame->f_elem_a->next))
+		|| (pile == 'b' && (!frame->f_elem_b || !frame->f_elem_b->next)))
 		return (0);
 	secon_elem = tmp_first->next;
-	tmp_value = tmp_first->value;
+	tmp_value[0] = tmp_first->value;
+	tmp_value[1] = tmp_first->index;
 	tmp_first->value = secon_elem->value;
-	secon_elem->value = tmp_value;
+	tmp_first->index = secon_elem->index;
+	secon_elem->value = tmp_value[0];
+	secon_elem->index = tmp_value[1];
 	if (print)
 		ft_printf("s%c\n", pile);
 	if (pile == 'a')
 		*frame->head_a = tmp_first;
-	else if (pile == 'b')
+	else
 		*frame->head_b = tmp_first;
 	return (1);
 }
@@ -88,7 +90,7 @@ int	rotate(t_pi_f *frame, char pile, int print)
 	if (pile == 'a')
 		actu_frame(frame, tmp_head, frame->head_b);
 	else if (pile == 'b')
-		actu_frame(frame, frame->head_b, tmp_head);
+		actu_frame(frame, frame->head_a, tmp_head);
 	if (print)
 		ft_printf("r%c\n", pile);
 	return (1);

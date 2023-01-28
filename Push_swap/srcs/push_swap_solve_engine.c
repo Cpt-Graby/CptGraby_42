@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 18:04:14 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/09 18:47:40 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:31:01 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	radix_sort(t_pi_f *frame, int print)
 			push(frame, 'a', print);
 		if (!print && check_order_value(frame->f_elem_a, frame->len))
 		{
-			while (frame->f_elem_a->privious->value < 0)
+			while (frame->f_elem_a->privious->value < frame->f_elem_a->value)
 				rev_rotate(frame, 'a', print);
 			*(frame->head_a) = frame->f_elem_a;
 			return (0);
