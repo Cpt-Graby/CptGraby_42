@@ -6,18 +6,11 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:17:10 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/28 19:15:46 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/01/30 09:25:56 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-static void	free_5_element(void)
-{
-	printf("prout");
-}
-*/
 
 int	sort_5_element(t_pi_f *pile_frame, char **tab, int len)
 {
@@ -46,7 +39,6 @@ int	sort_5_element(t_pi_f *pile_frame, char **tab, int len)
 
 int	sort_4_element(t_pi_f *pile_frame, char **tab, int len)
 {
-	printf("%d\n", len);
 	t_pi_f	*pile_ind;
 	t_pi_el	*lec_head_c;
 
