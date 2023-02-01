@@ -6,7 +6,7 @@
 /*   By: agonelle <agonelle@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 16:17:10 by agonelle          #+#    #+#             */
-/*   Updated: 2023/01/30 14:21:02 by agonelle         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:16:36 by agonelle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	sort_4_element(t_pi_f *pile_frame, char **tab, int len)
 	set_index(pile_frame, pile_ind);
 	if (!check_order_index(pile_ind->f_elem_a, pile_ind->len))
 	{
-		while (pile_ind->f_elem_a->index != 0 && pile_ind->f_elem_a->index != 1)
+		while (pile_ind->f_elem_a->index != 0)
 			rotate(pile_ind, 'a', 1);
 		push(pile_ind, 'b', 1);
 		if (pile_ind->f_elem_b->index < pile_ind->f_elem_b->next->index)
